@@ -178,7 +178,7 @@ ___
    - Перейдіть на [офіційний сайт](https://nodejs.org/en/download).
    - Завантажте LTS версію.
    ___
-   - Go to the official website
+   - Go to the [official website](https://nodejs.org/en/download)
    - Download the LTS version.
    ___
   
