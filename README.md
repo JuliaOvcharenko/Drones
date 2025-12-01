@@ -5,7 +5,7 @@
 - [Архітектура | Architecture](#архітектура--architecture)
 - [Стиль написання коду | Code writing style](#стиль-написання-коду--code-writing-style)
 - [Деталі роботи у команді | Details of teamwork](#деталі-роботи-у-команді--details-of-teamwork)
-- [Задачі та можливості нашого API | Tasks and opportunities of our API](#задачі-та-можливості-нашого-api--tasks-and-opportunities-of-our-api)
+- [API Документація | API Documentation](#api-документація--api-documentation)
 - [Як встановити та запустити проєкт? | How to install and run the project?](#як-встановити-та-запустити-проєкт--how-to-install-and-run-the-project)
 - [Висновок | Conclusion](#висновок--conclusion)
 
@@ -80,7 +80,7 @@ name.layer.ts
 
 ___
 
-## Задачі та можливості нашого API | Tasks and opportunities of our API
+## API Документація | API Documentation
 
 <details>
   <summary><strong>📁 main</strong></summary>
@@ -113,9 +113,73 @@ ___
   <summary><strong>📁 product</strong></summary>
   ___
 
-  - 
-  
-  ___
+  Отримати усі продукти. | Get all products.
+
+  ```sh
+    GET /api/products
+  ```
+
+| Code| Error                     | Українською                     | English                    |
+|-----|---------------------------|---------------------------------|----------------------------|
+| 200 | OK                        | товари отримано                 | items received             |
+| 400 | Bad Request               | неправильні параметри (фільтри) | wrong parameters (filters) |
+| 401 | Unauthorized              | немає авторизації               | no authorization           |
+| 429 | Too Many Requests         | перевищено ліміт запитів        | request limit exceeded     |
+| 500 | Internal Server Error     | помилка сервера                 | server error               |
+
+____
+
+  Отримати конкретний продукт. | Get product by id.
+
+  ```sh
+    GET /api/products/{id}
+  ```
+
+| Code | Error                 | Українською                                | English                                  |
+|------| ----------------------|--------------------------------------------| -----------------------------------------|
+| 200  | OK                    | товар знайдено і отримано                  | item found and received                  |
+| 400  | Bad Request           | неправильний формат id                     | wrong ID format                          |
+| 401  | Unauthorized          | немає авторизації                          | no authorization                         |
+| 404  | Not Found             | товар з таким id не знайдено               | item with this ID not found              |
+| 429  | Too Many Requests     | перевищено ліміт запитів                   | request limit exceeded                   |
+| 500  | Internal Server Error | помилка сервера                            | server error                             |
+
+____
+
+
+Створити продукт | Create a product
+
+  ```sh
+      POST /api/products
+  ```
+
+| Code| Error                 | Українською                                   | English                                      |
+|-----|-----------------------|-----------------------------------------------|----------------------------------------------|
+| 201 | Created               | товар успішно створено                        | product successfully created                 |
+| 400 | Bad Request           | невалідні дані                                | invalid data                                 |
+| 401 | Unauthorized          | немає авторизації                             | no authorization                             |
+| 403 | Forbidden             | немає прав на створення                       | no permission to create                      |
+| 404 | Not Found             | категорію не знайдено                         | category not found                           |
+| 409 | Conflict              | товар з такою назвою вже існує                | a product with this name already exists      |
+| 429 | Too Many Requests     | перевищено ліміт запитів                      | request limit exceeded                       |
+| 500 | Internal Server Error | помилка сервера                               | server error                                 |
+
+___
+
+Фильтрація по category_id | Filter by category_id
+
+  ```sh 
+      GET /api/products?category_id=id
+  ```
+
+| Code| Error                  | Українською                                   | English                                     |
+|-----|------------------------|-----------------------------------------------|---------------------------------------------|
+| 200 | OK                     | товари знайдено (навіть порожній список)      | products found (even an empty list)         |
+| 400 | Bad Request            | неправильний category_id                      | invalid category_id                         |
+| 401 | Unauthorized           | немає авторизації                             | no authorization                            |
+| 404 | Not Found              | категорії з таким ID не існує                 | category with this ID does not exist        |
+| 429 | Too Many Requests      | перевищено ліміт запитів                      | request limit exceeded                      |
+| 500 | Internal Server Error  | помилка сервера                               | server error                                |
 
 
 </details>
