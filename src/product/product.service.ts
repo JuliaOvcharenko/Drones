@@ -1,13 +1,14 @@
 
-// import { ProductServiceContract } from "./product.types";
+import { ProductRepository } from "./product.repository";
+import { ProductServiceContract } from "./product.types";
 
 
-// export const ProductService: ProductServiceContract = {
-//     getAllProducts: (take, skip) => {
-//         return ProductRepository.getAllProducts(take, skip);
-//     },
+export const ProductService: ProductServiceContract = {
+    getAllProducts: (categoryName) => {
+        return ProductRepository.getAllProducts(categoryName);
+    },
 
-//     getProductById: (id) => {
-//         return ProductRepository.getProductById(id);
-//     }
-// }
+    getProductById: (id) => {
+        return ProductRepository.getProductById(id);
+    }
+}

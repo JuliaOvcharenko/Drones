@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
-import { Prisma } from "../generated/prisma/client";
+import { Prisma } from '../generated/prisma'
+
 
 
 export type Product = Prisma.ProductGetPayload<{}>
@@ -24,13 +25,20 @@ export interface ProductControllerContract {
         res: Response<Product | string>) => void
 }
 
+export interface ServiceResponseListProduct { //тип відповіді
+    status: "success" | "error"
+    dataProducts?: Product[]
+    message?: string
+    code: number
+}
+
 export interface ProductServiceContract {
-    getAllProducts: (categoryName?: string | undefined) => Promise<Product[]>
+    getAllProducts: (categoryName?: string | undefined) => Promise<Product[] | undefined>
     getProductById: (id: number) => Promise<Product | null>
 }
 
 export interface ProductRepositoryContract {
-    getAllProducts: (categoryName?: string | undefined) => Promise<Product[]>
+    getAllProducts: (categoryName?: string | undefined) => Promise<Product[] | undefined>
     getProductById: (id: number) => Promise<Product | null>
 }
 
