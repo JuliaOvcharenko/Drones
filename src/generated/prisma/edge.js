@@ -135,7 +135,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Asus\\Sprints\\Drones\\src\\generated\\prisma",
+      "value": "D:\\W-IT\\node\\projects\\drones\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -149,7 +149,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Asus\\Sprints\\Drones\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\W-IT\\node\\projects\\drones\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -166,13 +166,13 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": null,
-        "value": "file:./database.db"
+        "fromEnvVar": "DATABASE_URL",
+        "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./database.db\"\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  blocks         ProductInfoBlock[]\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id          Int     @id @default(autoincrement())\n  block_order Int\n  align       String\n  title       String\n  content     String\n  product     Product @relation(fields: [productId], references: [id])\n  productId   Int\n}\n",
-  "inlineSchemaHash": "2c1689b1d73dc6d2ba945a536dd515b2cd5c912dc56d9ad16597b4c77e11bac4",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  blocks         ProductInfoBlock[]\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id          Int     @id @default(autoincrement())\n  block_order Int\n  align       String\n  title       String\n  content     String\n  product     Product @relation(fields: [productId], references: [id])\n  productId   Int\n}\n",
+  "inlineSchemaHash": "9a445450fad4235b46d49ca9d8afc2487ab58ef624844f9d219ddf87e7367e6c",
   "copyEngine": true
 }
 config.dirname = '/'
@@ -183,7 +183,9 @@ config.engineWasm = undefined
 config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
-  parsed: {}
+  parsed: {
+    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+  }
 })
 
 if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined) {
