@@ -111,10 +111,9 @@ ___
 
 </details>
 
-
+____
 <details>
   <summary><strong>📁 product</strong></summary>
-  ___
 
   Отримати усі продукти. | Get all products.
 
