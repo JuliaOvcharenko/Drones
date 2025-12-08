@@ -25,13 +25,6 @@ export interface ProductControllerContract {
         res: Response<Product | string>) => void
 }
 
-export interface ServiceResponseListProduct { //тип відповіді
-    status: "success" | "error"
-    dataProducts?: Product[]
-    message?: string
-    code: number
-}
-
 export interface ProductServiceContract {
     getAllProducts: (categoryName?: string | undefined) => Promise<Product[] | undefined>
     getProductById: (id: number) => Promise<Product | null>
