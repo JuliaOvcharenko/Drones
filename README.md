@@ -195,15 +195,39 @@ ___
   <summary><strong>📁 aboutUs</strong></summary>
   ___
 
-  - 
+  
   
   ___
 
 
 </details>
 
-___
+____
 
+<details>
+  <summary><strong>📁 Category</strong></summary>
+  ___
+
+  
+  Отримати усі категорії. | Get all categories.
+
+  ```sh
+    GET /api/category
+  ```
+
+
+| Code| Error                     | Українською                     | English                    |
+|-----|---------------------------|---------------------------------|----------------------------|
+| 200 | OK                        | категорії отримано              | items received             |
+| 400 | Bad Request               | неправильні параметри (фільтри) | wrong parameters (filters) |
+| 401 | Unauthorized              | немає авторизації               | no authorization           |
+| 500 | Internal Server Error     | помилка сервера                 | server error               |
+
+  
+  ___
+
+
+</details>
 
 
 

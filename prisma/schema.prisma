@@ -36,3 +36,10 @@ model ProductInfoBlock {
   product     Product @relation(fields: [productId], references: [id])
   productId  Int
 }
+
+model ProductImage {
+  id          Int    @id @default(autoincrement())
+  blockId Int
+  image String
+  image_order Int
+}
