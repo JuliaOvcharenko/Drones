@@ -28,6 +28,16 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
  * 
  */
 export type ProductInfoBlock = $Result.DefaultSelection<Prisma.$ProductInfoBlockPayload>
+/**
+ * Model ProductImage
+ * 
+ */
+export type ProductImage = $Result.DefaultSelection<Prisma.$ProductImagePayload>
+/**
+ * Model ProductMainImage
+ * 
+ */
+export type ProductMainImage = $Result.DefaultSelection<Prisma.$ProductMainImagePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -176,6 +186,26 @@ export class PrismaClient<
     * ```
     */
   get productInfoBlock(): Prisma.ProductInfoBlockDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.productImage`: Exposes CRUD operations for the **ProductImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProductImages
+    * const productImages = await prisma.productImage.findMany()
+    * ```
+    */
+  get productImage(): Prisma.ProductImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.productMainImage`: Exposes CRUD operations for the **ProductMainImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProductMainImages
+    * const productMainImages = await prisma.productMainImage.findMany()
+    * ```
+    */
+  get productMainImage(): Prisma.ProductMainImageDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -618,7 +648,9 @@ export namespace Prisma {
   export const ModelName: {
     Product: 'Product',
     Category: 'Category',
-    ProductInfoBlock: 'ProductInfoBlock'
+    ProductInfoBlock: 'ProductInfoBlock',
+    ProductImage: 'ProductImage',
+    ProductMainImage: 'ProductMainImage'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -637,7 +669,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "product" | "category" | "productInfoBlock"
+      modelProps: "product" | "category" | "productInfoBlock" | "productImage" | "productMainImage"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -863,6 +895,154 @@ export namespace Prisma {
           }
         }
       }
+      ProductImage: {
+        payload: Prisma.$ProductImagePayload<ExtArgs>
+        fields: Prisma.ProductImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProductImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProductImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          findFirst: {
+            args: Prisma.ProductImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProductImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          findMany: {
+            args: Prisma.ProductImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>[]
+          }
+          create: {
+            args: Prisma.ProductImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          createMany: {
+            args: Prisma.ProductImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProductImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>[]
+          }
+          delete: {
+            args: Prisma.ProductImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          update: {
+            args: Prisma.ProductImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProductImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProductImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProductImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProductImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductImagePayload>
+          }
+          aggregate: {
+            args: Prisma.ProductImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProductImage>
+          }
+          groupBy: {
+            args: Prisma.ProductImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProductImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProductImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ProductImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProductMainImage: {
+        payload: Prisma.$ProductMainImagePayload<ExtArgs>
+        fields: Prisma.ProductMainImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProductMainImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProductMainImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          findFirst: {
+            args: Prisma.ProductMainImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProductMainImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          findMany: {
+            args: Prisma.ProductMainImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>[]
+          }
+          create: {
+            args: Prisma.ProductMainImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          createMany: {
+            args: Prisma.ProductMainImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProductMainImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>[]
+          }
+          delete: {
+            args: Prisma.ProductMainImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          update: {
+            args: Prisma.ProductMainImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProductMainImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProductMainImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProductMainImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProductMainImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductMainImagePayload>
+          }
+          aggregate: {
+            args: Prisma.ProductMainImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProductMainImage>
+          }
+          groupBy: {
+            args: Prisma.ProductMainImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProductMainImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProductMainImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ProductMainImageCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -962,6 +1142,8 @@ export namespace Prisma {
     product?: ProductOmit
     category?: CategoryOmit
     productInfoBlock?: ProductInfoBlockOmit
+    productImage?: ProductImageOmit
+    productMainImage?: ProductMainImageOmit
   }
 
   /* Types for Logging */
@@ -1042,11 +1224,11 @@ export namespace Prisma {
    */
 
   export type ProductCountOutputType = {
-    blocks: number
+    infoBlocks: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    blocks?: boolean | ProductCountOutputTypeCountBlocksArgs
+    infoBlocks?: boolean | ProductCountOutputTypeCountInfoBlocksArgs
   }
 
   // Custom InputTypes
@@ -1063,7 +1245,7 @@ export namespace Prisma {
   /**
    * ProductCountOutputType without action
    */
-  export type ProductCountOutputTypeCountBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductCountOutputTypeCountInfoBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductInfoBlockWhereInput
   }
 
@@ -1096,6 +1278,37 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
+  }
+
+
+  /**
+   * Count Type ProductInfoBlockCountOutputType
+   */
+
+  export type ProductInfoBlockCountOutputType = {
+    images: number
+  }
+
+  export type ProductInfoBlockCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | ProductInfoBlockCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProductInfoBlockCountOutputType without action
+   */
+  export type ProductInfoBlockCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductInfoBlockCountOutputType
+     */
+    select?: ProductInfoBlockCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProductInfoBlockCountOutputType without action
+   */
+  export type ProductInfoBlockCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductImageWhereInput
   }
 
 
@@ -1326,7 +1539,8 @@ export namespace Prisma {
     countOfProduct?: boolean
     categoryId?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
-    blocks?: boolean | Product$blocksArgs<ExtArgs>
+    infoBlocks?: boolean | Product$infoBlocksArgs<ExtArgs>
+    mainImage?: boolean | Product$mainImageArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -1362,7 +1576,8 @@ export namespace Prisma {
   export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "discount" | "countOfProduct" | "categoryId", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
-    blocks?: boolean | Product$blocksArgs<ExtArgs>
+    infoBlocks?: boolean | Product$infoBlocksArgs<ExtArgs>
+    mainImage?: boolean | Product$mainImageArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1376,7 +1591,8 @@ export namespace Prisma {
     name: "Product"
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>
-      blocks: Prisma.$ProductInfoBlockPayload<ExtArgs>[]
+      infoBlocks: Prisma.$ProductInfoBlockPayload<ExtArgs>[]
+      mainImage: Prisma.$ProductMainImagePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1780,7 +1996,8 @@ export namespace Prisma {
   export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    blocks<T extends Product$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Product$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductInfoBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    infoBlocks<T extends Product$infoBlocksArgs<ExtArgs> = {}>(args?: Subset<T, Product$infoBlocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductInfoBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    mainImage<T extends Product$mainImageArgs<ExtArgs> = {}>(args?: Subset<T, Product$mainImageArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2210,9 +2427,9 @@ export namespace Prisma {
   }
 
   /**
-   * Product.blocks
+   * Product.infoBlocks
    */
-  export type Product$blocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Product$infoBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ProductInfoBlock
      */
@@ -2231,6 +2448,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductInfoBlockScalarFieldEnum | ProductInfoBlockScalarFieldEnum[]
+  }
+
+  /**
+   * Product.mainImage
+   */
+  export type Product$mainImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    where?: ProductMainImageWhereInput
   }
 
   /**
@@ -3342,19 +3578,19 @@ export namespace Prisma {
 
   export type ProductInfoBlockAvgAggregateOutputType = {
     id: number | null
-    block_order: number | null
+    blockOrder: number | null
     productId: number | null
   }
 
   export type ProductInfoBlockSumAggregateOutputType = {
     id: number | null
-    block_order: number | null
+    blockOrder: number | null
     productId: number | null
   }
 
   export type ProductInfoBlockMinAggregateOutputType = {
     id: number | null
-    block_order: number | null
+    blockOrder: number | null
     align: string | null
     title: string | null
     content: string | null
@@ -3363,7 +3599,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockMaxAggregateOutputType = {
     id: number | null
-    block_order: number | null
+    blockOrder: number | null
     align: string | null
     title: string | null
     content: string | null
@@ -3372,7 +3608,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockCountAggregateOutputType = {
     id: number
-    block_order: number
+    blockOrder: number
     align: number
     title: number
     content: number
@@ -3383,19 +3619,19 @@ export namespace Prisma {
 
   export type ProductInfoBlockAvgAggregateInputType = {
     id?: true
-    block_order?: true
+    blockOrder?: true
     productId?: true
   }
 
   export type ProductInfoBlockSumAggregateInputType = {
     id?: true
-    block_order?: true
+    blockOrder?: true
     productId?: true
   }
 
   export type ProductInfoBlockMinAggregateInputType = {
     id?: true
-    block_order?: true
+    blockOrder?: true
     align?: true
     title?: true
     content?: true
@@ -3404,7 +3640,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockMaxAggregateInputType = {
     id?: true
-    block_order?: true
+    blockOrder?: true
     align?: true
     title?: true
     content?: true
@@ -3413,7 +3649,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockCountAggregateInputType = {
     id?: true
-    block_order?: true
+    blockOrder?: true
     align?: true
     title?: true
     content?: true
@@ -3509,7 +3745,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockGroupByOutputType = {
     id: number
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
@@ -3537,17 +3773,19 @@ export namespace Prisma {
 
   export type ProductInfoBlockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    block_order?: boolean
+    blockOrder?: boolean
     align?: boolean
     title?: boolean
     content?: boolean
     productId?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
+    images?: boolean | ProductInfoBlock$imagesArgs<ExtArgs>
+    _count?: boolean | ProductInfoBlockCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["productInfoBlock"]>
 
   export type ProductInfoBlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    block_order?: boolean
+    blockOrder?: boolean
     align?: boolean
     title?: boolean
     content?: boolean
@@ -3557,7 +3795,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    block_order?: boolean
+    blockOrder?: boolean
     align?: boolean
     title?: boolean
     content?: boolean
@@ -3567,16 +3805,18 @@ export namespace Prisma {
 
   export type ProductInfoBlockSelectScalar = {
     id?: boolean
-    block_order?: boolean
+    blockOrder?: boolean
     align?: boolean
     title?: boolean
     content?: boolean
     productId?: boolean
   }
 
-  export type ProductInfoBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "block_order" | "align" | "title" | "content" | "productId", ExtArgs["result"]["productInfoBlock"]>
+  export type ProductInfoBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "blockOrder" | "align" | "title" | "content" | "productId", ExtArgs["result"]["productInfoBlock"]>
   export type ProductInfoBlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductDefaultArgs<ExtArgs>
+    images?: boolean | ProductInfoBlock$imagesArgs<ExtArgs>
+    _count?: boolean | ProductInfoBlockCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductInfoBlockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductDefaultArgs<ExtArgs>
@@ -3589,10 +3829,11 @@ export namespace Prisma {
     name: "ProductInfoBlock"
     objects: {
       product: Prisma.$ProductPayload<ExtArgs>
+      images: Prisma.$ProductImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      block_order: number
+      blockOrder: number
       align: string
       title: string
       content: string
@@ -3992,6 +4233,7 @@ export namespace Prisma {
   export interface Prisma__ProductInfoBlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    images<T extends ProductInfoBlock$imagesArgs<ExtArgs> = {}>(args?: Subset<T, ProductInfoBlock$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4022,7 +4264,7 @@ export namespace Prisma {
    */
   interface ProductInfoBlockFieldRefs {
     readonly id: FieldRef<"ProductInfoBlock", 'Int'>
-    readonly block_order: FieldRef<"ProductInfoBlock", 'Int'>
+    readonly blockOrder: FieldRef<"ProductInfoBlock", 'Int'>
     readonly align: FieldRef<"ProductInfoBlock", 'String'>
     readonly title: FieldRef<"ProductInfoBlock", 'String'>
     readonly content: FieldRef<"ProductInfoBlock", 'String'>
@@ -4421,6 +4663,30 @@ export namespace Prisma {
   }
 
   /**
+   * ProductInfoBlock.images
+   */
+  export type ProductInfoBlock$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    where?: ProductImageWhereInput
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    cursor?: ProductImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
+  }
+
+  /**
    * ProductInfoBlock without action
    */
   export type ProductInfoBlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4436,6 +4702,2159 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ProductInfoBlockInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProductImage
+   */
+
+  export type AggregateProductImage = {
+    _count: ProductImageCountAggregateOutputType | null
+    _avg: ProductImageAvgAggregateOutputType | null
+    _sum: ProductImageSumAggregateOutputType | null
+    _min: ProductImageMinAggregateOutputType | null
+    _max: ProductImageMaxAggregateOutputType | null
+  }
+
+  export type ProductImageAvgAggregateOutputType = {
+    id: number | null
+    imageOrder: number | null
+    infoBlockId: number | null
+  }
+
+  export type ProductImageSumAggregateOutputType = {
+    id: number | null
+    imageOrder: number | null
+    infoBlockId: number | null
+  }
+
+  export type ProductImageMinAggregateOutputType = {
+    id: number | null
+    image: string | null
+    imageOrder: number | null
+    infoBlockId: number | null
+  }
+
+  export type ProductImageMaxAggregateOutputType = {
+    id: number | null
+    image: string | null
+    imageOrder: number | null
+    infoBlockId: number | null
+  }
+
+  export type ProductImageCountAggregateOutputType = {
+    id: number
+    image: number
+    imageOrder: number
+    infoBlockId: number
+    _all: number
+  }
+
+
+  export type ProductImageAvgAggregateInputType = {
+    id?: true
+    imageOrder?: true
+    infoBlockId?: true
+  }
+
+  export type ProductImageSumAggregateInputType = {
+    id?: true
+    imageOrder?: true
+    infoBlockId?: true
+  }
+
+  export type ProductImageMinAggregateInputType = {
+    id?: true
+    image?: true
+    imageOrder?: true
+    infoBlockId?: true
+  }
+
+  export type ProductImageMaxAggregateInputType = {
+    id?: true
+    image?: true
+    imageOrder?: true
+    infoBlockId?: true
+  }
+
+  export type ProductImageCountAggregateInputType = {
+    id?: true
+    image?: true
+    imageOrder?: true
+    infoBlockId?: true
+    _all?: true
+  }
+
+  export type ProductImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductImage to aggregate.
+     */
+    where?: ProductImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductImages to fetch.
+     */
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProductImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProductImages
+    **/
+    _count?: true | ProductImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProductImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProductImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProductImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProductImageMaxAggregateInputType
+  }
+
+  export type GetProductImageAggregateType<T extends ProductImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateProductImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProductImage[P]>
+      : GetScalarType<T[P], AggregateProductImage[P]>
+  }
+
+
+
+
+  export type ProductImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductImageWhereInput
+    orderBy?: ProductImageOrderByWithAggregationInput | ProductImageOrderByWithAggregationInput[]
+    by: ProductImageScalarFieldEnum[] | ProductImageScalarFieldEnum
+    having?: ProductImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProductImageCountAggregateInputType | true
+    _avg?: ProductImageAvgAggregateInputType
+    _sum?: ProductImageSumAggregateInputType
+    _min?: ProductImageMinAggregateInputType
+    _max?: ProductImageMaxAggregateInputType
+  }
+
+  export type ProductImageGroupByOutputType = {
+    id: number
+    image: string
+    imageOrder: number
+    infoBlockId: number
+    _count: ProductImageCountAggregateOutputType | null
+    _avg: ProductImageAvgAggregateOutputType | null
+    _sum: ProductImageSumAggregateOutputType | null
+    _min: ProductImageMinAggregateOutputType | null
+    _max: ProductImageMaxAggregateOutputType | null
+  }
+
+  type GetProductImageGroupByPayload<T extends ProductImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProductImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProductImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProductImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProductImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    imageOrder?: boolean
+    infoBlockId?: boolean
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productImage"]>
+
+  export type ProductImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    imageOrder?: boolean
+    infoBlockId?: boolean
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productImage"]>
+
+  export type ProductImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    imageOrder?: boolean
+    infoBlockId?: boolean
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productImage"]>
+
+  export type ProductImageSelectScalar = {
+    id?: boolean
+    image?: boolean
+    imageOrder?: boolean
+    infoBlockId?: boolean
+  }
+
+  export type ProductImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "imageOrder" | "infoBlockId", ExtArgs["result"]["productImage"]>
+  export type ProductImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }
+  export type ProductImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }
+  export type ProductImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    infoBlock?: boolean | ProductInfoBlockDefaultArgs<ExtArgs>
+  }
+
+  export type $ProductImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProductImage"
+    objects: {
+      infoBlock: Prisma.$ProductInfoBlockPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image: string
+      imageOrder: number
+      infoBlockId: number
+    }, ExtArgs["result"]["productImage"]>
+    composites: {}
+  }
+
+  type ProductImageGetPayload<S extends boolean | null | undefined | ProductImageDefaultArgs> = $Result.GetResult<Prisma.$ProductImagePayload, S>
+
+  type ProductImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProductImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductImageCountAggregateInputType | true
+    }
+
+  export interface ProductImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProductImage'], meta: { name: 'ProductImage' } }
+    /**
+     * Find zero or one ProductImage that matches the filter.
+     * @param {ProductImageFindUniqueArgs} args - Arguments to find a ProductImage
+     * @example
+     * // Get one ProductImage
+     * const productImage = await prisma.productImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProductImageFindUniqueArgs>(args: SelectSubset<T, ProductImageFindUniqueArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProductImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProductImageFindUniqueOrThrowArgs} args - Arguments to find a ProductImage
+     * @example
+     * // Get one ProductImage
+     * const productImage = await prisma.productImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProductImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageFindFirstArgs} args - Arguments to find a ProductImage
+     * @example
+     * // Get one ProductImage
+     * const productImage = await prisma.productImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProductImageFindFirstArgs>(args?: SelectSubset<T, ProductImageFindFirstArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageFindFirstOrThrowArgs} args - Arguments to find a ProductImage
+     * @example
+     * // Get one ProductImage
+     * const productImage = await prisma.productImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProductImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProductImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProductImages
+     * const productImages = await prisma.productImage.findMany()
+     * 
+     * // Get first 10 ProductImages
+     * const productImages = await prisma.productImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const productImageWithIdOnly = await prisma.productImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProductImageFindManyArgs>(args?: SelectSubset<T, ProductImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProductImage.
+     * @param {ProductImageCreateArgs} args - Arguments to create a ProductImage.
+     * @example
+     * // Create one ProductImage
+     * const ProductImage = await prisma.productImage.create({
+     *   data: {
+     *     // ... data to create a ProductImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProductImageCreateArgs>(args: SelectSubset<T, ProductImageCreateArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProductImages.
+     * @param {ProductImageCreateManyArgs} args - Arguments to create many ProductImages.
+     * @example
+     * // Create many ProductImages
+     * const productImage = await prisma.productImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProductImageCreateManyArgs>(args?: SelectSubset<T, ProductImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProductImages and returns the data saved in the database.
+     * @param {ProductImageCreateManyAndReturnArgs} args - Arguments to create many ProductImages.
+     * @example
+     * // Create many ProductImages
+     * const productImage = await prisma.productImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProductImages and only return the `id`
+     * const productImageWithIdOnly = await prisma.productImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProductImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ProductImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProductImage.
+     * @param {ProductImageDeleteArgs} args - Arguments to delete one ProductImage.
+     * @example
+     * // Delete one ProductImage
+     * const ProductImage = await prisma.productImage.delete({
+     *   where: {
+     *     // ... filter to delete one ProductImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProductImageDeleteArgs>(args: SelectSubset<T, ProductImageDeleteArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProductImage.
+     * @param {ProductImageUpdateArgs} args - Arguments to update one ProductImage.
+     * @example
+     * // Update one ProductImage
+     * const productImage = await prisma.productImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProductImageUpdateArgs>(args: SelectSubset<T, ProductImageUpdateArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProductImages.
+     * @param {ProductImageDeleteManyArgs} args - Arguments to filter ProductImages to delete.
+     * @example
+     * // Delete a few ProductImages
+     * const { count } = await prisma.productImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProductImageDeleteManyArgs>(args?: SelectSubset<T, ProductImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProductImages
+     * const productImage = await prisma.productImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProductImageUpdateManyArgs>(args: SelectSubset<T, ProductImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductImages and returns the data updated in the database.
+     * @param {ProductImageUpdateManyAndReturnArgs} args - Arguments to update many ProductImages.
+     * @example
+     * // Update many ProductImages
+     * const productImage = await prisma.productImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProductImages and only return the `id`
+     * const productImageWithIdOnly = await prisma.productImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProductImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ProductImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProductImage.
+     * @param {ProductImageUpsertArgs} args - Arguments to update or create a ProductImage.
+     * @example
+     * // Update or create a ProductImage
+     * const productImage = await prisma.productImage.upsert({
+     *   create: {
+     *     // ... data to create a ProductImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProductImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProductImageUpsertArgs>(args: SelectSubset<T, ProductImageUpsertArgs<ExtArgs>>): Prisma__ProductImageClient<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProductImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageCountArgs} args - Arguments to filter ProductImages to count.
+     * @example
+     * // Count the number of ProductImages
+     * const count = await prisma.productImage.count({
+     *   where: {
+     *     // ... the filter for the ProductImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProductImageCountArgs>(
+      args?: Subset<T, ProductImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProductImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProductImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProductImageAggregateArgs>(args: Subset<T, ProductImageAggregateArgs>): Prisma.PrismaPromise<GetProductImageAggregateType<T>>
+
+    /**
+     * Group by ProductImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProductImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProductImageGroupByArgs['orderBy'] }
+        : { orderBy?: ProductImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProductImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProductImage model
+   */
+  readonly fields: ProductImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProductImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProductImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    infoBlock<T extends ProductInfoBlockDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductInfoBlockDefaultArgs<ExtArgs>>): Prisma__ProductInfoBlockClient<$Result.GetResult<Prisma.$ProductInfoBlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProductImage model
+   */
+  interface ProductImageFieldRefs {
+    readonly id: FieldRef<"ProductImage", 'Int'>
+    readonly image: FieldRef<"ProductImage", 'String'>
+    readonly imageOrder: FieldRef<"ProductImage", 'Int'>
+    readonly infoBlockId: FieldRef<"ProductImage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProductImage findUnique
+   */
+  export type ProductImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductImage to fetch.
+     */
+    where: ProductImageWhereUniqueInput
+  }
+
+  /**
+   * ProductImage findUniqueOrThrow
+   */
+  export type ProductImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductImage to fetch.
+     */
+    where: ProductImageWhereUniqueInput
+  }
+
+  /**
+   * ProductImage findFirst
+   */
+  export type ProductImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductImage to fetch.
+     */
+    where?: ProductImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductImages to fetch.
+     */
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductImages.
+     */
+    cursor?: ProductImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductImages.
+     */
+    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductImage findFirstOrThrow
+   */
+  export type ProductImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductImage to fetch.
+     */
+    where?: ProductImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductImages to fetch.
+     */
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductImages.
+     */
+    cursor?: ProductImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductImages.
+     */
+    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductImage findMany
+   */
+  export type ProductImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductImages to fetch.
+     */
+    where?: ProductImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductImages to fetch.
+     */
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProductImages.
+     */
+    cursor?: ProductImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductImages.
+     */
+    skip?: number
+    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductImage create
+   */
+  export type ProductImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProductImage.
+     */
+    data: XOR<ProductImageCreateInput, ProductImageUncheckedCreateInput>
+  }
+
+  /**
+   * ProductImage createMany
+   */
+  export type ProductImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProductImages.
+     */
+    data: ProductImageCreateManyInput | ProductImageCreateManyInput[]
+  }
+
+  /**
+   * ProductImage createManyAndReturn
+   */
+  export type ProductImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProductImages.
+     */
+    data: ProductImageCreateManyInput | ProductImageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProductImage update
+   */
+  export type ProductImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProductImage.
+     */
+    data: XOR<ProductImageUpdateInput, ProductImageUncheckedUpdateInput>
+    /**
+     * Choose, which ProductImage to update.
+     */
+    where: ProductImageWhereUniqueInput
+  }
+
+  /**
+   * ProductImage updateMany
+   */
+  export type ProductImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProductImages.
+     */
+    data: XOR<ProductImageUpdateManyMutationInput, ProductImageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProductImages to update
+     */
+    where?: ProductImageWhereInput
+    /**
+     * Limit how many ProductImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductImage updateManyAndReturn
+   */
+  export type ProductImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * The data used to update ProductImages.
+     */
+    data: XOR<ProductImageUpdateManyMutationInput, ProductImageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProductImages to update
+     */
+    where?: ProductImageWhereInput
+    /**
+     * Limit how many ProductImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProductImage upsert
+   */
+  export type ProductImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProductImage to update in case it exists.
+     */
+    where: ProductImageWhereUniqueInput
+    /**
+     * In case the ProductImage found by the `where` argument doesn't exist, create a new ProductImage with this data.
+     */
+    create: XOR<ProductImageCreateInput, ProductImageUncheckedCreateInput>
+    /**
+     * In case the ProductImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProductImageUpdateInput, ProductImageUncheckedUpdateInput>
+  }
+
+  /**
+   * ProductImage delete
+   */
+  export type ProductImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    /**
+     * Filter which ProductImage to delete.
+     */
+    where: ProductImageWhereUniqueInput
+  }
+
+  /**
+   * ProductImage deleteMany
+   */
+  export type ProductImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductImages to delete
+     */
+    where?: ProductImageWhereInput
+    /**
+     * Limit how many ProductImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductImage without action
+   */
+  export type ProductImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProductMainImage
+   */
+
+  export type AggregateProductMainImage = {
+    _count: ProductMainImageCountAggregateOutputType | null
+    _avg: ProductMainImageAvgAggregateOutputType | null
+    _sum: ProductMainImageSumAggregateOutputType | null
+    _min: ProductMainImageMinAggregateOutputType | null
+    _max: ProductMainImageMaxAggregateOutputType | null
+  }
+
+  export type ProductMainImageAvgAggregateOutputType = {
+    id: number | null
+    productId: number | null
+  }
+
+  export type ProductMainImageSumAggregateOutputType = {
+    id: number | null
+    productId: number | null
+  }
+
+  export type ProductMainImageMinAggregateOutputType = {
+    id: number | null
+    image: string | null
+    productId: number | null
+  }
+
+  export type ProductMainImageMaxAggregateOutputType = {
+    id: number | null
+    image: string | null
+    productId: number | null
+  }
+
+  export type ProductMainImageCountAggregateOutputType = {
+    id: number
+    image: number
+    productId: number
+    _all: number
+  }
+
+
+  export type ProductMainImageAvgAggregateInputType = {
+    id?: true
+    productId?: true
+  }
+
+  export type ProductMainImageSumAggregateInputType = {
+    id?: true
+    productId?: true
+  }
+
+  export type ProductMainImageMinAggregateInputType = {
+    id?: true
+    image?: true
+    productId?: true
+  }
+
+  export type ProductMainImageMaxAggregateInputType = {
+    id?: true
+    image?: true
+    productId?: true
+  }
+
+  export type ProductMainImageCountAggregateInputType = {
+    id?: true
+    image?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type ProductMainImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductMainImage to aggregate.
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductMainImages to fetch.
+     */
+    orderBy?: ProductMainImageOrderByWithRelationInput | ProductMainImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProductMainImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductMainImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductMainImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProductMainImages
+    **/
+    _count?: true | ProductMainImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProductMainImageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProductMainImageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProductMainImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProductMainImageMaxAggregateInputType
+  }
+
+  export type GetProductMainImageAggregateType<T extends ProductMainImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateProductMainImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProductMainImage[P]>
+      : GetScalarType<T[P], AggregateProductMainImage[P]>
+  }
+
+
+
+
+  export type ProductMainImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductMainImageWhereInput
+    orderBy?: ProductMainImageOrderByWithAggregationInput | ProductMainImageOrderByWithAggregationInput[]
+    by: ProductMainImageScalarFieldEnum[] | ProductMainImageScalarFieldEnum
+    having?: ProductMainImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProductMainImageCountAggregateInputType | true
+    _avg?: ProductMainImageAvgAggregateInputType
+    _sum?: ProductMainImageSumAggregateInputType
+    _min?: ProductMainImageMinAggregateInputType
+    _max?: ProductMainImageMaxAggregateInputType
+  }
+
+  export type ProductMainImageGroupByOutputType = {
+    id: number
+    image: string
+    productId: number
+    _count: ProductMainImageCountAggregateOutputType | null
+    _avg: ProductMainImageAvgAggregateOutputType | null
+    _sum: ProductMainImageSumAggregateOutputType | null
+    _min: ProductMainImageMinAggregateOutputType | null
+    _max: ProductMainImageMaxAggregateOutputType | null
+  }
+
+  type GetProductMainImageGroupByPayload<T extends ProductMainImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProductMainImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProductMainImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProductMainImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductMainImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProductMainImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    productId?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productMainImage"]>
+
+  export type ProductMainImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    productId?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productMainImage"]>
+
+  export type ProductMainImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    productId?: boolean
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productMainImage"]>
+
+  export type ProductMainImageSelectScalar = {
+    id?: boolean
+    image?: boolean
+    productId?: boolean
+  }
+
+  export type ProductMainImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "productId", ExtArgs["result"]["productMainImage"]>
+  export type ProductMainImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type ProductMainImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+  export type ProductMainImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $ProductMainImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProductMainImage"
+    objects: {
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image: string
+      productId: number
+    }, ExtArgs["result"]["productMainImage"]>
+    composites: {}
+  }
+
+  type ProductMainImageGetPayload<S extends boolean | null | undefined | ProductMainImageDefaultArgs> = $Result.GetResult<Prisma.$ProductMainImagePayload, S>
+
+  type ProductMainImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProductMainImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductMainImageCountAggregateInputType | true
+    }
+
+  export interface ProductMainImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProductMainImage'], meta: { name: 'ProductMainImage' } }
+    /**
+     * Find zero or one ProductMainImage that matches the filter.
+     * @param {ProductMainImageFindUniqueArgs} args - Arguments to find a ProductMainImage
+     * @example
+     * // Get one ProductMainImage
+     * const productMainImage = await prisma.productMainImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProductMainImageFindUniqueArgs>(args: SelectSubset<T, ProductMainImageFindUniqueArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProductMainImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProductMainImageFindUniqueOrThrowArgs} args - Arguments to find a ProductMainImage
+     * @example
+     * // Get one ProductMainImage
+     * const productMainImage = await prisma.productMainImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProductMainImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductMainImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductMainImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageFindFirstArgs} args - Arguments to find a ProductMainImage
+     * @example
+     * // Get one ProductMainImage
+     * const productMainImage = await prisma.productMainImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProductMainImageFindFirstArgs>(args?: SelectSubset<T, ProductMainImageFindFirstArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductMainImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageFindFirstOrThrowArgs} args - Arguments to find a ProductMainImage
+     * @example
+     * // Get one ProductMainImage
+     * const productMainImage = await prisma.productMainImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProductMainImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductMainImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProductMainImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProductMainImages
+     * const productMainImages = await prisma.productMainImage.findMany()
+     * 
+     * // Get first 10 ProductMainImages
+     * const productMainImages = await prisma.productMainImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const productMainImageWithIdOnly = await prisma.productMainImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProductMainImageFindManyArgs>(args?: SelectSubset<T, ProductMainImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProductMainImage.
+     * @param {ProductMainImageCreateArgs} args - Arguments to create a ProductMainImage.
+     * @example
+     * // Create one ProductMainImage
+     * const ProductMainImage = await prisma.productMainImage.create({
+     *   data: {
+     *     // ... data to create a ProductMainImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProductMainImageCreateArgs>(args: SelectSubset<T, ProductMainImageCreateArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProductMainImages.
+     * @param {ProductMainImageCreateManyArgs} args - Arguments to create many ProductMainImages.
+     * @example
+     * // Create many ProductMainImages
+     * const productMainImage = await prisma.productMainImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProductMainImageCreateManyArgs>(args?: SelectSubset<T, ProductMainImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProductMainImages and returns the data saved in the database.
+     * @param {ProductMainImageCreateManyAndReturnArgs} args - Arguments to create many ProductMainImages.
+     * @example
+     * // Create many ProductMainImages
+     * const productMainImage = await prisma.productMainImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProductMainImages and only return the `id`
+     * const productMainImageWithIdOnly = await prisma.productMainImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProductMainImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ProductMainImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProductMainImage.
+     * @param {ProductMainImageDeleteArgs} args - Arguments to delete one ProductMainImage.
+     * @example
+     * // Delete one ProductMainImage
+     * const ProductMainImage = await prisma.productMainImage.delete({
+     *   where: {
+     *     // ... filter to delete one ProductMainImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProductMainImageDeleteArgs>(args: SelectSubset<T, ProductMainImageDeleteArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProductMainImage.
+     * @param {ProductMainImageUpdateArgs} args - Arguments to update one ProductMainImage.
+     * @example
+     * // Update one ProductMainImage
+     * const productMainImage = await prisma.productMainImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProductMainImageUpdateArgs>(args: SelectSubset<T, ProductMainImageUpdateArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProductMainImages.
+     * @param {ProductMainImageDeleteManyArgs} args - Arguments to filter ProductMainImages to delete.
+     * @example
+     * // Delete a few ProductMainImages
+     * const { count } = await prisma.productMainImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProductMainImageDeleteManyArgs>(args?: SelectSubset<T, ProductMainImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductMainImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProductMainImages
+     * const productMainImage = await prisma.productMainImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProductMainImageUpdateManyArgs>(args: SelectSubset<T, ProductMainImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductMainImages and returns the data updated in the database.
+     * @param {ProductMainImageUpdateManyAndReturnArgs} args - Arguments to update many ProductMainImages.
+     * @example
+     * // Update many ProductMainImages
+     * const productMainImage = await prisma.productMainImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProductMainImages and only return the `id`
+     * const productMainImageWithIdOnly = await prisma.productMainImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProductMainImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ProductMainImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProductMainImage.
+     * @param {ProductMainImageUpsertArgs} args - Arguments to update or create a ProductMainImage.
+     * @example
+     * // Update or create a ProductMainImage
+     * const productMainImage = await prisma.productMainImage.upsert({
+     *   create: {
+     *     // ... data to create a ProductMainImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProductMainImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProductMainImageUpsertArgs>(args: SelectSubset<T, ProductMainImageUpsertArgs<ExtArgs>>): Prisma__ProductMainImageClient<$Result.GetResult<Prisma.$ProductMainImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProductMainImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageCountArgs} args - Arguments to filter ProductMainImages to count.
+     * @example
+     * // Count the number of ProductMainImages
+     * const count = await prisma.productMainImage.count({
+     *   where: {
+     *     // ... the filter for the ProductMainImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProductMainImageCountArgs>(
+      args?: Subset<T, ProductMainImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProductMainImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProductMainImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProductMainImageAggregateArgs>(args: Subset<T, ProductMainImageAggregateArgs>): Prisma.PrismaPromise<GetProductMainImageAggregateType<T>>
+
+    /**
+     * Group by ProductMainImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductMainImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProductMainImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProductMainImageGroupByArgs['orderBy'] }
+        : { orderBy?: ProductMainImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProductMainImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductMainImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProductMainImage model
+   */
+  readonly fields: ProductMainImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProductMainImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProductMainImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProductMainImage model
+   */
+  interface ProductMainImageFieldRefs {
+    readonly id: FieldRef<"ProductMainImage", 'Int'>
+    readonly image: FieldRef<"ProductMainImage", 'String'>
+    readonly productId: FieldRef<"ProductMainImage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProductMainImage findUnique
+   */
+  export type ProductMainImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductMainImage to fetch.
+     */
+    where: ProductMainImageWhereUniqueInput
+  }
+
+  /**
+   * ProductMainImage findUniqueOrThrow
+   */
+  export type ProductMainImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductMainImage to fetch.
+     */
+    where: ProductMainImageWhereUniqueInput
+  }
+
+  /**
+   * ProductMainImage findFirst
+   */
+  export type ProductMainImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductMainImage to fetch.
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductMainImages to fetch.
+     */
+    orderBy?: ProductMainImageOrderByWithRelationInput | ProductMainImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductMainImages.
+     */
+    cursor?: ProductMainImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductMainImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductMainImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductMainImages.
+     */
+    distinct?: ProductMainImageScalarFieldEnum | ProductMainImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductMainImage findFirstOrThrow
+   */
+  export type ProductMainImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductMainImage to fetch.
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductMainImages to fetch.
+     */
+    orderBy?: ProductMainImageOrderByWithRelationInput | ProductMainImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductMainImages.
+     */
+    cursor?: ProductMainImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductMainImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductMainImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductMainImages.
+     */
+    distinct?: ProductMainImageScalarFieldEnum | ProductMainImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductMainImage findMany
+   */
+  export type ProductMainImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProductMainImages to fetch.
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductMainImages to fetch.
+     */
+    orderBy?: ProductMainImageOrderByWithRelationInput | ProductMainImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProductMainImages.
+     */
+    cursor?: ProductMainImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductMainImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductMainImages.
+     */
+    skip?: number
+    distinct?: ProductMainImageScalarFieldEnum | ProductMainImageScalarFieldEnum[]
+  }
+
+  /**
+   * ProductMainImage create
+   */
+  export type ProductMainImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProductMainImage.
+     */
+    data: XOR<ProductMainImageCreateInput, ProductMainImageUncheckedCreateInput>
+  }
+
+  /**
+   * ProductMainImage createMany
+   */
+  export type ProductMainImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProductMainImages.
+     */
+    data: ProductMainImageCreateManyInput | ProductMainImageCreateManyInput[]
+  }
+
+  /**
+   * ProductMainImage createManyAndReturn
+   */
+  export type ProductMainImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProductMainImages.
+     */
+    data: ProductMainImageCreateManyInput | ProductMainImageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProductMainImage update
+   */
+  export type ProductMainImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProductMainImage.
+     */
+    data: XOR<ProductMainImageUpdateInput, ProductMainImageUncheckedUpdateInput>
+    /**
+     * Choose, which ProductMainImage to update.
+     */
+    where: ProductMainImageWhereUniqueInput
+  }
+
+  /**
+   * ProductMainImage updateMany
+   */
+  export type ProductMainImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProductMainImages.
+     */
+    data: XOR<ProductMainImageUpdateManyMutationInput, ProductMainImageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProductMainImages to update
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * Limit how many ProductMainImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductMainImage updateManyAndReturn
+   */
+  export type ProductMainImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * The data used to update ProductMainImages.
+     */
+    data: XOR<ProductMainImageUpdateManyMutationInput, ProductMainImageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProductMainImages to update
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * Limit how many ProductMainImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProductMainImage upsert
+   */
+  export type ProductMainImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProductMainImage to update in case it exists.
+     */
+    where: ProductMainImageWhereUniqueInput
+    /**
+     * In case the ProductMainImage found by the `where` argument doesn't exist, create a new ProductMainImage with this data.
+     */
+    create: XOR<ProductMainImageCreateInput, ProductMainImageUncheckedCreateInput>
+    /**
+     * In case the ProductMainImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProductMainImageUpdateInput, ProductMainImageUncheckedUpdateInput>
+  }
+
+  /**
+   * ProductMainImage delete
+   */
+  export type ProductMainImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
+    /**
+     * Filter which ProductMainImage to delete.
+     */
+    where: ProductMainImageWhereUniqueInput
+  }
+
+  /**
+   * ProductMainImage deleteMany
+   */
+  export type ProductMainImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductMainImages to delete
+     */
+    where?: ProductMainImageWhereInput
+    /**
+     * Limit how many ProductMainImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductMainImage without action
+   */
+  export type ProductMainImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductMainImage
+     */
+    select?: ProductMainImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductMainImage
+     */
+    omit?: ProductMainImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductMainImageInclude<ExtArgs> | null
   }
 
 
@@ -4473,7 +6892,7 @@ export namespace Prisma {
 
   export const ProductInfoBlockScalarFieldEnum: {
     id: 'id',
-    block_order: 'block_order',
+    blockOrder: 'blockOrder',
     align: 'align',
     title: 'title',
     content: 'content',
@@ -4481,6 +6900,25 @@ export namespace Prisma {
   };
 
   export type ProductInfoBlockScalarFieldEnum = (typeof ProductInfoBlockScalarFieldEnum)[keyof typeof ProductInfoBlockScalarFieldEnum]
+
+
+  export const ProductImageScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    imageOrder: 'imageOrder',
+    infoBlockId: 'infoBlockId'
+  };
+
+  export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
+
+
+  export const ProductMainImageScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    productId: 'productId'
+  };
+
+  export type ProductMainImageScalarFieldEnum = (typeof ProductMainImageScalarFieldEnum)[keyof typeof ProductMainImageScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4531,7 +6969,8 @@ export namespace Prisma {
     countOfProduct?: IntFilter<"Product"> | number
     categoryId?: IntFilter<"Product"> | number
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    blocks?: ProductInfoBlockListRelationFilter
+    infoBlocks?: ProductInfoBlockListRelationFilter
+    mainImage?: XOR<ProductMainImageNullableScalarRelationFilter, ProductMainImageWhereInput> | null
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -4542,7 +6981,8 @@ export namespace Prisma {
     countOfProduct?: SortOrder
     categoryId?: SortOrder
     category?: CategoryOrderByWithRelationInput
-    blocks?: ProductInfoBlockOrderByRelationAggregateInput
+    infoBlocks?: ProductInfoBlockOrderByRelationAggregateInput
+    mainImage?: ProductMainImageOrderByWithRelationInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -4556,7 +6996,8 @@ export namespace Prisma {
     countOfProduct?: IntFilter<"Product"> | number
     categoryId?: IntFilter<"Product"> | number
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    blocks?: ProductInfoBlockListRelationFilter
+    infoBlocks?: ProductInfoBlockListRelationFilter
+    mainImage?: XOR<ProductMainImageNullableScalarRelationFilter, ProductMainImageWhereInput> | null
   }, "id" | "name">
 
   export type ProductOrderByWithAggregationInput = {
@@ -4637,22 +7078,24 @@ export namespace Prisma {
     OR?: ProductInfoBlockWhereInput[]
     NOT?: ProductInfoBlockWhereInput | ProductInfoBlockWhereInput[]
     id?: IntFilter<"ProductInfoBlock"> | number
-    block_order?: IntFilter<"ProductInfoBlock"> | number
+    blockOrder?: IntFilter<"ProductInfoBlock"> | number
     align?: StringFilter<"ProductInfoBlock"> | string
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    images?: ProductImageListRelationFilter
   }
 
   export type ProductInfoBlockOrderByWithRelationInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     align?: SortOrder
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
     product?: ProductOrderByWithRelationInput
+    images?: ProductImageOrderByRelationAggregateInput
   }
 
   export type ProductInfoBlockWhereUniqueInput = Prisma.AtLeast<{
@@ -4660,17 +7103,18 @@ export namespace Prisma {
     AND?: ProductInfoBlockWhereInput | ProductInfoBlockWhereInput[]
     OR?: ProductInfoBlockWhereInput[]
     NOT?: ProductInfoBlockWhereInput | ProductInfoBlockWhereInput[]
-    block_order?: IntFilter<"ProductInfoBlock"> | number
+    blockOrder?: IntFilter<"ProductInfoBlock"> | number
     align?: StringFilter<"ProductInfoBlock"> | string
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    images?: ProductImageListRelationFilter
   }, "id">
 
   export type ProductInfoBlockOrderByWithAggregationInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     align?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -4687,11 +7131,110 @@ export namespace Prisma {
     OR?: ProductInfoBlockScalarWhereWithAggregatesInput[]
     NOT?: ProductInfoBlockScalarWhereWithAggregatesInput | ProductInfoBlockScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ProductInfoBlock"> | number
-    block_order?: IntWithAggregatesFilter<"ProductInfoBlock"> | number
+    blockOrder?: IntWithAggregatesFilter<"ProductInfoBlock"> | number
     align?: StringWithAggregatesFilter<"ProductInfoBlock"> | string
     title?: StringWithAggregatesFilter<"ProductInfoBlock"> | string
     content?: StringWithAggregatesFilter<"ProductInfoBlock"> | string
     productId?: IntWithAggregatesFilter<"ProductInfoBlock"> | number
+  }
+
+  export type ProductImageWhereInput = {
+    AND?: ProductImageWhereInput | ProductImageWhereInput[]
+    OR?: ProductImageWhereInput[]
+    NOT?: ProductImageWhereInput | ProductImageWhereInput[]
+    id?: IntFilter<"ProductImage"> | number
+    image?: StringFilter<"ProductImage"> | string
+    imageOrder?: IntFilter<"ProductImage"> | number
+    infoBlockId?: IntFilter<"ProductImage"> | number
+    infoBlock?: XOR<ProductInfoBlockScalarRelationFilter, ProductInfoBlockWhereInput>
+  }
+
+  export type ProductImageOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+    infoBlock?: ProductInfoBlockOrderByWithRelationInput
+  }
+
+  export type ProductImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ProductImageWhereInput | ProductImageWhereInput[]
+    OR?: ProductImageWhereInput[]
+    NOT?: ProductImageWhereInput | ProductImageWhereInput[]
+    image?: StringFilter<"ProductImage"> | string
+    imageOrder?: IntFilter<"ProductImage"> | number
+    infoBlockId?: IntFilter<"ProductImage"> | number
+    infoBlock?: XOR<ProductInfoBlockScalarRelationFilter, ProductInfoBlockWhereInput>
+  }, "id">
+
+  export type ProductImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+    _count?: ProductImageCountOrderByAggregateInput
+    _avg?: ProductImageAvgOrderByAggregateInput
+    _max?: ProductImageMaxOrderByAggregateInput
+    _min?: ProductImageMinOrderByAggregateInput
+    _sum?: ProductImageSumOrderByAggregateInput
+  }
+
+  export type ProductImageScalarWhereWithAggregatesInput = {
+    AND?: ProductImageScalarWhereWithAggregatesInput | ProductImageScalarWhereWithAggregatesInput[]
+    OR?: ProductImageScalarWhereWithAggregatesInput[]
+    NOT?: ProductImageScalarWhereWithAggregatesInput | ProductImageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProductImage"> | number
+    image?: StringWithAggregatesFilter<"ProductImage"> | string
+    imageOrder?: IntWithAggregatesFilter<"ProductImage"> | number
+    infoBlockId?: IntWithAggregatesFilter<"ProductImage"> | number
+  }
+
+  export type ProductMainImageWhereInput = {
+    AND?: ProductMainImageWhereInput | ProductMainImageWhereInput[]
+    OR?: ProductMainImageWhereInput[]
+    NOT?: ProductMainImageWhereInput | ProductMainImageWhereInput[]
+    id?: IntFilter<"ProductMainImage"> | number
+    image?: StringFilter<"ProductMainImage"> | string
+    productId?: IntFilter<"ProductMainImage"> | number
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type ProductMainImageOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    productId?: SortOrder
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type ProductMainImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    productId?: number
+    AND?: ProductMainImageWhereInput | ProductMainImageWhereInput[]
+    OR?: ProductMainImageWhereInput[]
+    NOT?: ProductMainImageWhereInput | ProductMainImageWhereInput[]
+    image?: StringFilter<"ProductMainImage"> | string
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id" | "productId">
+
+  export type ProductMainImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    productId?: SortOrder
+    _count?: ProductMainImageCountOrderByAggregateInput
+    _avg?: ProductMainImageAvgOrderByAggregateInput
+    _max?: ProductMainImageMaxOrderByAggregateInput
+    _min?: ProductMainImageMinOrderByAggregateInput
+    _sum?: ProductMainImageSumOrderByAggregateInput
+  }
+
+  export type ProductMainImageScalarWhereWithAggregatesInput = {
+    AND?: ProductMainImageScalarWhereWithAggregatesInput | ProductMainImageScalarWhereWithAggregatesInput[]
+    OR?: ProductMainImageScalarWhereWithAggregatesInput[]
+    NOT?: ProductMainImageScalarWhereWithAggregatesInput | ProductMainImageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ProductMainImage"> | number
+    image?: StringWithAggregatesFilter<"ProductMainImage"> | string
+    productId?: IntWithAggregatesFilter<"ProductMainImage"> | number
   }
 
   export type ProductCreateInput = {
@@ -4700,7 +7243,8 @@ export namespace Prisma {
     discount: number
     countOfProduct: number
     category: CategoryCreateNestedOneWithoutProductsInput
-    blocks?: ProductInfoBlockCreateNestedManyWithoutProductInput
+    infoBlocks?: ProductInfoBlockCreateNestedManyWithoutProductInput
+    mainImage?: ProductMainImageCreateNestedOneWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -4710,7 +7254,8 @@ export namespace Prisma {
     discount: number
     countOfProduct: number
     categoryId: number
-    blocks?: ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput
+    infoBlocks?: ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput
+    mainImage?: ProductMainImageUncheckedCreateNestedOneWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -4719,7 +7264,8 @@ export namespace Prisma {
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
-    blocks?: ProductInfoBlockUpdateManyWithoutProductNestedInput
+    infoBlocks?: ProductInfoBlockUpdateManyWithoutProductNestedInput
+    mainImage?: ProductMainImageUpdateOneWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -4729,7 +7275,8 @@ export namespace Prisma {
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
-    blocks?: ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput
+    infoBlocks?: ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput
+    mainImage?: ProductMainImageUncheckedUpdateOneWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -4801,42 +7348,46 @@ export namespace Prisma {
   }
 
   export type ProductInfoBlockCreateInput = {
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
-    product: ProductCreateNestedOneWithoutBlocksInput
+    product: ProductCreateNestedOneWithoutInfoBlocksInput
+    images?: ProductImageCreateNestedManyWithoutInfoBlockInput
   }
 
   export type ProductInfoBlockUncheckedCreateInput = {
     id?: number
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
     productId: number
+    images?: ProductImageUncheckedCreateNestedManyWithoutInfoBlockInput
   }
 
   export type ProductInfoBlockUpdateInput = {
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    product?: ProductUpdateOneRequiredWithoutBlocksNestedInput
+    product?: ProductUpdateOneRequiredWithoutInfoBlocksNestedInput
+    images?: ProductImageUpdateManyWithoutInfoBlockNestedInput
   }
 
   export type ProductInfoBlockUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
+    images?: ProductImageUncheckedUpdateManyWithoutInfoBlockNestedInput
   }
 
   export type ProductInfoBlockCreateManyInput = {
     id?: number
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
@@ -4844,7 +7395,7 @@ export namespace Prisma {
   }
 
   export type ProductInfoBlockUpdateManyMutationInput = {
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -4852,10 +7403,93 @@ export namespace Prisma {
 
   export type ProductInfoBlockUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageCreateInput = {
+    image: string
+    imageOrder: number
+    infoBlock: ProductInfoBlockCreateNestedOneWithoutImagesInput
+  }
+
+  export type ProductImageUncheckedCreateInput = {
+    id?: number
+    image: string
+    imageOrder: number
+    infoBlockId: number
+  }
+
+  export type ProductImageUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+    infoBlock?: ProductInfoBlockUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type ProductImageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+    infoBlockId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageCreateManyInput = {
+    id?: number
+    image: string
+    imageOrder: number
+    infoBlockId: number
+  }
+
+  export type ProductImageUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+    infoBlockId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductMainImageCreateInput = {
+    image: string
+    product: ProductCreateNestedOneWithoutMainImageInput
+  }
+
+  export type ProductMainImageUncheckedCreateInput = {
+    id?: number
+    image: string
+    productId: number
+  }
+
+  export type ProductMainImageUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    product?: ProductUpdateOneRequiredWithoutMainImageNestedInput
+  }
+
+  export type ProductMainImageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductMainImageCreateManyInput = {
+    id?: number
+    image: string
+    productId: number
+  }
+
+  export type ProductMainImageUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProductMainImageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4893,6 +7527,11 @@ export namespace Prisma {
     every?: ProductInfoBlockWhereInput
     some?: ProductInfoBlockWhereInput
     none?: ProductInfoBlockWhereInput
+  }
+
+  export type ProductMainImageNullableScalarRelationFilter = {
+    is?: ProductMainImageWhereInput | null
+    isNot?: ProductMainImageWhereInput | null
   }
 
   export type ProductInfoBlockOrderByRelationAggregateInput = {
@@ -5016,9 +7655,19 @@ export namespace Prisma {
     isNot?: ProductWhereInput
   }
 
+  export type ProductImageListRelationFilter = {
+    every?: ProductImageWhereInput
+    some?: ProductImageWhereInput
+    none?: ProductImageWhereInput
+  }
+
+  export type ProductImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ProductInfoBlockCountOrderByAggregateInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     align?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -5027,13 +7676,13 @@ export namespace Prisma {
 
   export type ProductInfoBlockAvgOrderByAggregateInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     productId?: SortOrder
   }
 
   export type ProductInfoBlockMaxOrderByAggregateInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     align?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -5042,7 +7691,7 @@ export namespace Prisma {
 
   export type ProductInfoBlockMinOrderByAggregateInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
     align?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -5051,7 +7700,73 @@ export namespace Prisma {
 
   export type ProductInfoBlockSumOrderByAggregateInput = {
     id?: SortOrder
-    block_order?: SortOrder
+    blockOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type ProductInfoBlockScalarRelationFilter = {
+    is?: ProductInfoBlockWhereInput
+    isNot?: ProductInfoBlockWhereInput
+  }
+
+  export type ProductImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+  }
+
+  export type ProductImageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+  }
+
+  export type ProductImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+  }
+
+  export type ProductImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+  }
+
+  export type ProductImageSumOrderByAggregateInput = {
+    id?: SortOrder
+    imageOrder?: SortOrder
+    infoBlockId?: SortOrder
+  }
+
+  export type ProductMainImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type ProductMainImageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type ProductMainImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type ProductMainImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type ProductMainImageSumOrderByAggregateInput = {
+    id?: SortOrder
     productId?: SortOrder
   }
 
@@ -5068,11 +7783,23 @@ export namespace Prisma {
     connect?: ProductInfoBlockWhereUniqueInput | ProductInfoBlockWhereUniqueInput[]
   }
 
+  export type ProductMainImageCreateNestedOneWithoutProductInput = {
+    create?: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
+    connectOrCreate?: ProductMainImageCreateOrConnectWithoutProductInput
+    connect?: ProductMainImageWhereUniqueInput
+  }
+
   export type ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductInfoBlockCreateWithoutProductInput, ProductInfoBlockUncheckedCreateWithoutProductInput> | ProductInfoBlockCreateWithoutProductInput[] | ProductInfoBlockUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductInfoBlockCreateOrConnectWithoutProductInput | ProductInfoBlockCreateOrConnectWithoutProductInput[]
     createMany?: ProductInfoBlockCreateManyProductInputEnvelope
     connect?: ProductInfoBlockWhereUniqueInput | ProductInfoBlockWhereUniqueInput[]
+  }
+
+  export type ProductMainImageUncheckedCreateNestedOneWithoutProductInput = {
+    create?: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
+    connectOrCreate?: ProductMainImageCreateOrConnectWithoutProductInput
+    connect?: ProductMainImageWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5109,6 +7836,16 @@ export namespace Prisma {
     deleteMany?: ProductInfoBlockScalarWhereInput | ProductInfoBlockScalarWhereInput[]
   }
 
+  export type ProductMainImageUpdateOneWithoutProductNestedInput = {
+    create?: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
+    connectOrCreate?: ProductMainImageCreateOrConnectWithoutProductInput
+    upsert?: ProductMainImageUpsertWithoutProductInput
+    disconnect?: ProductMainImageWhereInput | boolean
+    delete?: ProductMainImageWhereInput | boolean
+    connect?: ProductMainImageWhereUniqueInput
+    update?: XOR<XOR<ProductMainImageUpdateToOneWithWhereWithoutProductInput, ProductMainImageUpdateWithoutProductInput>, ProductMainImageUncheckedUpdateWithoutProductInput>
+  }
+
   export type ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductInfoBlockCreateWithoutProductInput, ProductInfoBlockUncheckedCreateWithoutProductInput> | ProductInfoBlockCreateWithoutProductInput[] | ProductInfoBlockUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductInfoBlockCreateOrConnectWithoutProductInput | ProductInfoBlockCreateOrConnectWithoutProductInput[]
@@ -5121,6 +7858,16 @@ export namespace Prisma {
     update?: ProductInfoBlockUpdateWithWhereUniqueWithoutProductInput | ProductInfoBlockUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: ProductInfoBlockUpdateManyWithWhereWithoutProductInput | ProductInfoBlockUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: ProductInfoBlockScalarWhereInput | ProductInfoBlockScalarWhereInput[]
+  }
+
+  export type ProductMainImageUncheckedUpdateOneWithoutProductNestedInput = {
+    create?: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
+    connectOrCreate?: ProductMainImageCreateOrConnectWithoutProductInput
+    upsert?: ProductMainImageUpsertWithoutProductInput
+    disconnect?: ProductMainImageWhereInput | boolean
+    delete?: ProductMainImageWhereInput | boolean
+    connect?: ProductMainImageWhereUniqueInput
+    update?: XOR<XOR<ProductMainImageUpdateToOneWithWhereWithoutProductInput, ProductMainImageUpdateWithoutProductInput>, ProductMainImageUncheckedUpdateWithoutProductInput>
   }
 
   export type ProductCreateNestedManyWithoutCategoryInput = {
@@ -5165,18 +7912,88 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type ProductCreateNestedOneWithoutBlocksInput = {
-    create?: XOR<ProductCreateWithoutBlocksInput, ProductUncheckedCreateWithoutBlocksInput>
-    connectOrCreate?: ProductCreateOrConnectWithoutBlocksInput
+  export type ProductCreateNestedOneWithoutInfoBlocksInput = {
+    create?: XOR<ProductCreateWithoutInfoBlocksInput, ProductUncheckedCreateWithoutInfoBlocksInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInfoBlocksInput
     connect?: ProductWhereUniqueInput
   }
 
-  export type ProductUpdateOneRequiredWithoutBlocksNestedInput = {
-    create?: XOR<ProductCreateWithoutBlocksInput, ProductUncheckedCreateWithoutBlocksInput>
-    connectOrCreate?: ProductCreateOrConnectWithoutBlocksInput
-    upsert?: ProductUpsertWithoutBlocksInput
+  export type ProductImageCreateNestedManyWithoutInfoBlockInput = {
+    create?: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput> | ProductImageCreateWithoutInfoBlockInput[] | ProductImageUncheckedCreateWithoutInfoBlockInput[]
+    connectOrCreate?: ProductImageCreateOrConnectWithoutInfoBlockInput | ProductImageCreateOrConnectWithoutInfoBlockInput[]
+    createMany?: ProductImageCreateManyInfoBlockInputEnvelope
+    connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+  }
+
+  export type ProductImageUncheckedCreateNestedManyWithoutInfoBlockInput = {
+    create?: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput> | ProductImageCreateWithoutInfoBlockInput[] | ProductImageUncheckedCreateWithoutInfoBlockInput[]
+    connectOrCreate?: ProductImageCreateOrConnectWithoutInfoBlockInput | ProductImageCreateOrConnectWithoutInfoBlockInput[]
+    createMany?: ProductImageCreateManyInfoBlockInputEnvelope
+    connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+  }
+
+  export type ProductUpdateOneRequiredWithoutInfoBlocksNestedInput = {
+    create?: XOR<ProductCreateWithoutInfoBlocksInput, ProductUncheckedCreateWithoutInfoBlocksInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInfoBlocksInput
+    upsert?: ProductUpsertWithoutInfoBlocksInput
     connect?: ProductWhereUniqueInput
-    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutBlocksInput, ProductUpdateWithoutBlocksInput>, ProductUncheckedUpdateWithoutBlocksInput>
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutInfoBlocksInput, ProductUpdateWithoutInfoBlocksInput>, ProductUncheckedUpdateWithoutInfoBlocksInput>
+  }
+
+  export type ProductImageUpdateManyWithoutInfoBlockNestedInput = {
+    create?: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput> | ProductImageCreateWithoutInfoBlockInput[] | ProductImageUncheckedCreateWithoutInfoBlockInput[]
+    connectOrCreate?: ProductImageCreateOrConnectWithoutInfoBlockInput | ProductImageCreateOrConnectWithoutInfoBlockInput[]
+    upsert?: ProductImageUpsertWithWhereUniqueWithoutInfoBlockInput | ProductImageUpsertWithWhereUniqueWithoutInfoBlockInput[]
+    createMany?: ProductImageCreateManyInfoBlockInputEnvelope
+    set?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    disconnect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    delete?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    update?: ProductImageUpdateWithWhereUniqueWithoutInfoBlockInput | ProductImageUpdateWithWhereUniqueWithoutInfoBlockInput[]
+    updateMany?: ProductImageUpdateManyWithWhereWithoutInfoBlockInput | ProductImageUpdateManyWithWhereWithoutInfoBlockInput[]
+    deleteMany?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+  }
+
+  export type ProductImageUncheckedUpdateManyWithoutInfoBlockNestedInput = {
+    create?: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput> | ProductImageCreateWithoutInfoBlockInput[] | ProductImageUncheckedCreateWithoutInfoBlockInput[]
+    connectOrCreate?: ProductImageCreateOrConnectWithoutInfoBlockInput | ProductImageCreateOrConnectWithoutInfoBlockInput[]
+    upsert?: ProductImageUpsertWithWhereUniqueWithoutInfoBlockInput | ProductImageUpsertWithWhereUniqueWithoutInfoBlockInput[]
+    createMany?: ProductImageCreateManyInfoBlockInputEnvelope
+    set?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    disconnect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    delete?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
+    update?: ProductImageUpdateWithWhereUniqueWithoutInfoBlockInput | ProductImageUpdateWithWhereUniqueWithoutInfoBlockInput[]
+    updateMany?: ProductImageUpdateManyWithWhereWithoutInfoBlockInput | ProductImageUpdateManyWithWhereWithoutInfoBlockInput[]
+    deleteMany?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+  }
+
+  export type ProductInfoBlockCreateNestedOneWithoutImagesInput = {
+    create?: XOR<ProductInfoBlockCreateWithoutImagesInput, ProductInfoBlockUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: ProductInfoBlockCreateOrConnectWithoutImagesInput
+    connect?: ProductInfoBlockWhereUniqueInput
+  }
+
+  export type ProductInfoBlockUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<ProductInfoBlockCreateWithoutImagesInput, ProductInfoBlockUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: ProductInfoBlockCreateOrConnectWithoutImagesInput
+    upsert?: ProductInfoBlockUpsertWithoutImagesInput
+    connect?: ProductInfoBlockWhereUniqueInput
+    update?: XOR<XOR<ProductInfoBlockUpdateToOneWithWhereWithoutImagesInput, ProductInfoBlockUpdateWithoutImagesInput>, ProductInfoBlockUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type ProductCreateNestedOneWithoutMainImageInput = {
+    create?: XOR<ProductCreateWithoutMainImageInput, ProductUncheckedCreateWithoutMainImageInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutMainImageInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type ProductUpdateOneRequiredWithoutMainImageNestedInput = {
+    create?: XOR<ProductCreateWithoutMainImageInput, ProductUncheckedCreateWithoutMainImageInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutMainImageInput
+    upsert?: ProductUpsertWithoutMainImageInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutMainImageInput, ProductUpdateWithoutMainImageInput>, ProductUncheckedUpdateWithoutMainImageInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5265,18 +8082,20 @@ export namespace Prisma {
   }
 
   export type ProductInfoBlockCreateWithoutProductInput = {
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
+    images?: ProductImageCreateNestedManyWithoutInfoBlockInput
   }
 
   export type ProductInfoBlockUncheckedCreateWithoutProductInput = {
     id?: number
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
+    images?: ProductImageUncheckedCreateNestedManyWithoutInfoBlockInput
   }
 
   export type ProductInfoBlockCreateOrConnectWithoutProductInput = {
@@ -5286,6 +8105,20 @@ export namespace Prisma {
 
   export type ProductInfoBlockCreateManyProductInputEnvelope = {
     data: ProductInfoBlockCreateManyProductInput | ProductInfoBlockCreateManyProductInput[]
+  }
+
+  export type ProductMainImageCreateWithoutProductInput = {
+    image: string
+  }
+
+  export type ProductMainImageUncheckedCreateWithoutProductInput = {
+    id?: number
+    image: string
+  }
+
+  export type ProductMainImageCreateOrConnectWithoutProductInput = {
+    where: ProductMainImageWhereUniqueInput
+    create: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
   }
 
   export type CategoryUpsertWithoutProductsInput = {
@@ -5331,11 +8164,31 @@ export namespace Prisma {
     OR?: ProductInfoBlockScalarWhereInput[]
     NOT?: ProductInfoBlockScalarWhereInput | ProductInfoBlockScalarWhereInput[]
     id?: IntFilter<"ProductInfoBlock"> | number
-    block_order?: IntFilter<"ProductInfoBlock"> | number
+    blockOrder?: IntFilter<"ProductInfoBlock"> | number
     align?: StringFilter<"ProductInfoBlock"> | string
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
+  }
+
+  export type ProductMainImageUpsertWithoutProductInput = {
+    update: XOR<ProductMainImageUpdateWithoutProductInput, ProductMainImageUncheckedUpdateWithoutProductInput>
+    create: XOR<ProductMainImageCreateWithoutProductInput, ProductMainImageUncheckedCreateWithoutProductInput>
+    where?: ProductMainImageWhereInput
+  }
+
+  export type ProductMainImageUpdateToOneWithWhereWithoutProductInput = {
+    where?: ProductMainImageWhereInput
+    data: XOR<ProductMainImageUpdateWithoutProductInput, ProductMainImageUncheckedUpdateWithoutProductInput>
+  }
+
+  export type ProductMainImageUpdateWithoutProductInput = {
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProductMainImageUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductCreateWithoutCategoryInput = {
@@ -5343,7 +8196,8 @@ export namespace Prisma {
     price: number
     discount: number
     countOfProduct: number
-    blocks?: ProductInfoBlockCreateNestedManyWithoutProductInput
+    infoBlocks?: ProductInfoBlockCreateNestedManyWithoutProductInput
+    mainImage?: ProductMainImageCreateNestedOneWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -5352,7 +8206,8 @@ export namespace Prisma {
     price: number
     discount: number
     countOfProduct: number
-    blocks?: ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput
+    infoBlocks?: ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput
+    mainImage?: ProductMainImageUncheckedCreateNestedOneWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -5392,82 +8247,238 @@ export namespace Prisma {
     categoryId?: IntFilter<"Product"> | number
   }
 
-  export type ProductCreateWithoutBlocksInput = {
+  export type ProductCreateWithoutInfoBlocksInput = {
     name: string
     price: number
     discount: number
     countOfProduct: number
     category: CategoryCreateNestedOneWithoutProductsInput
+    mainImage?: ProductMainImageCreateNestedOneWithoutProductInput
   }
 
-  export type ProductUncheckedCreateWithoutBlocksInput = {
+  export type ProductUncheckedCreateWithoutInfoBlocksInput = {
     id?: number
     name: string
     price: number
     discount: number
     countOfProduct: number
     categoryId: number
+    mainImage?: ProductMainImageUncheckedCreateNestedOneWithoutProductInput
   }
 
-  export type ProductCreateOrConnectWithoutBlocksInput = {
+  export type ProductCreateOrConnectWithoutInfoBlocksInput = {
     where: ProductWhereUniqueInput
-    create: XOR<ProductCreateWithoutBlocksInput, ProductUncheckedCreateWithoutBlocksInput>
+    create: XOR<ProductCreateWithoutInfoBlocksInput, ProductUncheckedCreateWithoutInfoBlocksInput>
   }
 
-  export type ProductUpsertWithoutBlocksInput = {
-    update: XOR<ProductUpdateWithoutBlocksInput, ProductUncheckedUpdateWithoutBlocksInput>
-    create: XOR<ProductCreateWithoutBlocksInput, ProductUncheckedCreateWithoutBlocksInput>
+  export type ProductImageCreateWithoutInfoBlockInput = {
+    image: string
+    imageOrder: number
+  }
+
+  export type ProductImageUncheckedCreateWithoutInfoBlockInput = {
+    id?: number
+    image: string
+    imageOrder: number
+  }
+
+  export type ProductImageCreateOrConnectWithoutInfoBlockInput = {
+    where: ProductImageWhereUniqueInput
+    create: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput>
+  }
+
+  export type ProductImageCreateManyInfoBlockInputEnvelope = {
+    data: ProductImageCreateManyInfoBlockInput | ProductImageCreateManyInfoBlockInput[]
+  }
+
+  export type ProductUpsertWithoutInfoBlocksInput = {
+    update: XOR<ProductUpdateWithoutInfoBlocksInput, ProductUncheckedUpdateWithoutInfoBlocksInput>
+    create: XOR<ProductCreateWithoutInfoBlocksInput, ProductUncheckedCreateWithoutInfoBlocksInput>
     where?: ProductWhereInput
   }
 
-  export type ProductUpdateToOneWithWhereWithoutBlocksInput = {
+  export type ProductUpdateToOneWithWhereWithoutInfoBlocksInput = {
     where?: ProductWhereInput
-    data: XOR<ProductUpdateWithoutBlocksInput, ProductUncheckedUpdateWithoutBlocksInput>
+    data: XOR<ProductUpdateWithoutInfoBlocksInput, ProductUncheckedUpdateWithoutInfoBlocksInput>
   }
 
-  export type ProductUpdateWithoutBlocksInput = {
+  export type ProductUpdateWithoutInfoBlocksInput = {
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    mainImage?: ProductMainImageUpdateOneWithoutProductNestedInput
   }
 
-  export type ProductUncheckedUpdateWithoutBlocksInput = {
+  export type ProductUncheckedUpdateWithoutInfoBlocksInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
+    mainImage?: ProductMainImageUncheckedUpdateOneWithoutProductNestedInput
+  }
+
+  export type ProductImageUpsertWithWhereUniqueWithoutInfoBlockInput = {
+    where: ProductImageWhereUniqueInput
+    update: XOR<ProductImageUpdateWithoutInfoBlockInput, ProductImageUncheckedUpdateWithoutInfoBlockInput>
+    create: XOR<ProductImageCreateWithoutInfoBlockInput, ProductImageUncheckedCreateWithoutInfoBlockInput>
+  }
+
+  export type ProductImageUpdateWithWhereUniqueWithoutInfoBlockInput = {
+    where: ProductImageWhereUniqueInput
+    data: XOR<ProductImageUpdateWithoutInfoBlockInput, ProductImageUncheckedUpdateWithoutInfoBlockInput>
+  }
+
+  export type ProductImageUpdateManyWithWhereWithoutInfoBlockInput = {
+    where: ProductImageScalarWhereInput
+    data: XOR<ProductImageUpdateManyMutationInput, ProductImageUncheckedUpdateManyWithoutInfoBlockInput>
+  }
+
+  export type ProductImageScalarWhereInput = {
+    AND?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+    OR?: ProductImageScalarWhereInput[]
+    NOT?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+    id?: IntFilter<"ProductImage"> | number
+    image?: StringFilter<"ProductImage"> | string
+    imageOrder?: IntFilter<"ProductImage"> | number
+    infoBlockId?: IntFilter<"ProductImage"> | number
+  }
+
+  export type ProductInfoBlockCreateWithoutImagesInput = {
+    blockOrder: number
+    align: string
+    title: string
+    content: string
+    product: ProductCreateNestedOneWithoutInfoBlocksInput
+  }
+
+  export type ProductInfoBlockUncheckedCreateWithoutImagesInput = {
+    id?: number
+    blockOrder: number
+    align: string
+    title: string
+    content: string
+    productId: number
+  }
+
+  export type ProductInfoBlockCreateOrConnectWithoutImagesInput = {
+    where: ProductInfoBlockWhereUniqueInput
+    create: XOR<ProductInfoBlockCreateWithoutImagesInput, ProductInfoBlockUncheckedCreateWithoutImagesInput>
+  }
+
+  export type ProductInfoBlockUpsertWithoutImagesInput = {
+    update: XOR<ProductInfoBlockUpdateWithoutImagesInput, ProductInfoBlockUncheckedUpdateWithoutImagesInput>
+    create: XOR<ProductInfoBlockCreateWithoutImagesInput, ProductInfoBlockUncheckedCreateWithoutImagesInput>
+    where?: ProductInfoBlockWhereInput
+  }
+
+  export type ProductInfoBlockUpdateToOneWithWhereWithoutImagesInput = {
+    where?: ProductInfoBlockWhereInput
+    data: XOR<ProductInfoBlockUpdateWithoutImagesInput, ProductInfoBlockUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type ProductInfoBlockUpdateWithoutImagesInput = {
+    blockOrder?: IntFieldUpdateOperationsInput | number
+    align?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    product?: ProductUpdateOneRequiredWithoutInfoBlocksNestedInput
+  }
+
+  export type ProductInfoBlockUncheckedUpdateWithoutImagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
+    align?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductCreateWithoutMainImageInput = {
+    name: string
+    price: number
+    discount: number
+    countOfProduct: number
+    category: CategoryCreateNestedOneWithoutProductsInput
+    infoBlocks?: ProductInfoBlockCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutMainImageInput = {
+    id?: number
+    name: string
+    price: number
+    discount: number
+    countOfProduct: number
+    categoryId: number
+    infoBlocks?: ProductInfoBlockUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutMainImageInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutMainImageInput, ProductUncheckedCreateWithoutMainImageInput>
+  }
+
+  export type ProductUpsertWithoutMainImageInput = {
+    update: XOR<ProductUpdateWithoutMainImageInput, ProductUncheckedUpdateWithoutMainImageInput>
+    create: XOR<ProductCreateWithoutMainImageInput, ProductUncheckedCreateWithoutMainImageInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutMainImageInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutMainImageInput, ProductUncheckedUpdateWithoutMainImageInput>
+  }
+
+  export type ProductUpdateWithoutMainImageInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    discount?: IntFieldUpdateOperationsInput | number
+    countOfProduct?: IntFieldUpdateOperationsInput | number
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    infoBlocks?: ProductInfoBlockUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutMainImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    discount?: IntFieldUpdateOperationsInput | number
+    countOfProduct?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+    infoBlocks?: ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductInfoBlockCreateManyProductInput = {
     id?: number
-    block_order: number
+    blockOrder: number
     align: string
     title: string
     content: string
   }
 
   export type ProductInfoBlockUpdateWithoutProductInput = {
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    images?: ProductImageUpdateManyWithoutInfoBlockNestedInput
   }
 
   export type ProductInfoBlockUncheckedUpdateWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    images?: ProductImageUncheckedUpdateManyWithoutInfoBlockNestedInput
   }
 
   export type ProductInfoBlockUncheckedUpdateManyWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
-    block_order?: IntFieldUpdateOperationsInput | number
+    blockOrder?: IntFieldUpdateOperationsInput | number
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -5486,7 +8497,8 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
-    blocks?: ProductInfoBlockUpdateManyWithoutProductNestedInput
+    infoBlocks?: ProductInfoBlockUpdateManyWithoutProductNestedInput
+    mainImage?: ProductMainImageUpdateOneWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -5495,7 +8507,8 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
-    blocks?: ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput
+    infoBlocks?: ProductInfoBlockUncheckedUpdateManyWithoutProductNestedInput
+    mainImage?: ProductMainImageUncheckedUpdateOneWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -5504,6 +8517,29 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
     countOfProduct?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageCreateManyInfoBlockInput = {
+    id?: number
+    image: string
+    imageOrder: number
+  }
+
+  export type ProductImageUpdateWithoutInfoBlockInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageUncheckedUpdateWithoutInfoBlockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductImageUncheckedUpdateManyWithoutInfoBlockInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    imageOrder?: IntFieldUpdateOperationsInput | number
   }
 
 

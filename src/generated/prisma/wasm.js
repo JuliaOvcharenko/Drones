@@ -106,10 +106,23 @@ exports.Prisma.CategoryScalarFieldEnum = {
 
 exports.Prisma.ProductInfoBlockScalarFieldEnum = {
   id: 'id',
-  block_order: 'block_order',
+  blockOrder: 'blockOrder',
   align: 'align',
   title: 'title',
   content: 'content',
+  productId: 'productId'
+};
+
+exports.Prisma.ProductImageScalarFieldEnum = {
+  id: 'id',
+  image: 'image',
+  imageOrder: 'imageOrder',
+  infoBlockId: 'infoBlockId'
+};
+
+exports.Prisma.ProductMainImageScalarFieldEnum = {
+  id: 'id',
+  image: 'image',
   productId: 'productId'
 };
 
@@ -122,7 +135,9 @@ exports.Prisma.SortOrder = {
 exports.Prisma.ModelName = {
   Product: 'Product',
   Category: 'Category',
-  ProductInfoBlock: 'ProductInfoBlock'
+  ProductInfoBlock: 'ProductInfoBlock',
+  ProductImage: 'ProductImage',
+  ProductMainImage: 'ProductMainImage'
 };
 /**
  * Create the Client
@@ -171,13 +186,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  blocks         ProductInfoBlock[]\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id          Int     @id @default(autoincrement())\n  block_order Int\n  align       String\n  title       String\n  content     String\n  product     Product @relation(fields: [productId], references: [id])\n  productId   Int\n}\n",
-  "inlineSchemaHash": "9a445450fad4235b46d49ca9d8afc2487ab58ef624844f9d219ddf87e7367e6c",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  infoBlocks     ProductInfoBlock[]\n  mainImage      ProductMainImage?\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id         Int            @id @default(autoincrement())\n  blockOrder Int // camelCase вместо snake_case\n  align      String\n  title      String\n  content    String\n  product    Product        @relation(fields: [productId], references: [id])\n  productId  Int\n  images     ProductImage[]\n}\n\nmodel ProductImage {\n  id          Int              @id @default(autoincrement())\n  image       String\n  imageOrder  Int\n  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])\n  infoBlockId Int\n}\n\nmodel ProductMainImage {\n  id        Int     @id @default(autoincrement())\n  image     String\n  product   Product @relation(fields: [productId], references: [id])\n  productId Int     @unique\n}\n",
+  "inlineSchemaHash": "0bac2c03126de6a185195084c91e2e2f58b39c7d3d95fcbf720ad935b4089062",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"countOfProduct\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryToProduct\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"blocks\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductToProductInfoBlock\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"CategoryToProduct\"}],\"dbName\":null},\"ProductInfoBlock\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"block_order\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"align\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"countOfProduct\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryToProduct\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlocks\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"mainImage\",\"kind\":\"object\",\"type\":\"ProductMainImage\",\"relationName\":\"ProductToProductMainImage\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"CategoryToProduct\"}],\"dbName\":null},\"ProductInfoBlock\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"blockOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"align\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"ProductImage\",\"relationName\":\"ProductImageToProductInfoBlock\"}],\"dbName\":null},\"ProductImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlock\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductImageToProductInfoBlock\"},{\"name\":\"infoBlockId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"ProductMainImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductMainImage\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

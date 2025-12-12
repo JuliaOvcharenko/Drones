@@ -5,41 +5,50 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL") 
+  url      = env("DATABASE_URL")
 }
 
 model Product {
-  id               Int    @id @default(autoincrement())
-  name             String @unique
-  price            Int
-  discount         Int
+  id             Int                @id @default(autoincrement())
+  name           String             @unique
+  price          Int
+  discount       Int
   countOfProduct Int
-  category          Category @relation(fields: [categoryId], references: [id])
-  categoryId        Int
-  blocks ProductInfoBlock[]
+  category       Category           @relation(fields: [categoryId], references: [id])
+  categoryId     Int
+  infoBlocks     ProductInfoBlock[]
+  mainImage      ProductMainImage?
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  image String
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  image    String
   products Product[]
-  
 }
 
 model ProductInfoBlock {
-  id          Int    @id @default(autoincrement())
-  block_order Int
-  align       String
-  title       String
-  content     String
-  product     Product @relation(fields: [productId], references: [id])
+  id         Int            @id @default(autoincrement())
+  blockOrder Int // camelCase вместо snake_case
+  align      String
+  title      String
+  content    String
+  product    Product        @relation(fields: [productId], references: [id])
   productId  Int
+  images     ProductImage[]
 }
 
-// model ProductImage {
-//   id          Int    @id @default(autoincrement())
-//   blockId Int
-//   image String
-//   image_order Int
-// }
+model ProductImage {
+  id          Int              @id @default(autoincrement())
+  image       String
+  imageOrder  Int
+  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])
+  infoBlockId Int
+}
+
+model ProductMainImage {
+  id        Int     @id @default(autoincrement())
+  image     String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @unique
+}

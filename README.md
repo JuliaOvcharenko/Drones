@@ -210,7 +210,7 @@ ____
   Отримати усі категорії. | Get all categories.
 
   ```sh
-    GET /api/category
+    GET /api/categories
   ```
 
 
