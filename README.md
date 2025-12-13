@@ -249,33 +249,33 @@ ____
 <details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
-  ```sh
-    [
-      {
-      "id": 1,
-      "name": "Drone1",
-      "price": 1000,
-      "discount": 10,
-      "countOfProduct": 2,
-      "categoryId": 1,
-      "infoBlocks": [
+      ```sh
+        [
           {
+          "id": 1,
+          "name": "Drone1",
+          "price": 1000,
+          "discount": 10,
+          "countOfProduct": 2,
+          "categoryId": 1,
+          "infoBlocks": [
+              {
+                  "id": 1,
+                  "blockOrder": 1,
+                  "align": "center",
+                  "title": "drone 1",
+                  "content": "drone max super",
+                  "productId": 1
+              }
+          ],
+          "mainImage": {
               "id": 1,
-              "blockOrder": 1,
-              "align": "center",
-              "title": "drone 1",
-              "content": "drone max super",
+              "image": "image 1",
               "productId": 1
           }
-      ],
-      "mainImage": {
-          "id": 1,
-          "image": "image 1",
-          "productId": 1
-      }
-    }
-  ]
-  ```
+        }
+      ]
+      ```
 
   </details>
 </details>
@@ -305,25 +305,53 @@ ____
   
   ___
 
-  <details>
+<details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
-    ```sh
-      [
-        {
-            "id": 1,
-            "name": "Drones",
-            "image": "DronesImage"
-        },
-        {
-            "id": 2,
-            "name": "thermalImager",
-            "image": "thermalImagerImage"
+      ```sh
+        [
+          {
+          "id": 1,
+          "name": "Drone1",
+          "price": 1000,
+          "discount": 10,
+          "countOfProduct": 2,
+          "categoryId": 1,
+          "infoBlocks": [
+              {
+                  "id": 1,
+                  "blockOrder": 1,
+                  "align": "center",
+                  "title": "drone 1",
+                  "content": "drone max super",
+                  "productId": 1
+              }
+          ],
+          "mainImage": {
+              "id": 1,
+              "image": "image 1",
+              "productId": 1
+          }
         }
-    ]
-    ```
+      ]
+      ```
 
   </details>
+
+      [
+          {
+              "id": 1,
+              "name": "Drones",
+              "image": "DronesImage"
+          },
+          {
+              "id": 2,
+              "name": "thermalImager",
+              "image": "thermalImagerImage"
+          }
+      ]
+
+
 
 
   
