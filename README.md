@@ -125,9 +125,55 @@ ____
 | Code| Error                     | Українською                     | English                    |
 |-----|---------------------------|---------------------------------|----------------------------|
 | 200 | OK                        | товари отримано                 | items received             |
-| 400 | Bad Request               | неправильні параметри (фільтри) | wrong parameters (filters) |
-| 401 | Unauthorized              | немає авторизації               | no authorization           |
 | 500 | Internal Server Error     | помилка сервера                 | server error               |
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    [
+      {
+          "id": 1,
+          "name": "Drone1",
+          "price": 1000,
+          "discount": 10,
+          "countOfProduct": 2,
+          "categoryId": 1,
+          "infoBlocks": [
+              {
+                  "id": 1,
+                  "blockOrder": 1,
+                  "align": "center",
+                  "title": "drone 1",
+                  "content": "drone max super",
+                  "productId": 1
+              }
+          ]
+      },
+      {
+          "id": 2,
+          "name": "thermal imager 1",
+          "price": 100000,
+          "discount": 100,
+          "countOfProduct": 6,
+          "categoryId": 2,
+          "infoBlocks": [
+              {
+                  "id": 2,
+                  "blockOrder": 3,
+                  "align": "start",
+                  "title": "imager",
+                  "content": "imager thermal",
+                  "productId": 2
+              }
+          ]
+      }
+  ]
+  ```
+
+  </details>
+
 ___
 
 Query Params:
@@ -136,6 +182,27 @@ Query Params:
   ```sh
     GET /api/products?categoryName=Drones
   ```
+
+  
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+    ```sh
+      [
+        {
+            "id": 1,
+            "name": "Drones",
+            "image": "DronesImage"
+        },
+        {
+            "id": 2,
+            "name": "thermalImager",
+            "image": "thermalImagerImage"
+        }
+    ]
+    ```
+
+  </details>
 
 
 
@@ -151,11 +218,44 @@ ____
 |------| ----------------------|--------------------------------------------| -----------------------------------------|
 | 200  | OK                    | товар знайдено і отримано                  | item found and received                  |
 | 400  | Bad Request           | неправильний формат id                     | wrong ID format                          |
-| 401  | Unauthorized          | немає авторизації                          | no authorization                         |
 | 404  | Not Found             | товар з таким id не знайдено               | item with this ID not found              |
-| 500  | Internal Server Error | помилка сервера                            | server error                             |
+
+<details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    [
+      
+  ]
+  ```
+
+  </details>
+</details>
 
 
+
+
+____
+
+<details>
+  <summary><strong>📁 category</strong></summary>
+  ___
+
+  
+  Отримати усі категорії. | Get all categories.
+
+  ```sh
+    GET /api/categories
+  ```
+
+
+| Code| Error                     | Українською                     | English                    |
+|-----|---------------------------|---------------------------------|----------------------------|
+| 200 | OK                        | категорії отримано              | items received             |
+| 500 | Internal Server Error     | помилка сервера                 | server error               |
+
+  
+  ___
 
 
 </details>
@@ -200,32 +300,7 @@ ___
 
 </details>
 
-____
 
-<details>
-  <summary><strong>📁 Category</strong></summary>
-  ___
-
-  
-  Отримати усі категорії. | Get all categories.
-
-  ```sh
-    GET /api/categories
-  ```
-
-
-| Code| Error                     | Українською                     | English                    |
-|-----|---------------------------|---------------------------------|----------------------------|
-| 200 | OK                        | категорії отримано              | items received             |
-| 400 | Bad Request               | неправильні параметри (фільтри) | wrong parameters (filters) |
-| 401 | Unauthorized              | немає авторизації               | no authorization           |
-| 500 | Internal Server Error     | помилка сервера                 | server error               |
-
-  
-  ___
-
-
-</details>
 
 
 

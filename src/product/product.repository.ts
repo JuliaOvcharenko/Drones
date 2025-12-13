@@ -8,9 +8,13 @@ export const ProductRepository: ProductRepositoryContract = {
         try {
             const products = await client.product.findMany({
                 where: categoryName 
-                    ? { category: { name: categoryName } }
-                    : undefined,
-            });
+                    ? {category: {name: categoryName}} :undefined,
+                include: {
+                    infoBlocks: true,
+                },
+            }
+        );
+
 
             return products;
         }
@@ -45,6 +49,12 @@ export const ProductRepository: ProductRepositoryContract = {
         try {
             const product = await client.product.findUnique({
                 where: { id },
+                include: {
+                    infoBlocks: {
+                    include: { images: false }
+                    },
+                    mainImage: true
+                }
             });
             return product; 
 

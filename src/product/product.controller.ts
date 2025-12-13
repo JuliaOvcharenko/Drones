@@ -12,19 +12,19 @@ export const ProductController: ProductControllerContract = {
         }
         catch (err) {
             console.log(err)
-            res.status(500).json("server error")
+            res.status(500).json("Server error.")
         }
     },
     getProductById: async (req, res) => {
         const productId = +req.params.id;
         if (isNaN(productId)) {
-            res.status(400).json("ProductId must be a number");
+            res.status(400).json("ProductId must be a number.");
             return;
         }
         const product = await ProductService.getProductById(productId);
 
         if (!product) {
-            res.status(404).json("No product with such id");
+            res.status(404).json("No product with such id.");
             return;
         }
         res.status(200).json(product);

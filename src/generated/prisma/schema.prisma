@@ -16,7 +16,8 @@ model Product {
   countOfProduct Int
   category       Category           @relation(fields: [categoryId], references: [id])
   categoryId     Int
-  blocks         ProductInfoBlock[]
+  infoBlocks     ProductInfoBlock[]
+  mainImage      ProductMainImage?
 }
 
 model Category {
@@ -27,11 +28,27 @@ model Category {
 }
 
 model ProductInfoBlock {
-  id          Int     @id @default(autoincrement())
-  block_order Int
-  align       String
-  title       String
-  content     String
-  product     Product @relation(fields: [productId], references: [id])
-  productId   Int
+  id         Int            @id @default(autoincrement())
+  blockOrder Int // camelCase вместо snake_case
+  align      String
+  title      String
+  content    String
+  product    Product        @relation(fields: [productId], references: [id])
+  productId  Int
+  images     ProductImage[]
+}
+
+model ProductImage {
+  id          Int              @id @default(autoincrement())
+  image       String
+  imageOrder  Int
+  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])
+  infoBlockId Int
+}
+
+model ProductMainImage {
+  id        Int     @id @default(autoincrement())
+  image     String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @unique
 }
