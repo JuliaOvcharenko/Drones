@@ -126,6 +126,17 @@ exports.Prisma.ProductMainImageScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  lastname: 'lastname',
+  patronymic: 'patronymic',
+  email: 'email',
+  birthDate: 'birthDate',
+  phoneNumber: 'phoneNumber',
+  password: 'password'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -137,7 +148,8 @@ exports.Prisma.ModelName = {
   Category: 'Category',
   ProductInfoBlock: 'ProductInfoBlock',
   ProductImage: 'ProductImage',
-  ProductMainImage: 'ProductMainImage'
+  ProductMainImage: 'ProductMainImage',
+  User: 'User'
 };
 /**
  * Create the Client
@@ -178,7 +190,6 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -187,13 +198,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  infoBlocks     ProductInfoBlock[]\n  mainImage      ProductMainImage?\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id         Int            @id @default(autoincrement())\n  blockOrder Int // camelCase вместо snake_case\n  align      String\n  title      String\n  content    String\n  product    Product        @relation(fields: [productId], references: [id])\n  productId  Int\n  images     ProductImage[]\n}\n\nmodel ProductImage {\n  id          Int              @id @default(autoincrement())\n  image       String\n  imageOrder  Int\n  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])\n  infoBlockId Int\n}\n\nmodel ProductMainImage {\n  id        Int     @id @default(autoincrement())\n  image     String\n  product   Product @relation(fields: [productId], references: [id])\n  productId Int     @unique\n}\n",
-  "inlineSchemaHash": "0bac2c03126de6a185195084c91e2e2f58b39c7d3d95fcbf720ad935b4089062",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  infoBlocks     ProductInfoBlock[]\n  mainImage      ProductMainImage?\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id         Int            @id @default(autoincrement())\n  blockOrder Int // camelCase вместо snake_case\n  align      String\n  title      String\n  content    String\n  product    Product        @relation(fields: [productId], references: [id])\n  productId  Int\n  images     ProductImage[]\n}\n\nmodel ProductImage {\n  id          Int              @id @default(autoincrement())\n  image       String\n  imageOrder  Int\n  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])\n  infoBlockId Int\n}\n\nmodel ProductMainImage {\n  id        Int     @id @default(autoincrement())\n  image     String\n  product   Product @relation(fields: [productId], references: [id])\n  productId Int     @unique\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  username    String\n  lastname    String\n  patronymic  String\n  email       String   @unique\n  birthDate   DateTime\n  phoneNumber String\n  password    String\n}\n",
+  "inlineSchemaHash": "c7bb6be88b92e395a6aeed2d19349938e5a1c2309150d6ad0e9a056ad6c0d7e0",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"countOfProduct\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryToProduct\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlocks\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"mainImage\",\"kind\":\"object\",\"type\":\"ProductMainImage\",\"relationName\":\"ProductToProductMainImage\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"CategoryToProduct\"}],\"dbName\":null},\"ProductInfoBlock\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"blockOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"align\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"ProductImage\",\"relationName\":\"ProductImageToProductInfoBlock\"}],\"dbName\":null},\"ProductImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlock\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductImageToProductInfoBlock\"},{\"name\":\"infoBlockId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"ProductMainImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductMainImage\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"countOfProduct\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryToProduct\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlocks\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"mainImage\",\"kind\":\"object\",\"type\":\"ProductMainImage\",\"relationName\":\"ProductToProductMainImage\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"CategoryToProduct\"}],\"dbName\":null},\"ProductInfoBlock\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"blockOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"align\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductInfoBlock\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"ProductImage\",\"relationName\":\"ProductImageToProductInfoBlock\"}],\"dbName\":null},\"ProductImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"infoBlock\",\"kind\":\"object\",\"type\":\"ProductInfoBlock\",\"relationName\":\"ProductImageToProductInfoBlock\"},{\"name\":\"infoBlockId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"ProductMainImage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"ProductToProductMainImage\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patronymic\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"birthDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

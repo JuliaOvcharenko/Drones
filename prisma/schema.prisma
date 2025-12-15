@@ -52,3 +52,14 @@ model ProductMainImage {
   product   Product @relation(fields: [productId], references: [id])
   productId Int     @unique
 }
+
+model User {
+  id          Int      @id @default(autoincrement())
+  username    String  
+  lastname    String
+  patronymic  String
+  email       String   @unique
+  birthDate   DateTime
+  phoneNumber String
+  password    String
+}
