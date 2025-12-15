@@ -162,7 +162,17 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   birthDate: 'birthDate',
   phoneNumber: 'phoneNumber',
-  password: 'password'
+  password: 'password',
+  addressId: 'addressId'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  city: 'city',
+  street: 'street',
+  house: 'house',
+  flat: 'flat',
+  entrance: 'entrance'
 };
 
 exports.Prisma.SortOrder = {
@@ -177,7 +187,8 @@ exports.Prisma.ModelName = {
   ProductInfoBlock: 'ProductInfoBlock',
   ProductImage: 'ProductImage',
   ProductMainImage: 'ProductMainImage',
-  User: 'User'
+  User: 'User',
+  Address: 'Address'
 };
 
 /**

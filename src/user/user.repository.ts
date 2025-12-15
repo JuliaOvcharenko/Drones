@@ -10,6 +10,10 @@ export const UserRepository: UserRepositoryContract = {
     createUser: async(dataFromUser)=>{
 
     },
+
+    addressCreate: async(addressData){
+
+    },
     getUserWithoutPasswordById: async(id)=>{
         
     }
