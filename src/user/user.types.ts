@@ -19,30 +19,56 @@ export type RegisterCredentials = {
 }
 
 export interface UserAuthenticationResponse{
-    token: string
+    tocken: string
+}
+
+export interface AuthenticatedUser {
+	id: number;
 }
 
 export interface ErrorResponse{
     message?: string
 }
 
+export interface ServiceResponse { //тип відповіді
+    status: "success" | "error"
+    dataUser?: UserWithoutPassword
+    dataAuth?: UserAuthenticationResponse
+    message: string
+    code: number
+}
+
 export type UserCreate = Prisma.UserUncheckedCreateInput
 
 export interface UserControllerContract {
-    login(req: Request<object, ErrorResponse | UserAuthenticationResponse, LoginCredentials>, res: Response<ErrorResponse | UserAuthenticationResponse>): Promise<void>;
-    register(req: Request<object, ErrorResponse | UserAuthenticationResponse, RegisterCredentials>, res: Response<ErrorResponse | UserAuthenticationResponse>): Promise<void>;
-    me(req: Request<object, ErrorResponse | UserWithoutPassword>, res: Response<ErrorResponse | UserWithoutPassword>): Promise<void>
+    login: (
+        req: Request<
+            object,
+            UserAuthenticationResponse | { message: string },
+            LoginCredentials,
+            object
+        >,
+        res: Response<UserAuthenticationResponse | { message: string }>,
+    ) => void;
+    register: (
+        req: Request<object, UserAuthenticationResponse | { message: string }, RegisterCredentials, object>,
+        res: Response<UserAuthenticationResponse | { message: string }>,
+    ) => void;
+    me: (
+        req: Request<object, UserWithoutPassword | { message: string }, object, object, { userId: number }>,
+        res: Response<UserWithoutPassword | { message: string }, { userId: number }>,
+    ) => void;
 }
 
 export interface UserServiceContract {
-    login(credentials: LoginCredentials): Promise<string>;
-    register(credentials: RegisterCredentials): Promise<string>;
-    me(userId: number): Promise<UserWithoutPassword>
+    login(credentials: LoginCredentials): Promise<ServiceResponse>;
+    register(credentials: RegisterCredentials): Promise<ServiceResponse>;
+    me(userId: number): Promise<ServiceResponse>
 }
 
 export interface UserRepositoryContract {
     findUserByEmail(email: string): Promise<User | null>
-    createUser(dataFromUser: UserCreate): Promise<User>
+    createUser(dataFromUser: UserCreate): Promise<UserCreate | null>
     getUserWithoutPasswordById(id: number): Promise<UserWithoutPassword | null>
 }
 

@@ -7273,7 +7273,7 @@ export namespace Prisma {
     birthDate: Date
     phoneNumber: string
     password: string
-    addressId: number
+    addressId: number | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -7305,7 +7305,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     password?: boolean
     addressId?: boolean
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7318,7 +7318,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     password?: boolean
     addressId?: boolean
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7331,7 +7331,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     password?: boolean
     addressId?: boolean
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -7348,19 +7348,19 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "lastname" | "patronymic" | "email" | "birthDate" | "phoneNumber" | "password" | "addressId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | User$addressArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      address: Prisma.$AddressPayload<ExtArgs>
+      address: Prisma.$AddressPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7371,7 +7371,7 @@ export namespace Prisma {
       birthDate: Date
       phoneNumber: string
       password: string
-      addressId: number
+      addressId: number | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -7766,7 +7766,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    address<T extends AddressDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AddressDefaultArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    address<T extends User$addressArgs<ExtArgs> = {}>(args?: Subset<T, User$addressArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8196,6 +8196,25 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.address
+   */
+  export type User$addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    where?: AddressWhereInput
   }
 
   /**
@@ -9430,6 +9449,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -9757,8 +9784,8 @@ export namespace Prisma {
     birthDate?: DateTimeFilter<"User"> | Date | string
     phoneNumber?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
-    addressId?: IntFilter<"User"> | number
-    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    addressId?: IntNullableFilter<"User"> | number | null
+    address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9770,7 +9797,7 @@ export namespace Prisma {
     birthDate?: SortOrder
     phoneNumber?: SortOrder
     password?: SortOrder
-    addressId?: SortOrder
+    addressId?: SortOrderInput | SortOrder
     address?: AddressOrderByWithRelationInput
   }
 
@@ -9786,8 +9813,8 @@ export namespace Prisma {
     birthDate?: DateTimeFilter<"User"> | Date | string
     phoneNumber?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
-    addressId?: IntFilter<"User"> | number
-    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    addressId?: IntNullableFilter<"User"> | number | null
+    address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9799,7 +9826,7 @@ export namespace Prisma {
     birthDate?: SortOrder
     phoneNumber?: SortOrder
     password?: SortOrder
-    addressId?: SortOrder
+    addressId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -9819,7 +9846,7 @@ export namespace Prisma {
     birthDate?: DateTimeWithAggregatesFilter<"User"> | Date | string
     phoneNumber?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
-    addressId?: IntWithAggregatesFilter<"User"> | number
+    addressId?: IntNullableWithAggregatesFilter<"User"> | number | null
   }
 
   export type AddressWhereInput = {
@@ -10148,7 +10175,7 @@ export namespace Prisma {
     birthDate: Date | string
     phoneNumber: string
     password: string
-    address: AddressCreateNestedOneWithoutUserIdInput
+    address?: AddressCreateNestedOneWithoutUserIdInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -10160,7 +10187,7 @@ export namespace Prisma {
     birthDate: Date | string
     phoneNumber: string
     password: string
-    addressId: number
+    addressId?: number | null
   }
 
   export type UserUpdateInput = {
@@ -10171,7 +10198,7 @@ export namespace Prisma {
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    address?: AddressUpdateOneRequiredWithoutUserIdNestedInput
+    address?: AddressUpdateOneWithoutUserIdNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -10183,7 +10210,7 @@ export namespace Prisma {
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    addressId?: IntFieldUpdateOperationsInput | number
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserCreateManyInput = {
@@ -10195,7 +10222,7 @@ export namespace Prisma {
     birthDate: Date | string
     phoneNumber: string
     password: string
-    addressId: number
+    addressId?: number | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -10217,7 +10244,7 @@ export namespace Prisma {
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    addressId?: IntFieldUpdateOperationsInput | number
+    addressId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AddressCreateInput = {
@@ -10572,9 +10599,25 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type AddressScalarRelationFilter = {
-    is?: AddressWhereInput
-    isNot?: AddressWhereInput
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type AddressNullableScalarRelationFilter = {
+    is?: AddressWhereInput | null
+    isNot?: AddressWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -10635,6 +10678,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type UserListRelationFilter = {
@@ -10918,12 +10977,22 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type AddressUpdateOneRequiredWithoutUserIdNestedInput = {
+  export type AddressUpdateOneWithoutUserIdNestedInput = {
     create?: XOR<AddressCreateWithoutUserIdInput, AddressUncheckedCreateWithoutUserIdInput>
     connectOrCreate?: AddressCreateOrConnectWithoutUserIdInput
     upsert?: AddressUpsertWithoutUserIdInput
+    disconnect?: AddressWhereInput | boolean
+    delete?: AddressWhereInput | boolean
     connect?: AddressWhereUniqueInput
     update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutUserIdInput, AddressUpdateWithoutUserIdInput>, AddressUncheckedUpdateWithoutUserIdInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserCreateNestedManyWithoutAddressInput = {
@@ -11048,6 +11117,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -11060,6 +11140,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type CategoryCreateWithoutProductsInput = {
@@ -11556,7 +11663,7 @@ export namespace Prisma {
     birthDate?: DateTimeFilter<"User"> | Date | string
     phoneNumber?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
-    addressId?: IntFilter<"User"> | number
+    addressId?: IntNullableFilter<"User"> | number | null
   }
 
   export type ProductInfoBlockCreateManyProductInput = {

@@ -152,6 +152,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Product: 'Product',
@@ -173,7 +178,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\W-IT\\node\\projects\\drones\\src\\generated\\prisma",
+      "value": "C:\\Users\\Asus\\Sprints\\Drones\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -187,7 +192,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\W-IT\\node\\projects\\drones\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Asus\\Sprints\\Drones\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -209,8 +214,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  infoBlocks     ProductInfoBlock[]\n  mainImage      ProductMainImage?\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id         Int            @id @default(autoincrement())\n  blockOrder Int // camelCase вместо snake_case\n  align      String\n  title      String\n  content    String\n  product    Product        @relation(fields: [productId], references: [id])\n  productId  Int\n  images     ProductImage[]\n}\n\nmodel ProductImage {\n  id          Int              @id @default(autoincrement())\n  image       String\n  imageOrder  Int\n  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])\n  infoBlockId Int\n}\n\nmodel ProductMainImage {\n  id        Int     @id @default(autoincrement())\n  image     String\n  product   Product @relation(fields: [productId], references: [id])\n  productId Int     @unique\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  username    String\n  lastname    String\n  patronymic  String\n  email       String   @unique\n  birthDate   DateTime\n  phoneNumber String\n  password    String\n  address     Address  @relation(fields: [addressId], references: [id])\n  addressId   Int\n}\n\nmodel Address {\n  id       Int    @id @default(autoincrement())\n  city     String\n  street   String\n  house    String\n  flat     String\n  entrance String\n  userId   User[]\n}\n",
-  "inlineSchemaHash": "12e830175a5797bb4cc1396a0adc9c0095276e02afebd161956739de13fc5968",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id             Int                @id @default(autoincrement())\n  name           String             @unique\n  price          Int\n  discount       Int\n  countOfProduct Int\n  category       Category           @relation(fields: [categoryId], references: [id])\n  categoryId     Int\n  infoBlocks     ProductInfoBlock[]\n  mainImage      ProductMainImage?\n}\n\nmodel Category {\n  id       Int       @id @default(autoincrement())\n  name     String    @unique\n  image    String\n  products Product[]\n}\n\nmodel ProductInfoBlock {\n  id         Int            @id @default(autoincrement())\n  blockOrder Int // camelCase вместо snake_case\n  align      String\n  title      String\n  content    String\n  product    Product        @relation(fields: [productId], references: [id])\n  productId  Int\n  images     ProductImage[]\n}\n\nmodel ProductImage {\n  id          Int              @id @default(autoincrement())\n  image       String\n  imageOrder  Int\n  infoBlock   ProductInfoBlock @relation(fields: [infoBlockId], references: [id])\n  infoBlockId Int\n}\n\nmodel ProductMainImage {\n  id        Int     @id @default(autoincrement())\n  image     String\n  product   Product @relation(fields: [productId], references: [id])\n  productId Int     @unique\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  username    String\n  lastname    String\n  patronymic  String\n  email       String   @unique\n  birthDate   DateTime\n  phoneNumber String\n  password    String\n  address     Address? @relation(fields: [addressId], references: [id])\n  addressId   Int?\n}\n\nmodel Address {\n  id       Int    @id @default(autoincrement())\n  city     String\n  street   String\n  house    String\n  flat     String\n  entrance String\n  userId   User[]\n}\n",
+  "inlineSchemaHash": "8d2833778192b8e8767c6e756ed43897a19b2a308566fa9c6c190dce3eb57f63",
   "copyEngine": true
 }
 config.dirname = '/'
