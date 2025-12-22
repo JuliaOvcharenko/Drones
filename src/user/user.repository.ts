@@ -118,5 +118,79 @@ export const UserRepository: UserRepositoryContract = {
             }
             return null
         }
+    }, 
+
+    createAddress: async(addressData)=>{
+        try{
+            const createdAddress = client.address.create({
+            data: addressData
+        });
+            return createdAddress
+        } catch(error){
+            throw error
+        }
+    },
+
+    deleteAddress: async(adressId) => {
+        try{
+            const deletedAddress = await client.address.delete({
+                where: {
+                    id: adressId
+                }
+            })
+            return deletedAddress
+        } catch(error){
+            throw error
+        }
+    },
+
+    findAddressByid: async(id) => {
+        try{
+            const findedAddress = client.address.findUnique({
+                where: {id}
+            })
+            return findedAddress
+        } catch(error){
+            throw error
+        }
+    },
+
+    updateAddress: async (addressId, updateData) => {
+        try{
+            const updatedAddress = await client.address.update({
+                where: {
+                    id: addressId
+                },
+                data: updateData
+            })
+            return updatedAddress
+        } catch(error){
+            throw error
+        }
+    },
+
+    getAllAddresses: async() => {
+        try{
+            const AllAddresses = await client.address.findMany()
+            return AllAddresses
+        }
+        catch(error){
+            throw error
+        }
+    }, 
+
+    updateUser: async (data, userId) => {
+        try {
+            const updatedUser = await client.user.update({
+                where: {
+                    id: userId,
+                },
+                data: data  
+            });
+            return updatedUser;
+        } catch (error) {
+            throw error;
+        }
     }
+
 }

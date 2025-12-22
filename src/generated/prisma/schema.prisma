@@ -18,6 +18,7 @@ model Product {
   categoryId     Int
   infoBlocks     ProductInfoBlock[]
   mainImage      ProductMainImage?
+  orders         OrderProducts[]
 }
 
 model Category {
@@ -64,6 +65,7 @@ model User {
   password    String
   address     Address? @relation(fields: [addressId], references: [id])
   addressId   Int?
+  orders      Order[]
 }
 
 model Address {
@@ -74,4 +76,35 @@ model Address {
   flat     String
   entrance String
   userId   User[]
+  order    Order?
+}
+
+model Order {
+  id              Int             @id @default(autoincrement())
+  username        String
+  lastname        String
+  patronymic      String
+  totalDiscount   Int
+  payment         String
+  trackingNumber  Int
+  totalPrice      Int
+  countOfProducts Int
+  orderDate       DateTime
+  user            User            @relation(fields: [userId], references: [id])
+  userId          Int
+  address         Address         @relation(fields: [addressId], references: [id])
+  addressId       Int             @unique
+  products        OrderProducts[]
+}
+
+model OrderProducts {
+  Order            Order   @relation(fields: [OrderId], references: [id])
+  OrderId          Int
+  Product          Product @relation(fields: [productId], references: [id])
+  productId        Int
+  count_of_product Int
+  price            Int
+  discount         Int
+
+  @@id([OrderId, productId])
 }

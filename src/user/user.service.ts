@@ -117,5 +117,20 @@ export const UserService: UserServiceContract = {
             code: 200
         }
         return respon
+    }, 
+    createAddress: async(addressData) => {
+        return UserRepository.createAddress(addressData);
+    },  
+    updateAddress: async(id, updateAddressData) => {
+        return UserRepository.updateAddress(id, updateAddressData);
+    },
+    deleteAddress: async(id) => {
+        return UserRepository.deleteAddress(id);
+    },
+    getAllAddresses: async() => {
+        return UserRepository.getAllAddresses();
+    },
+    updateUser: async (data, userId) => {
+        return UserRepository.updateUser(data, userId);
     }
 }

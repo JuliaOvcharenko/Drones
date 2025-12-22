@@ -12,7 +12,7 @@ const app = express()
 app.use(express.json())
 app.use("/products", ProductRouter);
 app.use("/categories", CategoryRouter);
-app.use("/user", UserRouter);
+app.use("/users", UserRouter);
 
 
 app.listen(PORT, HOST, () => {

@@ -110,9 +110,7 @@ ___
 | Code | Status                  | Українською                      | English                     |
 |------|-------------------------|----------------------------------|-----------------------------|
 | 200  | OK                      | успішно                          | success                     |
-| 201  | Created                 | створено                         | resource created            |
 | 400  | Bad Request             | некоректний запит                | bad request                 |
-| 401  | Unauthorized            | неавторизований                  | unauthorized                |
 | 404  | Not Found               | користувача не знайдено          | not found                   |
 | 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
 ___
@@ -138,7 +136,6 @@ ____
 |------|-------------------------|----------------------------------|-----------------------------|
 | 200  | OK                      | успішно                          | success                     |
 | 400  | Bad Request             | некоректний запит                | bad request                 |
-| 401  | Unauthorized            | неавторизований                  | unauthorized                |
 | 409  | Conflict                | конфлікт даних                   | conflict                    |
 | 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
 
@@ -158,7 +155,7 @@ ___
   Особистий кабінет. | Personal account.
 
   ```sh
-    POST /api/me
+    GET /api/me
   ```
 | Code | Status                  | Українською                      | English                     |
 |------|-------------------------|----------------------------------|-----------------------------|
