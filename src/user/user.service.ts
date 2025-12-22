@@ -26,14 +26,14 @@ export const UserService: UserServiceContract = {
             }
             return respon
         }
-        const tocken = sign({ id: user.id }, ENV.SECRET_KEY, {
+        const token = sign({ id: user.id }, ENV.SECRET_KEY, {
             expiresIn: "7d"
         })
         const respon: ServiceResponse = {
             status: "success",
             message: "success",
             code: 200,
-            dataAuth: { tocken: tocken }
+            dataAuth: { token: token }
         }
         return respon
     },
@@ -88,14 +88,14 @@ export const UserService: UserServiceContract = {
             }
             return respon
         }
-        const tocken = sign({ id: createUser.id }, ENV.SECRET_KEY, {
+        const token = sign({ id: createUser.id }, ENV.SECRET_KEY, {
             expiresIn: "7d"
         })
         const respon: ServiceResponse = {
             status: "success",
             code: 201,
             message: "Created",
-            dataAuth: { tocken: tocken }
+            dataAuth: { token: token }
         }
         return respon
 

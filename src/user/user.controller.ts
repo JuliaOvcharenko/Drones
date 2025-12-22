@@ -17,7 +17,7 @@ export const UserController: UserControllerContract = {
         if(resp.status == "error"){
             res.status(resp.code).json({message: resp.message})
         }
-        res.status(200).json(resp.dataAuth)
+        res.status(200).json({message: "User Creared. Please, login"})
     },
     me: async (req, res) => {
         if(req.body){

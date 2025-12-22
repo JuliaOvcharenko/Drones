@@ -86,51 +86,16 @@ ___
 
 ## API Документація | API Documentation
 
-<details>
-  <summary><strong>📁 main</strong></summary>
-  ___
-
-
-  
-  ___
-
-
-</details>
-
-___
-
 
 <details>
   <summary><strong>📁 user</strong></summary>
-  Логін користувача. | User login.
 
-  ```sh
-    POST /api/login
-  ```
-| Code | Status                  | Українською                      | English                     |
-|------|-------------------------|----------------------------------|-----------------------------|
-| 200  | OK                      | успішно                          | success                     |
-| 400  | Bad Request             | некоректний запит                | bad request                 |
-| 404  | Not Found               | користувача не знайдено          | not found                   |
-| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
-___
-
-  <details>
-    <summary><strong>Відповідь | Responce</strong></summary>
-
-  ```sh
   
-  ```
-
-  </details>
-
-____
-
 
   Рєєстрація користувача. | User register.
 
   ```sh
-    POST /api/register
+    POST /api/users/register
   ```
 | Code | Status                  | Українською                      | English                     |
 |------|-------------------------|----------------------------------|-----------------------------|
@@ -142,15 +107,75 @@ ____
 ___
 
   <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "name": "user",
+      "email": "email@gmail.com",
+      "password": "123",
+      "passwordConfirm": "123"
+    }
+  ```
+
+  </details>
+  
+____
+
+  <details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
   ```sh
-  
+    {
+      "message": "User Creared. Please, login"
+    }
   ```
 
   </details>
 
-  ____
+___
+
+  Логін користувача. | User login.
+
+  ```sh
+    POST /users/login
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+| 404  | Not Found               | користувача не знайдено          | not found                   |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "email": "email@gmail.com",
+      "password": "123"
+    }
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    {
+    "token": "login token (example)"
+    }
+  ```
+
+  </details>
+
+____
+
 
   Особистий кабінет. | Personal account.
 
@@ -164,21 +189,48 @@ ___
 | 404  | Not Found               | користувача не знайдено          | not found                   |
 | 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
 
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  - Дотримуйтесь інструкцій. | Follow the instructions.
+
+  1. Перейдіть на вкладку Authorization. | Go to the Authorization tab.
+  2. У полі Type оберіть Bearer Token. | Type → Bearer Token
+  3. У поле Token вставте ваш токен. | In the Token field, paste your JWT token. 
+  
+  ```sh
+    {
+      "token": "login token (example)"
+    }
+  ```
+
+  </details>
+
 ___
 
   <details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
   ```sh
-  
+    {
+      "id": 11,
+      "username": "user",
+      "lastname": "",
+      "patronymic": "",
+      "email": "email@gmail.com",
+      "birthDate": "2025-12-22T21:32:43.291Z",
+      "phoneNumber": "",
+      "addressId": null
+    }
   ```
 
   </details>
 
-
 </details>
 
-____
+___
 
 <details>
   <summary><strong>📁 product</strong></summary>

@@ -24,7 +24,7 @@ export type RegisterCredentials = {
 }
 
 export interface UserAuthenticationResponse{
-    tocken: string
+    token: string
 }
 
 export interface AuthenticatedUser {
