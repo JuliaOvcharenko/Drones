@@ -95,7 +95,7 @@ ___
   Рєєстрація користувача. | User register.
 
   ```sh
-    POST /api/users/register
+    POST /users/register
   ```
 | Code | Status                  | Українською                      | English                     |
 |------|-------------------------|----------------------------------|-----------------------------|
@@ -180,7 +180,7 @@ ____
   Особистий кабінет. | Personal account.
 
   ```sh
-    GET /api/me
+    GET /users/me
   ```
 | Code | Status                  | Українською                      | English                     |
 |------|-------------------------|----------------------------------|-----------------------------|
@@ -201,8 +201,57 @@ ____
   3. У поле Token вставте ваш токен. | In the Token field, paste your JWT token. 
   
   ```sh
+    "login token (example)"
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
     {
-      "token": "login token (example)"
+      "id": 1,
+      "username": "user",
+      "lastname": "",
+      "patronymic": "",
+      "email": "email@gmail.com",
+      "birthDate": "2025-12-22T21:32:43.291Z",
+      "phoneNumber": "",
+      "addressId": null
+    }
+  ```
+
+  </details>
+
+  ___
+
+
+  Редагування профілю користувача. | User profile update.
+
+  ```sh
+    PATCH /users/:userId
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 404  | Not Found               | користувача не знайдено          | not found                   |
+| 422  | Unprocessable Content   | сутність не підлягає обробці     | unprocessable сontent       |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "username": "user2",
+      "patronymic": "UserIser",
+      "email": "email2@gmail.com",
+      "phoneNumber": "+000 000 000",
     }
   ```
 
@@ -215,15 +264,183 @@ ___
 
   ```sh
     {
-      "id": 11,
-      "username": "user",
+      "id": 12,
+      "username": "user2",
       "lastname": "",
-      "patronymic": "",
-      "email": "email@gmail.com",
-      "birthDate": "2025-12-22T21:32:43.291Z",
-      "phoneNumber": "",
+      "patronymic": "UserIser",
+      "email": "email5hhvjhvy67@gmail.com",
+      "birthDate": "2025-12-23T19:27:32.368Z",
+      "phoneNumber": "+000 000 000",
       "addressId": null
     }
+  ```
+
+  </details>
+
+  ___
+
+   Створення власної адреси. | Creating your own address.
+
+  ```sh
+    POST /users/address
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 201  | Created                 | створено                         | created                     |
+| 422  | Unprocessable Content   | сутність не підлягає обробці     | unprocessable сontent       |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "city": "Dnipro",
+      "entrance": "second entrance",
+      "flat": "12777",
+      "house": "435",
+      "street": "Pr.Catovsky 4"
+    }
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    {
+      "id": 1,
+      "city": "Dnipro",
+      "street": "Pr.Catovsky 4",
+      "house": "435",
+      "flat": "12777",
+      "entrance": "second entrance"
+    }
+  ```
+
+  </details>
+
+ ___
+
+
+  Редагування адреси. | Address update.
+
+  ```sh
+    PATCH /users/address/:addressId
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+| 404  | Not Found               | адреси не знайдено               | not found                   |
+| 422  | Unprocessable Content   | сутність не підлягає обробці     | unprocessable сontent       |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "city": "Dnipro",
+      "entrance": "1",
+      "flat": "6",
+      "house": "5",
+      "street": "Pr.Catovsky"
+    }
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    "Address updated successfully"
+  ```
+
+  </details>
+
+   ___
+
+
+  Видалення адреси. | Address delete.
+
+  ```sh
+    DELETE /users/address/:addressId
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+| 404  | Not Found               | адреси не знайдено               | not found                   |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    "Address deleted successfully"
+  ```
+
+  </details>
+
+___
+
+  Отримати усі адреси. | Get all addresses.
+
+  ```sh
+    GET /users/addresses
+  ```
+
+
+| Code| Error                     | Українською                     | English                    |
+|-----|---------------------------|---------------------------------|----------------------------|
+| 200 | OK                        | адреси отримано                 | items received             |
+| 500 | Internal Server Error     | помилка сервера                 | server error               |
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    [
+      {
+          "id": 3,
+          "city": "Dnipro",
+          "street": "Pr.Catovsky",
+          "house": "1",
+          "flat": "12",
+          "entrance": "7"
+      },
+      {
+          "id": 17,
+          "city": "Dnipro",
+          "street": "Pr.Catovsky 4",
+          "house": "435",
+          "flat": "12777",
+          "entrance": "second entrance"
+      },
+      {
+          "id": 18,
+          "city": "Dnipro",
+          "street": "Pr.Catovsky 4",
+          "house": "435",
+          "flat": "12777",
+          "entrance": "second entrance"
+      }
+    ]
   ```
 
   </details>
@@ -238,7 +455,7 @@ ___
   Отримати усі продукти. | Get all products.
 
   ```sh
-    GET /api/products
+    GET /products
   ```
 
 
@@ -300,7 +517,7 @@ Query Params:
 - categoryName
 
   ```sh
-    GET /api/products?categoryName=Drones
+    GET /products?categoryName=Drones
   ```
 
   
@@ -357,7 +574,7 @@ ____
   Отримати конкретний продукт. | Get product by id.
 
   ```sh
-    GET /api/products/{id}
+    GET /products/:id
   ```
 
 | Code | Error                 | Українською                                | English                                  |
@@ -369,33 +586,33 @@ ____
 <details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
-      ```sh
-        [
-          {
+  ```sh
+    [
+      {
+      "id": 1,
+      "name": "Drone1",
+      "price": 1000,
+      "discount": 10,
+      "countOfProduct": 2,
+      "categoryId": 1,
+      "infoBlocks": [
+        {
           "id": 1,
-          "name": "Drone1",
-          "price": 1000,
-          "discount": 10,
-          "countOfProduct": 2,
-          "categoryId": 1,
-          "infoBlocks": [
-              {
-                  "id": 1,
-                  "blockOrder": 1,
-                  "align": "center",
-                  "title": "drone 1",
-                  "content": "drone max super",
-                  "productId": 1
-              }
-          ],
-          "mainImage": {
-              "id": 1,
-              "image": "image 1",
-              "productId": 1
-          }
+          "blockOrder": 1,
+          "align": "center",
+          "title": "drone 1",
+          "content": "drone max super",
+          "productId": 1
         }
-      ]
-      ```
+      ],
+      "mainImage": {
+        "id": 1,
+        "image": "image 1",
+        "productId": 1
+        }
+      }
+    ]
+  ```
 
   </details>
 </details>
@@ -413,7 +630,7 @@ ____
   Отримати усі категорії. | Get all categories.
 
   ```sh
-    GET /api/categories
+    GET /categories
   ```
 
 

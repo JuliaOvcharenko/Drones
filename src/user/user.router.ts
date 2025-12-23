@@ -8,7 +8,7 @@ export const UserRouter = Router();
 UserRouter.get('/me',authMiddleware, UserController.me)
 UserRouter.post('/login', UserController.login)
 UserRouter.post('/register', UserController.register)
-UserRouter.patch('/user/:userId', UserController.updateUser)
+UserRouter.patch('/:userId', UserController.updateUser)
 
 UserRouter.post('/address', UserController.createAddress)
 UserRouter.patch('/address/:addressId', UserController.updateAddress)
