@@ -759,7 +759,7 @@ ___
   
 4. Виконати міграції. | Run migrations.
    ```sh
-    npx migrate
+    npx prisma migrate dev
     ```
 
 5. Запуск проєкту | Start the project:
