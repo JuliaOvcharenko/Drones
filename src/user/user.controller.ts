@@ -11,6 +11,7 @@ export const UserController: UserControllerContract = {
             res.status(resp.code).json({message: resp.message})
         }
         res.status(200).json(resp.dataAuth)
+        return
     },
     register: async (req, res) => {
         const resp = await UserService.register(req.body)
@@ -177,6 +178,98 @@ export const UserController: UserControllerContract = {
         } catch (error: any) {
             res.status(500).json(error.message);
         }
-    }
+    },
 
-} 
+    resetPasswordUsingEmail: async (req, res) => {
+        const body = req.body;
+
+        if (!body) {
+            res.status(400).json("Body is missing");
+            return;
+        }
+
+        if (!body.email) {
+            res.status(400).json("Email is required");
+            return;
+        }
+
+        if (typeof body.email !== "string") {
+            res.status(400).json("Email must be a string");
+            return;
+        }
+
+        const email = req.body.email;
+
+        const result = await UserService.sendEmailToResetPassword({ email });
+
+        if (typeof result === "string") {
+            res.status(400).json(result);
+            return;
+        }
+
+        res.status(200).json("Rmail was sended");
+    },
+
+
+    resetPassword: async (req, res) => {
+        const body = req.body;
+        
+        if (!body) {
+            res.status(400).json("Request body is missing");
+            return;
+        }
+
+        if (!body.email) {
+            res.status(400).json("Email is required");
+            return;
+        }
+
+        if (!body.code) {
+            res.status(400).json("Recovery code is required");
+            return;
+        }
+
+        if (!body.newPassword) {
+            res.status(400).json("New password is required");
+            return;
+        }
+
+        if (typeof body.email !== "string") {
+            res.status(400).json("Email must be a string");
+            return;
+        }
+
+        if (typeof body.code !== "string") {
+            res.status(400).json("Code must be a string");
+            return;
+        }
+
+        if (typeof body.newPassword !== "string") {
+            res.status(400).json("Password must be a string");
+            return;
+        }
+
+        if (body.newPassword.length < 8) {
+            res.status(400).json("Password must be at least 8 characters");
+            return;
+        }
+
+        const email = req.body.email
+        const code = req.body.code
+        const newPassword = req.body.newPassword
+
+        const resetPassword = await UserService.resetPassword({
+            email,
+            code,
+            newPassword,
+        });
+
+        if (typeof resetPassword === "string") {
+            res.status(400).json(resetPassword);
+            return;
+        }
+
+        res.status(200).json("Password successfully changed");
+    },
+
+};

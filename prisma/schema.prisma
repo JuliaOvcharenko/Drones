@@ -108,3 +108,10 @@ model OrderProducts {
 
   @@id([OrderId, productId])
 }
+
+
+model verificationCode{
+  email     String    @id
+  code      String
+  expiresAt DateTime
+}

@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { client } from "../client/client";
 import { Prisma } from "../generated/prisma";
 import { UserRepositoryContract } from "./user.types";
@@ -191,6 +192,45 @@ export const UserRepository: UserRepositoryContract = {
         } catch (error) {
             throw error;
         }
-    }
+    }, 
 
-}
+    saveRecoveryCode: async (email, code, expiresAt) => {
+        try{
+            const verificationCode = await client.verificationCode.upsert({
+                where: {email},
+                update: {code, expiresAt},
+                create: {email, code, expiresAt},
+            })
+        }
+        catch(error){
+            throw error;
+        }
+    },
+
+    verifyRecoveryCode: async (email, code) => {
+        try{
+            const recoveryCode = await client.verificationCode.findUnique(
+                {where: {email}}
+            )
+
+            if (!recoveryCode) {
+                return false;
+            }
+            const isCorrect = recoveryCode.code === code;
+            const isNotExpired = recoveryCode.expiresAt > new Date();
+
+            return isCorrect && isNotExpired;
+        }
+        catch(error){
+            throw error
+        }
+    },
+        
+    updatePassword: async (email, hashedPassword) => {
+        const updatedUser = await client.user.update({
+            where: { email },
+            data: { password: hashedPassword },
+        });
+        return updatedUser;
+    }
+};

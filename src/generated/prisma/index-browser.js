@@ -198,6 +198,12 @@ exports.Prisma.OrderProductsScalarFieldEnum = {
   discount: 'discount'
 };
 
+exports.Prisma.VerificationCodeScalarFieldEnum = {
+  email: 'email',
+  code: 'code',
+  expiresAt: 'expiresAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -218,7 +224,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Address: 'Address',
   Order: 'Order',
-  OrderProducts: 'OrderProducts'
+  OrderProducts: 'OrderProducts',
+  verificationCode: 'verificationCode'
 };
 
 /**

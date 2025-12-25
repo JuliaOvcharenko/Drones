@@ -6,10 +6,26 @@ export type User = Prisma.UserGetPayload<{}>;
 export type UserWithoutPassword = Prisma.UserGetPayload<{omit: {password: true}}>;
 export type UpdateUser = Prisma.UserUpdateInput
 
+
+export interface SendCode{
+    email: string
+}
+
+export interface ResetPassword{
+  email: string;
+  newPassword: string;
+  code: string;
+}
+
+export interface codeResponse{
+    message?: string
+}
+
+
 export type Address = Prisma.AddressGetPayload<{}>
 export type CreateAddress = Prisma.AddressUncheckedCreateInput
-
 export type UpdateAddress = Prisma.AddressUpdateInput
+
 
 export type LoginCredentials = {
     email: string
@@ -87,6 +103,15 @@ export interface UserControllerContract {
         req: Request<{userId: number}, User | string, UpdateUser, object>,
         res: Response<User | string>
     ) => void,
+
+    resetPasswordUsingEmail: (
+        req: Request<{}, ResetPassword, ResetPassword, {}>,
+        res: Response<ResetPassword | string>) => void;
+
+    resetPassword: (
+        req: Request<{}, string, ResetPassword, {}>,
+        res: Response<string>
+    ) => Promise<void>;
 }
 
 export interface UserServiceContract {
@@ -99,6 +124,9 @@ export interface UserServiceContract {
     deleteAddress: (id: number) => Promise<Address | string>
     updateAddress: (id: number, updateAddressData: UpdateAddress) => Promise<Address | string>
     getAllAddresses: () => Promise<Address[] | undefined>
+
+    sendEmailToResetPassword(data: SendCode): Promise<true | string>
+    resetPassword(data: ResetPassword): Promise<{ message: string }>;
 }
 
 export interface UserRepositoryContract {
@@ -109,9 +137,16 @@ export interface UserRepositoryContract {
     createUser(dataFromUser: UserCreate): Promise<UserCreate | null>
     getUserWithoutPasswordById(id: number): Promise<UserWithoutPassword | null>
 
+    saveRecoveryCode(email: string, code: string, expiresAt: Date): Promise<void>;
+    verifyRecoveryCode(email: string, code: string): Promise<boolean>;
+    updatePassword(email: string, newPassword: string): Promise<User>;
+
     createAddress:(addressData: CreateAddress) => Promise<Address | null>
     deleteAddress: (id: number) => Promise<Address>
     updateAddress: (id: number, updateAddressData: UpdateAddress) => Promise<Address>
     getAllAddresses: () => Promise<Address[] | undefined>
 }
 
+export interface MailServiceContract {
+    sendEmailToResetPassword(email: string, code: string): Promise<void>;
+}

@@ -4,41 +4,61 @@ import { UserRepository } from "./user.repository";
 import { ServiceResponse, UserCreate, UserServiceContract } from "./user.types";
 import { sign } from "jsonwebtoken";
 import { ENV } from "../config/env";
+import { MailService } from "./mailService";
 
 
 export const UserService: UserServiceContract = {
     login: async (body) => {
-        const user = await UserRepository.findUserByEmail(body.email)
-        if (!user) {
-            const respon: ServiceResponse = {
-                status: "error",
-                message: "user not found",
-                code: 404
+        try {
+            const user = await UserRepository.findUserByEmail(body.email);
+
+            if (!user) {
+                return {
+                    status: "error",
+                    message: "User not found",
+                    code: 404
+                };
             }
-            return respon
-        }
-        const isTruePassword = await compare(body.password, user.password);
-        if (!isTruePassword) {
-            const respon: ServiceResponse = {
-                status: "error",
-                message: "Bad Request",
-                code: 400
+
+            if (!user.password || !user.password.startsWith("$2")) {
+                return {
+                    status: "error",
+                    message: "Invalid user password data",
+                    code: 500
+                };
             }
-            return respon
+
+            const isTruePassword = await compare(body.password, user.password);
+
+            if (!isTruePassword) {
+                return {
+                    status: "error",
+                    message: "Invalid email or password",
+                    code: 400
+                };
+            }
+            const token = sign({ id: user.id }, ENV.SECRET_KEY, {
+                expiresIn: "7d"
+            });
+
+            return {
+                status: "success",
+                message: "Login successful",
+                code: 200,
+                dataAuth: { token }
+            };
+
+        } catch (error) {
+            console.error("Login error:", error);
+            return {
+                status: "error",
+                message: "Internal Server Error",
+                code: 500
+            };
         }
-        const token = sign({ id: user.id }, ENV.SECRET_KEY, {
-            expiresIn: "7d"
-        })
-        const respon: ServiceResponse = {
-            status: "success",
-            message: "success",
-            code: 200,
-            dataAuth: { token: token }
-        }
-        return respon
     },
     register: async (body) => {
-        let allEllBody = { ...body }
+        const allEllBody = { ...body }
         const user = await UserRepository.findUserByEmail(body.email)
         if (user) {
             const respon: ServiceResponse = {
@@ -51,7 +71,7 @@ export const UserService: UserServiceContract = {
         if (!allEllBody.email || !allEllBody.name || !allEllBody.password || !allEllBody.passwordConfirm || (allEllBody.password !== allEllBody.passwordConfirm)) {
             const respon: ServiceResponse = {
                 status: "error",
-                message: "Bad Request",
+                message: "Bad Request. Check your data",
                 code: 401
             }
             return respon
@@ -132,5 +152,45 @@ export const UserService: UserServiceContract = {
     },
     updateUser: async (data, userId) => {
         return UserRepository.updateUser(data, userId);
+    },
+
+    sendEmailToResetPassword: async(data) => {
+        
+        const {email} = data;
+
+        const user = await UserRepository.findUserByEmail(email);
+
+        if (!user) {
+            return "User with this email doesn`t exist";
+        }
+
+        const code = Math.floor(1000 + Math.random() * 900).toString();
+
+        const expiresAt = new Date();
+        expiresAt.setMinutes(expiresAt.getMinutes() + 15);
+        await UserRepository.saveRecoveryCode(email, code, expiresAt);
+
+        await MailService.sendEmailToResetPassword(email, code);
+
+        return true;
+    }, 
+
+    resetPassword: async (data) => {
+        const user = await UserRepository.findUserByEmail(data.email);
+        if (!user){
+            return {message: "User not found"}
+        } 
+
+        const isCodeValid = await UserRepository.verifyRecoveryCode(data.email, data.code);
+        if (!isCodeValid) {
+            return {message: "Invalid or expired recovery code"}
+        }
+
+        const hashedPassword = await hash(data.newPassword, 10);
+        await UserRepository.updatePassword(data.email, hashedPassword);
+
+        await UserRepository.saveRecoveryCode(data.email, "", new Date(0));
+
+        return {message: "Password has been successfully changed"};
     }
 }

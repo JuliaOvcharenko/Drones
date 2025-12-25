@@ -58,6 +58,11 @@ export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
  * 
  */
 export type OrderProducts = $Result.DefaultSelection<Prisma.$OrderProductsPayload>
+/**
+ * Model verificationCode
+ * 
+ */
+export type verificationCode = $Result.DefaultSelection<Prisma.$verificationCodePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -266,6 +271,16 @@ export class PrismaClient<
     * ```
     */
   get orderProducts(): Prisma.OrderProductsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.verificationCode`: Exposes CRUD operations for the **verificationCode** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VerificationCodes
+    * const verificationCodes = await prisma.verificationCode.findMany()
+    * ```
+    */
+  get verificationCode(): Prisma.verificationCodeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -714,7 +729,8 @@ export namespace Prisma {
     User: 'User',
     Address: 'Address',
     Order: 'Order',
-    OrderProducts: 'OrderProducts'
+    OrderProducts: 'OrderProducts',
+    verificationCode: 'verificationCode'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -733,7 +749,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "product" | "category" | "productInfoBlock" | "productImage" | "productMainImage" | "user" | "address" | "order" | "orderProducts"
+      modelProps: "product" | "category" | "productInfoBlock" | "productImage" | "productMainImage" | "user" | "address" | "order" | "orderProducts" | "verificationCode"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1403,6 +1419,80 @@ export namespace Prisma {
           }
         }
       }
+      verificationCode: {
+        payload: Prisma.$verificationCodePayload<ExtArgs>
+        fields: Prisma.verificationCodeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.verificationCodeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.verificationCodeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          findFirst: {
+            args: Prisma.verificationCodeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.verificationCodeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          findMany: {
+            args: Prisma.verificationCodeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>[]
+          }
+          create: {
+            args: Prisma.verificationCodeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          createMany: {
+            args: Prisma.verificationCodeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.verificationCodeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>[]
+          }
+          delete: {
+            args: Prisma.verificationCodeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          update: {
+            args: Prisma.verificationCodeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          deleteMany: {
+            args: Prisma.verificationCodeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.verificationCodeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.verificationCodeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>[]
+          }
+          upsert: {
+            args: Prisma.verificationCodeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$verificationCodePayload>
+          }
+          aggregate: {
+            args: Prisma.VerificationCodeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVerificationCode>
+          }
+          groupBy: {
+            args: Prisma.verificationCodeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VerificationCodeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.verificationCodeCountArgs<ExtArgs>
+            result: $Utils.Optional<VerificationCodeCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1508,6 +1598,7 @@ export namespace Prisma {
     address?: AddressOmit
     order?: OrderOmit
     orderProducts?: OrderProductsOmit
+    verificationCode?: verificationCodeOmit
   }
 
   /* Types for Logging */
@@ -12043,6 +12134,973 @@ export namespace Prisma {
 
 
   /**
+   * Model verificationCode
+   */
+
+  export type AggregateVerificationCode = {
+    _count: VerificationCodeCountAggregateOutputType | null
+    _min: VerificationCodeMinAggregateOutputType | null
+    _max: VerificationCodeMaxAggregateOutputType | null
+  }
+
+  export type VerificationCodeMinAggregateOutputType = {
+    email: string | null
+    code: string | null
+    expiresAt: Date | null
+  }
+
+  export type VerificationCodeMaxAggregateOutputType = {
+    email: string | null
+    code: string | null
+    expiresAt: Date | null
+  }
+
+  export type VerificationCodeCountAggregateOutputType = {
+    email: number
+    code: number
+    expiresAt: number
+    _all: number
+  }
+
+
+  export type VerificationCodeMinAggregateInputType = {
+    email?: true
+    code?: true
+    expiresAt?: true
+  }
+
+  export type VerificationCodeMaxAggregateInputType = {
+    email?: true
+    code?: true
+    expiresAt?: true
+  }
+
+  export type VerificationCodeCountAggregateInputType = {
+    email?: true
+    code?: true
+    expiresAt?: true
+    _all?: true
+  }
+
+  export type VerificationCodeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which verificationCode to aggregate.
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of verificationCodes to fetch.
+     */
+    orderBy?: verificationCodeOrderByWithRelationInput | verificationCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: verificationCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` verificationCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` verificationCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned verificationCodes
+    **/
+    _count?: true | VerificationCodeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VerificationCodeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VerificationCodeMaxAggregateInputType
+  }
+
+  export type GetVerificationCodeAggregateType<T extends VerificationCodeAggregateArgs> = {
+        [P in keyof T & keyof AggregateVerificationCode]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVerificationCode[P]>
+      : GetScalarType<T[P], AggregateVerificationCode[P]>
+  }
+
+
+
+
+  export type verificationCodeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: verificationCodeWhereInput
+    orderBy?: verificationCodeOrderByWithAggregationInput | verificationCodeOrderByWithAggregationInput[]
+    by: VerificationCodeScalarFieldEnum[] | VerificationCodeScalarFieldEnum
+    having?: verificationCodeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VerificationCodeCountAggregateInputType | true
+    _min?: VerificationCodeMinAggregateInputType
+    _max?: VerificationCodeMaxAggregateInputType
+  }
+
+  export type VerificationCodeGroupByOutputType = {
+    email: string
+    code: string
+    expiresAt: Date
+    _count: VerificationCodeCountAggregateOutputType | null
+    _min: VerificationCodeMinAggregateOutputType | null
+    _max: VerificationCodeMaxAggregateOutputType | null
+  }
+
+  type GetVerificationCodeGroupByPayload<T extends verificationCodeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VerificationCodeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VerificationCodeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VerificationCodeGroupByOutputType[P]>
+            : GetScalarType<T[P], VerificationCodeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type verificationCodeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    email?: boolean
+    code?: boolean
+    expiresAt?: boolean
+  }, ExtArgs["result"]["verificationCode"]>
+
+  export type verificationCodeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    email?: boolean
+    code?: boolean
+    expiresAt?: boolean
+  }, ExtArgs["result"]["verificationCode"]>
+
+  export type verificationCodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    email?: boolean
+    code?: boolean
+    expiresAt?: boolean
+  }, ExtArgs["result"]["verificationCode"]>
+
+  export type verificationCodeSelectScalar = {
+    email?: boolean
+    code?: boolean
+    expiresAt?: boolean
+  }
+
+  export type verificationCodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"email" | "code" | "expiresAt", ExtArgs["result"]["verificationCode"]>
+
+  export type $verificationCodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "verificationCode"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      email: string
+      code: string
+      expiresAt: Date
+    }, ExtArgs["result"]["verificationCode"]>
+    composites: {}
+  }
+
+  type verificationCodeGetPayload<S extends boolean | null | undefined | verificationCodeDefaultArgs> = $Result.GetResult<Prisma.$verificationCodePayload, S>
+
+  type verificationCodeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<verificationCodeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VerificationCodeCountAggregateInputType | true
+    }
+
+  export interface verificationCodeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['verificationCode'], meta: { name: 'verificationCode' } }
+    /**
+     * Find zero or one VerificationCode that matches the filter.
+     * @param {verificationCodeFindUniqueArgs} args - Arguments to find a VerificationCode
+     * @example
+     * // Get one VerificationCode
+     * const verificationCode = await prisma.verificationCode.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends verificationCodeFindUniqueArgs>(args: SelectSubset<T, verificationCodeFindUniqueArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VerificationCode that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {verificationCodeFindUniqueOrThrowArgs} args - Arguments to find a VerificationCode
+     * @example
+     * // Get one VerificationCode
+     * const verificationCode = await prisma.verificationCode.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends verificationCodeFindUniqueOrThrowArgs>(args: SelectSubset<T, verificationCodeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VerificationCode that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeFindFirstArgs} args - Arguments to find a VerificationCode
+     * @example
+     * // Get one VerificationCode
+     * const verificationCode = await prisma.verificationCode.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends verificationCodeFindFirstArgs>(args?: SelectSubset<T, verificationCodeFindFirstArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VerificationCode that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeFindFirstOrThrowArgs} args - Arguments to find a VerificationCode
+     * @example
+     * // Get one VerificationCode
+     * const verificationCode = await prisma.verificationCode.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends verificationCodeFindFirstOrThrowArgs>(args?: SelectSubset<T, verificationCodeFindFirstOrThrowArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VerificationCodes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VerificationCodes
+     * const verificationCodes = await prisma.verificationCode.findMany()
+     * 
+     * // Get first 10 VerificationCodes
+     * const verificationCodes = await prisma.verificationCode.findMany({ take: 10 })
+     * 
+     * // Only select the `email`
+     * const verificationCodeWithEmailOnly = await prisma.verificationCode.findMany({ select: { email: true } })
+     * 
+     */
+    findMany<T extends verificationCodeFindManyArgs>(args?: SelectSubset<T, verificationCodeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VerificationCode.
+     * @param {verificationCodeCreateArgs} args - Arguments to create a VerificationCode.
+     * @example
+     * // Create one VerificationCode
+     * const VerificationCode = await prisma.verificationCode.create({
+     *   data: {
+     *     // ... data to create a VerificationCode
+     *   }
+     * })
+     * 
+     */
+    create<T extends verificationCodeCreateArgs>(args: SelectSubset<T, verificationCodeCreateArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VerificationCodes.
+     * @param {verificationCodeCreateManyArgs} args - Arguments to create many VerificationCodes.
+     * @example
+     * // Create many VerificationCodes
+     * const verificationCode = await prisma.verificationCode.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends verificationCodeCreateManyArgs>(args?: SelectSubset<T, verificationCodeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VerificationCodes and returns the data saved in the database.
+     * @param {verificationCodeCreateManyAndReturnArgs} args - Arguments to create many VerificationCodes.
+     * @example
+     * // Create many VerificationCodes
+     * const verificationCode = await prisma.verificationCode.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VerificationCodes and only return the `email`
+     * const verificationCodeWithEmailOnly = await prisma.verificationCode.createManyAndReturn({
+     *   select: { email: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends verificationCodeCreateManyAndReturnArgs>(args?: SelectSubset<T, verificationCodeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VerificationCode.
+     * @param {verificationCodeDeleteArgs} args - Arguments to delete one VerificationCode.
+     * @example
+     * // Delete one VerificationCode
+     * const VerificationCode = await prisma.verificationCode.delete({
+     *   where: {
+     *     // ... filter to delete one VerificationCode
+     *   }
+     * })
+     * 
+     */
+    delete<T extends verificationCodeDeleteArgs>(args: SelectSubset<T, verificationCodeDeleteArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VerificationCode.
+     * @param {verificationCodeUpdateArgs} args - Arguments to update one VerificationCode.
+     * @example
+     * // Update one VerificationCode
+     * const verificationCode = await prisma.verificationCode.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends verificationCodeUpdateArgs>(args: SelectSubset<T, verificationCodeUpdateArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VerificationCodes.
+     * @param {verificationCodeDeleteManyArgs} args - Arguments to filter VerificationCodes to delete.
+     * @example
+     * // Delete a few VerificationCodes
+     * const { count } = await prisma.verificationCode.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends verificationCodeDeleteManyArgs>(args?: SelectSubset<T, verificationCodeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VerificationCodes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VerificationCodes
+     * const verificationCode = await prisma.verificationCode.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends verificationCodeUpdateManyArgs>(args: SelectSubset<T, verificationCodeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VerificationCodes and returns the data updated in the database.
+     * @param {verificationCodeUpdateManyAndReturnArgs} args - Arguments to update many VerificationCodes.
+     * @example
+     * // Update many VerificationCodes
+     * const verificationCode = await prisma.verificationCode.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VerificationCodes and only return the `email`
+     * const verificationCodeWithEmailOnly = await prisma.verificationCode.updateManyAndReturn({
+     *   select: { email: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends verificationCodeUpdateManyAndReturnArgs>(args: SelectSubset<T, verificationCodeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VerificationCode.
+     * @param {verificationCodeUpsertArgs} args - Arguments to update or create a VerificationCode.
+     * @example
+     * // Update or create a VerificationCode
+     * const verificationCode = await prisma.verificationCode.upsert({
+     *   create: {
+     *     // ... data to create a VerificationCode
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VerificationCode we want to update
+     *   }
+     * })
+     */
+    upsert<T extends verificationCodeUpsertArgs>(args: SelectSubset<T, verificationCodeUpsertArgs<ExtArgs>>): Prisma__verificationCodeClient<$Result.GetResult<Prisma.$verificationCodePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VerificationCodes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeCountArgs} args - Arguments to filter VerificationCodes to count.
+     * @example
+     * // Count the number of VerificationCodes
+     * const count = await prisma.verificationCode.count({
+     *   where: {
+     *     // ... the filter for the VerificationCodes we want to count
+     *   }
+     * })
+    **/
+    count<T extends verificationCodeCountArgs>(
+      args?: Subset<T, verificationCodeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VerificationCodeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VerificationCode.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VerificationCodeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VerificationCodeAggregateArgs>(args: Subset<T, VerificationCodeAggregateArgs>): Prisma.PrismaPromise<GetVerificationCodeAggregateType<T>>
+
+    /**
+     * Group by VerificationCode.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {verificationCodeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends verificationCodeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: verificationCodeGroupByArgs['orderBy'] }
+        : { orderBy?: verificationCodeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, verificationCodeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVerificationCodeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the verificationCode model
+   */
+  readonly fields: verificationCodeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for verificationCode.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__verificationCodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the verificationCode model
+   */
+  interface verificationCodeFieldRefs {
+    readonly email: FieldRef<"verificationCode", 'String'>
+    readonly code: FieldRef<"verificationCode", 'String'>
+    readonly expiresAt: FieldRef<"verificationCode", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * verificationCode findUnique
+   */
+  export type verificationCodeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter, which verificationCode to fetch.
+     */
+    where: verificationCodeWhereUniqueInput
+  }
+
+  /**
+   * verificationCode findUniqueOrThrow
+   */
+  export type verificationCodeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter, which verificationCode to fetch.
+     */
+    where: verificationCodeWhereUniqueInput
+  }
+
+  /**
+   * verificationCode findFirst
+   */
+  export type verificationCodeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter, which verificationCode to fetch.
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of verificationCodes to fetch.
+     */
+    orderBy?: verificationCodeOrderByWithRelationInput | verificationCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for verificationCodes.
+     */
+    cursor?: verificationCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` verificationCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` verificationCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of verificationCodes.
+     */
+    distinct?: VerificationCodeScalarFieldEnum | VerificationCodeScalarFieldEnum[]
+  }
+
+  /**
+   * verificationCode findFirstOrThrow
+   */
+  export type verificationCodeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter, which verificationCode to fetch.
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of verificationCodes to fetch.
+     */
+    orderBy?: verificationCodeOrderByWithRelationInput | verificationCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for verificationCodes.
+     */
+    cursor?: verificationCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` verificationCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` verificationCodes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of verificationCodes.
+     */
+    distinct?: VerificationCodeScalarFieldEnum | VerificationCodeScalarFieldEnum[]
+  }
+
+  /**
+   * verificationCode findMany
+   */
+  export type verificationCodeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter, which verificationCodes to fetch.
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of verificationCodes to fetch.
+     */
+    orderBy?: verificationCodeOrderByWithRelationInput | verificationCodeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing verificationCodes.
+     */
+    cursor?: verificationCodeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` verificationCodes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` verificationCodes.
+     */
+    skip?: number
+    distinct?: VerificationCodeScalarFieldEnum | VerificationCodeScalarFieldEnum[]
+  }
+
+  /**
+   * verificationCode create
+   */
+  export type verificationCodeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * The data needed to create a verificationCode.
+     */
+    data: XOR<verificationCodeCreateInput, verificationCodeUncheckedCreateInput>
+  }
+
+  /**
+   * verificationCode createMany
+   */
+  export type verificationCodeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many verificationCodes.
+     */
+    data: verificationCodeCreateManyInput | verificationCodeCreateManyInput[]
+  }
+
+  /**
+   * verificationCode createManyAndReturn
+   */
+  export type verificationCodeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * The data used to create many verificationCodes.
+     */
+    data: verificationCodeCreateManyInput | verificationCodeCreateManyInput[]
+  }
+
+  /**
+   * verificationCode update
+   */
+  export type verificationCodeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * The data needed to update a verificationCode.
+     */
+    data: XOR<verificationCodeUpdateInput, verificationCodeUncheckedUpdateInput>
+    /**
+     * Choose, which verificationCode to update.
+     */
+    where: verificationCodeWhereUniqueInput
+  }
+
+  /**
+   * verificationCode updateMany
+   */
+  export type verificationCodeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update verificationCodes.
+     */
+    data: XOR<verificationCodeUpdateManyMutationInput, verificationCodeUncheckedUpdateManyInput>
+    /**
+     * Filter which verificationCodes to update
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * Limit how many verificationCodes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * verificationCode updateManyAndReturn
+   */
+  export type verificationCodeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * The data used to update verificationCodes.
+     */
+    data: XOR<verificationCodeUpdateManyMutationInput, verificationCodeUncheckedUpdateManyInput>
+    /**
+     * Filter which verificationCodes to update
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * Limit how many verificationCodes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * verificationCode upsert
+   */
+  export type verificationCodeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * The filter to search for the verificationCode to update in case it exists.
+     */
+    where: verificationCodeWhereUniqueInput
+    /**
+     * In case the verificationCode found by the `where` argument doesn't exist, create a new verificationCode with this data.
+     */
+    create: XOR<verificationCodeCreateInput, verificationCodeUncheckedCreateInput>
+    /**
+     * In case the verificationCode was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<verificationCodeUpdateInput, verificationCodeUncheckedUpdateInput>
+  }
+
+  /**
+   * verificationCode delete
+   */
+  export type verificationCodeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+    /**
+     * Filter which verificationCode to delete.
+     */
+    where: verificationCodeWhereUniqueInput
+  }
+
+  /**
+   * verificationCode deleteMany
+   */
+  export type verificationCodeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which verificationCodes to delete
+     */
+    where?: verificationCodeWhereInput
+    /**
+     * Limit how many verificationCodes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * verificationCode without action
+   */
+  export type verificationCodeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the verificationCode
+     */
+    select?: verificationCodeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the verificationCode
+     */
+    omit?: verificationCodeOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12159,6 +13217,15 @@ export namespace Prisma {
   };
 
   export type OrderProductsScalarFieldEnum = (typeof OrderProductsScalarFieldEnum)[keyof typeof OrderProductsScalarFieldEnum]
+
+
+  export const VerificationCodeScalarFieldEnum: {
+    email: 'email',
+    code: 'code',
+    expiresAt: 'expiresAt'
+  };
+
+  export type VerificationCodeScalarFieldEnum = (typeof VerificationCodeScalarFieldEnum)[keyof typeof VerificationCodeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12799,6 +13866,48 @@ export namespace Prisma {
     discount?: IntWithAggregatesFilter<"OrderProducts"> | number
   }
 
+  export type verificationCodeWhereInput = {
+    AND?: verificationCodeWhereInput | verificationCodeWhereInput[]
+    OR?: verificationCodeWhereInput[]
+    NOT?: verificationCodeWhereInput | verificationCodeWhereInput[]
+    email?: StringFilter<"verificationCode"> | string
+    code?: StringFilter<"verificationCode"> | string
+    expiresAt?: DateTimeFilter<"verificationCode"> | Date | string
+  }
+
+  export type verificationCodeOrderByWithRelationInput = {
+    email?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+  }
+
+  export type verificationCodeWhereUniqueInput = Prisma.AtLeast<{
+    email?: string
+    AND?: verificationCodeWhereInput | verificationCodeWhereInput[]
+    OR?: verificationCodeWhereInput[]
+    NOT?: verificationCodeWhereInput | verificationCodeWhereInput[]
+    code?: StringFilter<"verificationCode"> | string
+    expiresAt?: DateTimeFilter<"verificationCode"> | Date | string
+  }, "email">
+
+  export type verificationCodeOrderByWithAggregationInput = {
+    email?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+    _count?: verificationCodeCountOrderByAggregateInput
+    _max?: verificationCodeMaxOrderByAggregateInput
+    _min?: verificationCodeMinOrderByAggregateInput
+  }
+
+  export type verificationCodeScalarWhereWithAggregatesInput = {
+    AND?: verificationCodeScalarWhereWithAggregatesInput | verificationCodeScalarWhereWithAggregatesInput[]
+    OR?: verificationCodeScalarWhereWithAggregatesInput[]
+    NOT?: verificationCodeScalarWhereWithAggregatesInput | verificationCodeScalarWhereWithAggregatesInput[]
+    email?: StringWithAggregatesFilter<"verificationCode"> | string
+    code?: StringWithAggregatesFilter<"verificationCode"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"verificationCode"> | Date | string
+  }
+
   export type ProductCreateInput = {
     name: string
     price: number
@@ -13367,6 +14476,48 @@ export namespace Prisma {
     count_of_product?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     discount?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type verificationCodeCreateInput = {
+    email: string
+    code: string
+    expiresAt: Date | string
+  }
+
+  export type verificationCodeUncheckedCreateInput = {
+    email: string
+    code: string
+    expiresAt: Date | string
+  }
+
+  export type verificationCodeUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type verificationCodeUncheckedUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type verificationCodeCreateManyInput = {
+    email: string
+    code: string
+    expiresAt: Date | string
+  }
+
+  export type verificationCodeUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type verificationCodeUncheckedUpdateManyInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -13947,6 +15098,24 @@ export namespace Prisma {
     count_of_product?: SortOrder
     price?: SortOrder
     discount?: SortOrder
+  }
+
+  export type verificationCodeCountOrderByAggregateInput = {
+    email?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+  }
+
+  export type verificationCodeMaxOrderByAggregateInput = {
+    email?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
+  }
+
+  export type verificationCodeMinOrderByAggregateInput = {
+    email?: SortOrder
+    code?: SortOrder
+    expiresAt?: SortOrder
   }
 
   export type CategoryCreateNestedOneWithoutProductsInput = {
