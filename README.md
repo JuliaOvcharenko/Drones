@@ -445,6 +445,83 @@ ___
 
   </details>
 
+  ____
+
+  Редагування паролю - відправка коду на email. | Password editing - sending code to email.
+
+  ```sh
+    POST /users/password/recover
+  ```
+
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "email": "email@gmail.com",
+    }
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    "Email was sended"
+  ```
+
+  </details>
+
+___
+
+Редагування паролю - змінення за допомогою коду. | Edit password - change using code.
+
+  ```sh
+    POST /users/password/reset
+  ```
+
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+
+____
+
+  <details>
+    <summary><strong>Приклад даних для надсилання | Example of data to send</strong></summary>
+
+  ```sh
+    {
+      "email": "email@gmail.com",
+      "code": "1213",
+      "newPassword": "12345678"
+    }
+  ```
+
+  </details>
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    "Password successfully changed"
+  ```
+
+  </details>
+
+
 </details>
 
 ___
@@ -617,9 +694,6 @@ ____
   </details>
 </details>
 
-
-
-
 ____
 
 <details>
@@ -688,28 +762,163 @@ ____
           }
       ]
 
-
-
-
-  
-
 </details>
 
 ___
 
 <details>
   <summary><strong>📁 order</strong></summary>
+
+___
+
+  Отримати усі замовлення користувача. | Get all user orders.
+
+  ```sh
+    GET /orders/
+  ```
+
+
+| Code| Error                     | Українською                     | English                    |
+|-----|---------------------------|---------------------------------|----------------------------|
+| 200 | OK                        | замовлення отримано             | items received             |
+| 500 | Internal Server Error     | помилка сервера                 | server error               |
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    [
+      {
+          "id": 1,
+          "username": "user1",
+          "lastname": "lasname",
+          "patronymic": "patro",
+          "totalDiscount": 2,
+          "payment": "own",
+          "trackingNumber": 22,
+          "totalPrice": 11,
+          "countOfProducts": 8,
+          "orderDate": "1970-01-01T00:00:00.000Z",
+          "user": {
+              "id": 11,
+              "username": "user",
+              "email": "email4@gmail.com",
+              "lastname": "",
+              "patronymic": "",
+              "birthDate": "2025-12-22T21:32:43.291Z",
+              "phoneNumber": ""
+          },
+          "products": [
+              {
+                  "count_of_product": 78,
+                  "price": 90,
+                  "discount": 20,
+                  "Product": {
+                      "category": {
+                          "id": 3,
+                          "name": "thermalImager",
+                          "image": "",
+                          "orderId": 3
+                      }
+                  }
+              }
+          ]
+      },
+      {
+          "id": 2,
+          "username": "user2",
+          "lastname": "jj",
+          "patronymic": "hhhhhhh",
+          "totalDiscount": 77777,
+          "payment": "hhhhh",
+          "trackingNumber": 666,
+          "totalPrice": 777,
+          "countOfProducts": 7,
+          "orderDate": "1970-01-01T00:00:00.000Z",
+          "user": {
+              "id": 12,
+              "username": "user6",
+              "email": "email5hhvjhvy67@gmail.com",
+              "lastname": "",
+              "patronymic": "UserIser",
+              "birthDate": "2025-12-23T19:27:32.368Z",
+              "phoneNumber": "+000 000 000"
+          },
+          "products": []
+      },
+      {
+          "id": 3,
+          "username": "Анастасія",
+          "lastname": "Павлівна",
+          "patronymic": "Оленівна",
+          "totalDiscount": 70,
+          "payment": "Накладений Платіж",
+          "trackingNumber": 9270351,
+          "totalPrice": 103853,
+          "countOfProducts": 3,
+          "orderDate": "1970-01-01T00:00:00.000Z",
+          "user": {
+              "id": 15,
+              "username": "password test 3",
+              "email": "julia.ovcharenko2000@gmail.com",
+              "lastname": "",
+              "patronymic": "",
+              "birthDate": "2025-12-25T20:55:33.588Z",
+              "phoneNumber": ""
+          },
+          "products": [
+              {
+                  "count_of_product": 2,
+                  "price": 1000,
+                  "discount": 290,
+                  "Product": {
+                      "category": {
+                          "id": 1,
+                          "name": "Drones",
+                          "image": "DronesImage",
+                          "orderId": 1
+                      }
+                  }
+              }
+          ]
+      }
+  ]
+  ```
+  </details>
+
   ___
 
-  - 
+  Скасувати замовлення. | Cancel order.
+
+  ```sh
+    DELETE /orders/:orderId
+  ```
+| Code | Status                  | Українською                      | English                     |
+|------|-------------------------|----------------------------------|-----------------------------|
+| 200  | OK                      | успішно                          | success                     |
+| 400  | Bad Request             | некоректний запит                | bad request                 |
+| 404  | Not Found               | замовлення не знайдено               | not found                   |
+| 500  | Internal Server Error   | внутрішня помилка сервера        | internal server error       |
+
+___
+
+  <details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    "Order deleted successfully"
+  ```
+
+  </details>
+
   
   ___
 
 
+
 </details>
-
-___
-
 
 
 
@@ -721,6 +930,13 @@ ___
 
   ![](images_for_readme/windows.svg)
   ![](images_for_readme/macos.svg) For any OS</strong></summary>
+
+
+> [!NOTE]
+> У проєкті для надсилання email-листів використовується nodemailer. Google потребує app password для роботи з листами. Будь ласка, на пункті 3 перейдіть у .env.example і виконайте дії, прописані там.
+> 
+> The project uses nodemailer to send emails. Google requires an app password to work with emails. Please go to .env.example in step 3 and follow the steps there.
+> 
 
 1. Встановити Node.js | Install Node.js
 

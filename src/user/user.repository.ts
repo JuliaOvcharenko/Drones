@@ -77,9 +77,6 @@ export const UserRepository: UserRepositoryContract = {
         }
     },
 
-    // addressCreate: async(addressData){
-
-    // },
     getUserWithoutPasswordById: async(id)=>{
         try {
             const findUser = await client.user.findUnique({
@@ -194,43 +191,40 @@ export const UserRepository: UserRepositoryContract = {
         }
     }, 
 
-    saveRecoveryCode: async (email, code, expiresAt) => {
-        try{
-            const verificationCode = await client.verificationCode.upsert({
-                where: {email},
-                update: {code, expiresAt},
-                create: {email, code, expiresAt},
-            })
-        }
-        catch(error){
-            throw error;
-        }
+    saveRecoveryCode: (email, code, expiresAt) => {
+        const recoveryCode = client.verificationCode.upsert({
+            where: { email },
+            update: { code, expiresAt },
+            create: { email, code, expiresAt }
+        });
+        return recoveryCode
     },
 
     verifyRecoveryCode: async (email, code) => {
-        try{
-            const recoveryCode = await client.verificationCode.findUnique(
-                {where: {email}}
-            )
-
-            if (!recoveryCode) {
-                return false;
+        const record = await client.verificationCode.findFirst({
+        where: {
+            email,
+            code,
+            expiresAt: {
+            gt: new Date()
             }
-            const isCorrect = recoveryCode.code === code;
-            const isNotExpired = recoveryCode.expiresAt > new Date();
-
-            return isCorrect && isNotExpired;
         }
-        catch(error){
-            throw error
-        }
-    },
-        
-    updatePassword: async (email, hashedPassword) => {
-        const updatedUser = await client.user.update({
-            where: { email },
-            data: { password: hashedPassword },
         });
-        return updatedUser;
+
+        return !!record;
+    },
+
+    deleteRecoveryCode: (email) => {
+        const deletedCode = client.verificationCode.delete({
+            where: { email }
+            });
+        return deletedCode
+    },
+
+    updatePassword: (email, password) => {
+        return client.user.update({
+            where: { email },
+            data: { password }
+        });
     }
 };

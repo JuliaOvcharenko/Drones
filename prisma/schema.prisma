@@ -26,11 +26,13 @@ model Category {
   name     String    @unique
   image    String
   products Product[]
+  order    Order?        @relation(fields: [orderId], references: [id])
+  orderId  Int?
 }
 
 model ProductInfoBlock {
   id         Int            @id @default(autoincrement())
-  blockOrder Int // camelCase вместо snake_case
+  blockOrder Int 
   align      String
   title      String
   content    String
@@ -95,6 +97,7 @@ model Order {
   address         Address         @relation(fields: [addressId], references: [id])
   addressId       Int             @unique
   products        OrderProducts[]
+  categories      Category[]
 }
 
 model OrderProducts {

@@ -147,6 +147,28 @@ export const UserService: UserServiceContract = {
     deleteAddress: async(id) => {
         return UserRepository.deleteAddress(id);
     },
+
+    verifyRecoveryCode: async(email, code) => {
+        return UserRepository.verifyRecoveryCode(email, code);
+    },
+
+    deleteRecoveryCode: async(id) => {
+        return UserRepository.deleteRecoveryCode(id);
+    },
+
+    updatePassword: async (email, newPassword) => {
+        const hashedPassword = await hash(newPassword, 10);
+        const updatedUser = await UserRepository.updatePassword(email, hashedPassword);
+
+        if (!updatedUser) {
+            throw new Error("Failed to update password")
+        }
+
+        await UserRepository.saveRecoveryCode(email, "", new Date(0));
+        return updatedUser;
+    },
+
+
     getAllAddresses: async() => {
         return UserRepository.getAllAddresses();
     },
@@ -155,9 +177,7 @@ export const UserService: UserServiceContract = {
     },
 
     sendEmailToResetPassword: async(data) => {
-        
         const {email} = data;
-
         const user = await UserRepository.findUserByEmail(email);
 
         if (!user) {
@@ -171,26 +191,25 @@ export const UserService: UserServiceContract = {
         await UserRepository.saveRecoveryCode(email, code, expiresAt);
 
         await MailService.sendEmailToResetPassword(email, code);
-
         return true;
     }, 
 
     resetPassword: async (data) => {
-        const user = await UserRepository.findUserByEmail(data.email);
+        const { email, code, newPassword } = data
+
+        const user = await UserRepository.findUserByEmail(email)
+
         if (!user){
             return {message: "User not found"}
-        } 
-
-        const isCodeValid = await UserRepository.verifyRecoveryCode(data.email, data.code);
-        if (!isCodeValid) {
-            return {message: "Invalid or expired recovery code"}
         }
 
-        const hashedPassword = await hash(data.newPassword, 10);
-        await UserRepository.updatePassword(data.email, hashedPassword);
+        const isCodeValid = await UserRepository.verifyRecoveryCode(email, code)
 
-        await UserRepository.saveRecoveryCode(data.email, "", new Date(0));
+        if (!isCodeValid){
+            return {message: "Invalid recovery code"}
+        } 
 
-        return {message: "Password has been successfully changed"};
-    }
+        await UserService.updatePassword(email, newPassword);
+        return {message: "Password was changed"};
+    },
 }

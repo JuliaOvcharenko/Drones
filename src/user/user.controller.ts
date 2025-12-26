@@ -200,7 +200,7 @@ export const UserController: UserControllerContract = {
 
         const email = req.body.email;
 
-        const result = await UserService.sendEmailToResetPassword({ email });
+        const result = await UserService.sendEmailToResetPassword({email});
 
         if (typeof result === "string") {
             res.status(400).json(result);
@@ -258,16 +258,15 @@ export const UserController: UserControllerContract = {
         const code = req.body.code
         const newPassword = req.body.newPassword
 
-        const resetPassword = await UserService.resetPassword({
-            email,
-            code,
-            newPassword,
-        });
+        const isCodeValid = await UserService.verifyRecoveryCode(email, code);
 
-        if (typeof resetPassword === "string") {
-            res.status(400).json(resetPassword);
+        if (!isCodeValid) {
+            res.status(400).json("Invalid or expired recovery code");
             return;
         }
+
+        await UserService.updatePassword(email, newPassword);
+        await UserService.deleteRecoveryCode(email);
 
         res.status(200).json("Password successfully changed");
     },

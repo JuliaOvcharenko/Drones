@@ -3,6 +3,7 @@ import type { Express } from "express"
 import { ProductRouter } from "./product/product.router"
 import { CategoryRouter } from "./category/category.router"
 import { UserRouter } from "./user/user.router"
+import { OrderRouter } from "./order/order.router"
 
 
 
@@ -13,6 +14,8 @@ app.use(express.json())
 app.use("/products", ProductRouter);
 app.use("/categories", CategoryRouter);
 app.use("/users", UserRouter);
+app.use("/orders", OrderRouter);
+
 
 
 app.listen(PORT, HOST, () => {

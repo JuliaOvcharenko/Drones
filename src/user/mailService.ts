@@ -18,7 +18,7 @@ export const MailService: MailServiceContract = {
         });
 
     await transporter.sendMail({
-            from: '"Drones Shop" <julia.ovcharenko2000@gmail.com>',
+            from: `"Drones Shop" <${ENV.HOST_EMAIL_ADDRESS}>`,
             to: email,
             subject: "Password reset",
             text: `Follow the link to reset your password: http://127.0.0.1:8000/recover-password?code=${code}&email=${email}`,

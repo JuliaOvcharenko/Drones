@@ -12,14 +12,16 @@ export interface SendCode{
 }
 
 export interface ResetPassword{
-  email: string;
-  newPassword: string;
-  code: string;
+    email: string;
+    newPassword: string;
+    code: string;
 }
 
 export interface codeResponse{
     message?: string
 }
+
+export type VerificationCode = Prisma.verificationCodeGetPayload<{}>;
 
 
 export type Address = Prisma.AddressGetPayload<{}>
@@ -127,6 +129,10 @@ export interface UserServiceContract {
 
     sendEmailToResetPassword(data: SendCode): Promise<true | string>
     resetPassword(data: ResetPassword): Promise<{ message: string }>;
+
+    verifyRecoveryCode(email: string, code: string): Promise<boolean>;
+    updatePassword(email: string, newPassword: string): Promise<User>;
+    deleteRecoveryCode(email: string): Promise<VerificationCode>
 }
 
 export interface UserRepositoryContract {
@@ -137,9 +143,10 @@ export interface UserRepositoryContract {
     createUser(dataFromUser: UserCreate): Promise<UserCreate | null>
     getUserWithoutPasswordById(id: number): Promise<UserWithoutPassword | null>
 
-    saveRecoveryCode(email: string, code: string, expiresAt: Date): Promise<void>;
+    saveRecoveryCode(email: string, code: string, expiresAt: Date): Promise<VerificationCode>;
     verifyRecoveryCode(email: string, code: string): Promise<boolean>;
     updatePassword(email: string, newPassword: string): Promise<User>;
+    deleteRecoveryCode(email: string): Promise<VerificationCode>
 
     createAddress:(addressData: CreateAddress) => Promise<Address | null>
     deleteAddress: (id: number) => Promise<Address>
