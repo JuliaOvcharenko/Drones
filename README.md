@@ -135,7 +135,7 @@ ____
 
 ___
 
-  Логін користувача. | User login.
+  Логін користувача. | User login. | JWT REQUIRED
 
   ```sh
     POST /users/login
