@@ -1,4 +1,4 @@
-# Project "Drones - e-shop with drones and thermal imagers" | Проєкт "Drones - онлайн магазин з дронами та тепловізорами." 
+# Project "Drones - e-shop with drones and thermal imagers - Backend" | Проєкт "Drones - онлайн магазин з дронами та тепловізорами - Backend." 
 
 ## Навігація | Navigation on README:
 - [Структура | Structure of the project](#структура--structure-of-the-project)
