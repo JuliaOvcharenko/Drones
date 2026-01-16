@@ -61,5 +61,20 @@ export const ProductRepository: ProductRepositoryContract = {
         } catch (error) {
             console.error(error);
             return null;
-    }}
+    }}, 
+
+    getProductSuggestions: async (isNew?) =>{
+        try {
+            const products = await client.product.findMany({
+                  orderBy: {
+                    createdAt: 'desc'
+                }
+            })
+
+            return products
+        }
+        catch(error){
+            throw error
+        }
+    }
 }

@@ -8,6 +8,10 @@ export const ProductService: ProductServiceContract = {
         return ProductRepository.getAllProducts(categoryName);
     },
 
+    getProductSuggestions: (isNew) => {
+        return ProductRepository.getProductSuggestions(isNew)
+    },
+
     getProductById: (id) => {
         return ProductRepository.getProductById(id);
     }

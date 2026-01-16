@@ -1,3 +1,4 @@
+import { ProductRepository } from "./product.repository";
 import { ProductService } from "./product.service";
 import { ProductControllerContract } from "./product.types";
 
@@ -29,6 +30,13 @@ export const ProductController: ProductControllerContract = {
         }
         res.status(200).json(product);
 
+    }, 
+
+    getProductSuggestions: async (req, res) => {
+        const isNew: boolean | undefined = req.query.isNew
+
+        const queryProducts = await ProductRepository.getProductSuggestions(isNew)
+        res.status(200).json(queryProducts)
     }
 
 }

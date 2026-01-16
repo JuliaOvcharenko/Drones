@@ -123,7 +123,8 @@ exports.Prisma.ProductScalarFieldEnum = {
   price: 'price',
   discount: 'discount',
   countOfProduct: 'countOfProduct',
-  categoryId: 'categoryId'
+  categoryId: 'categoryId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {

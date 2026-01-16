@@ -19,6 +19,7 @@ model Product {
   infoBlocks     ProductInfoBlock[]
   mainImage      ProductMainImage?
   orders         OrderProducts[]
+  createdAt      DateTime?          @default(now())
 }
 
 model Category {
