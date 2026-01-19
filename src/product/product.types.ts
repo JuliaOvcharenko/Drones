@@ -24,21 +24,20 @@ export interface ProductControllerContract {
     getProductById: (req: Request<{id: string}, Product | string, void, void>, 
         res: Response<Product | string>) => void
 
-    getProductSuggestions: (req: Request<void, Product[] | string, void, {isNew?: boolean | undefined}>,
+    getProductSuggestions: (req: Request<void, Product[] | string, void, {isNew?: string | undefined, popularity?: string | undefined}>,
         res: Response<Product[] | string>) => void
 }
 
 export interface ProductServiceContract {
     getAllProducts: (categoryName?: string | undefined) => Promise<Product[] | undefined>
     getProductById: (id: number) => Promise<Product | null>
-    getProductSuggestions: (isNew?: boolean | undefined) => Promise<Product[]>
+    getProductSuggestions: (popularity?: boolean | undefined, isNew?: boolean | undefined) => Promise<Product[]>
 }
 
 export interface ProductRepositoryContract {
     getAllProducts: (categoryName?: string | undefined) => Promise<Product[] | undefined>
     getProductById: (id: number) => Promise<Product | null>
-    getProductSuggestions: (isNew?: boolean) => Promise<Product[]>
+    getProductSuggestions: (popularity?: boolean, isNew?: boolean) => Promise<Product[]>
 }
-
 
 

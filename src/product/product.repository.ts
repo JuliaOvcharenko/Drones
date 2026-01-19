@@ -55,26 +55,54 @@ export const ProductRepository: ProductRepositoryContract = {
                     },
                     mainImage: true
                 }
-            });
-            return product; 
+            })
+            return product
 
         } catch (error) {
-            console.error(error);
-            return null;
+            console.error(error)
+            return null
     }}, 
 
-    getProductSuggestions: async (isNew?) =>{
-        try {
-            const products = await client.product.findMany({
-                  orderBy: {
-                    createdAt: 'desc'
+    getProductSuggestions: async (popularity, isNew, limit = 3, offset = 0) => {
+        if (popularity) {
+            return await client.product.findMany({
+                where: {
+                    orders: {
+                        some: {}
+                    }
+                },
+                orderBy: {
+                    orders: {
+                        _count: 'desc'
+                    }
+                },
+                take: limit,
+                skip: offset,
+                include: {
+                    mainImage: true
                 }
             })
+        }
 
-            return products
+        if (isNew) {
+            return await client.product.findMany({
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                take: limit,
+                skip: offset,
+                include: {
+                    mainImage: true
+                }
+            })
         }
-        catch(error){
-            throw error
-        }
+
+        return await client.product.findMany({
+            take: limit,
+            skip: offset,
+            include: {
+                mainImage: true
+            }
+        })
     }
 }

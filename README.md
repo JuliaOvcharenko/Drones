@@ -692,12 +692,121 @@ ____
   ```
 
   </details>
+
+____
+
+  Отримати пропозиційні продукти. Працює тільки з query-params | Get suggestion products. Work only with query-params
+
+  ```sh
+    GET /products/suggestions/isNew=true
+  ```
+
+  ```sh
+    GET /products/suggestions/popularity=true
+  ```
+
+| Code | Error                 | Українською                                | English                                  |
+|------| ----------------------|--------------------------------------------| -----------------------------------------|
+| 200  | OK                    | товари знайдено і отримано                 | items found and received                 |
+| 400  | Bad Request           | неправильний формат                        | wrong format                             |
+
+<details>
+    <summary><strong>Відповідь | Responce</strong></summary>
+
+  ```sh
+    [
+      {
+          "id": 2,
+          "name": "Apple",
+          "price": 10,
+          "discount": 0,
+          "countOfProduct": 200,
+          "categoryId": 2,
+          "createdAt": "2026-11-30T16:33:08.000Z",
+          "mainImage": null
+      },
+      {
+          "id": 5,
+          "name": "Orange",
+          "price": 10,
+          "discount": 0,
+          "countOfProduct": 5,
+          "categoryId": 2,
+          "createdAt": "2026-01-19T14:16:38.529Z",
+          "mainImage": {
+              "id": 1,
+              "image": "image 1",
+              "productId": 5
+          }
+      },
+      {
+          "id": 3,
+          "name": "thermal imager 1",
+          "price": 100000,
+          "discount": 100,
+          "countOfProduct": 6,
+          "categoryId": 3,
+          "createdAt": "2025-04-18T20:41:19.000Z",
+          "mainImage": {
+              "id": 2,
+              "image": "image 2",
+              "productId": 3
+          }
+      }
+  ]
+  ```
+
+  ```sh
+    [
+      {
+          "id": 4,
+          "name": "Drone2",
+          "price": 29543330,
+          "discount": 10,
+          "countOfProduct": 1,
+          "categoryId": 1,
+          "createdAt": "2024-09-01T06:50:00.000Z",
+          "category": {
+              "id": 1,
+              "name": "Drones",
+              "image": "DronesImage",
+              "orderId": 4
+          },
+          "mainImage": null
+      },
+      {
+          "id": 1,
+          "name": "Drone1",
+          "price": 1000,
+          "discount": 10,
+          "countOfProduct": 2,
+          "categoryId": 1,
+          "createdAt": "2023-01-15T10:24:00.000Z",
+          "category": {
+              "id": 1,
+              "name": "Drones",
+              "image": "DronesImage",
+              "orderId": 4
+          },
+          "mainImage": {
+              "id": 1,
+              "image": "image 1",
+              "productId": 1
+          }
+      }
+    ]
+  ```
+
+</details>
+
+
 </details>
 
 ____
 
 <details>
   <summary><strong>📁 category</strong></summary>
+
   ___
 
   
