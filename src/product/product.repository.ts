@@ -63,7 +63,7 @@ export const ProductRepository: ProductRepositoryContract = {
             return null
     }}, 
 
-    getProductSuggestions: async (popularity, isNew, limit = 3, offset = 0) => {
+    getProductSuggestions: async (popularity, isNew, limit_one = 3, limit_two = 4, offset = 0) => {
         if (popularity) {
             return await client.product.findMany({
                 where: {
@@ -76,7 +76,7 @@ export const ProductRepository: ProductRepositoryContract = {
                         _count: 'desc'
                     }
                 },
-                take: limit,
+                take: limit_two,
                 skip: offset,
                 include: {
                     mainImage: true
@@ -89,7 +89,7 @@ export const ProductRepository: ProductRepositoryContract = {
                 orderBy: {
                     createdAt: 'desc'
                 },
-                take: limit,
+                take: limit_one,
                 skip: offset,
                 include: {
                     mainImage: true
@@ -98,7 +98,7 @@ export const ProductRepository: ProductRepositoryContract = {
         }
 
         return await client.product.findMany({
-            take: limit,
+            take: limit_one,
             skip: offset,
             include: {
                 mainImage: true
