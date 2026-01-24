@@ -1,7 +1,7 @@
 # Project "Drones - e-shop with drones and thermal imagers - Backend" | Проєкт "Drones - онлайн магазин з дронами та тепловізорами - Backend." 
 
 
-![NodeJs](https://img.shields.io/badge/NodeJs-brightgreen) ![typescript](https://img.shields.io/badge/typescript-ff4500) ![backend](https://img.shields.io/badge/backend-teal)  ![api](https://img.shields.io/badge/api-orange) ![architecture](https://img.shields.io/badge/architecture-purple) ![architecture-bff](https://img.shields.io/badge/architecture_bff-blueviolet) ![architecture-srv](https://img.shields.io/badge/architecture-srv-ff1493) ![architecture-api](https://img.shields.io/badge/architecture_api-turquoise)
+![NodeJs](https://img.shields.io/badge/Node_js-brightgreen) ![typescript](https://img.shields.io/badge/typescript-ff4500) ![backend](https://img.shields.io/badge/backend-teal)  ![api](https://img.shields.io/badge/api-orange) ![architecture](https://img.shields.io/badge/architecture-purple) ![architecture-bff](https://img.shields.io/badge/architecture_bff-blueviolet) ![architecture-srv](https://img.shields.io/badge/architecture_srv-ff1493) ![architecture-api](https://img.shields.io/badge/architecture_api-turquoise)
 
 
 ## Навігація | Navigation on README:
