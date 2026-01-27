@@ -4,16 +4,20 @@ import { ProductRepositoryContract } from "./product.types";
 
 
 export const ProductRepository: ProductRepositoryContract = {
-    getAllProducts: async (categoryName?) => {
+    getAllProducts: async (categoryName?: string, page: number = 1, limit: number = 16) => {
         try {
+            const skip = (page - 1) * limit;
             const products = await client.product.findMany({
-                where: categoryName 
-                    ? {category: {name: categoryName}} :undefined,
+                take: limit,
+                skip: skip,  
+                where: categoryName
+                    ? { category: { name: categoryName } } : undefined,
                 include: {
+                    mainImage: true,
                     infoBlocks: true,
                 },
             }
-        );
+            );
 
 
             return products;
@@ -51,7 +55,7 @@ export const ProductRepository: ProductRepositoryContract = {
                 where: { id },
                 include: {
                     infoBlocks: {
-                    include: { images: false }
+                        include: { images: false }
                     },
                     mainImage: true
                 }
@@ -61,7 +65,8 @@ export const ProductRepository: ProductRepositoryContract = {
         } catch (error) {
             console.error(error)
             return null
-    }}, 
+        }
+    },
 
     getProductSuggestions: async (popularity, isNew, limit_one = 3, limit_two = 4, offset = 0) => {
         if (popularity) {
