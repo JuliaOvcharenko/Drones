@@ -1,7 +1,15 @@
 # Project "Drones - e-shop with drones and thermal imagers - Backend" | Проєкт "Drones - онлайн магазин з дронами та тепловізорами - Backend." 
 
 
-![NodeJs](https://img.shields.io/badge/Node_js-brightgreen) ![typescript](https://img.shields.io/badge/typescript-ff4500) ![typescript](https://img.shields.io/badge/express-white)  ![backend](https://img.shields.io/badge/backend-teal)  ![api](https://img.shields.io/badge/api-orange) ![architecture](https://img.shields.io/badge/architecture-purple) ![architecture-bff](https://img.shields.io/badge/architecture_bff-blueviolet) ![architecture-srv](https://img.shields.io/badge/architecture_srv-ff1493) ![architecture-api](https://img.shields.io/badge/architecture_api-turquoise)
+![Node.js](https://img.shields.io/badge/Node.js-v20_LTS-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-v5.x-ff4500?style=for-the-badge&logo=typescript&logoColor=white)
+![Express](https://img.shields.io/badge/Express-v4.x-white?style=for-the-badge&logo=express&logoColor=black)
+![Backend](https://img.shields.io/badge/Backend-teal?style=for-the-badge&logo=serverless&logoColor=white)
+![API](https://img.shields.io/badge/API-orange?style=for-the-badge&logo=swagger&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-purple?style=for-the-badge&logo=apache&logoColor=white)
+![Architecture_BFF](https://img.shields.io/badge/Architecture_BFF-blueviolet?style=for-the-badge&logo=graphql&logoColor=white)
+![Architecture_SRV](https://img.shields.io/badge/Architecture_SRV-ff1493?style=for-the-badge&logo=nginx&logoColor=white)
+![Architecture_API](https://img.shields.io/badge/Architecture_API-turquoise?style=for-the-badge&logo=openapiinitiative&logoColor=white)
 
 
 ## Навігація | Navigation on README:
