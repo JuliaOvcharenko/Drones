@@ -8,7 +8,6 @@ const BASE_URL = `http://localhost:${PORT}`;
 async function main() {
     console.log('Start seeding...')
 
-    // Створюємо Категорію
     const category = await prisma.category.upsert({
         where: { id: 1 },
         update: {},
@@ -18,9 +17,6 @@ async function main() {
         },
     })
 
-    // Створюємо Основні Товари
-
-    // Товар 1
     const product1 = await prisma.product.create({
         data: {
             name: 'DJI Mini 4K',
@@ -65,8 +61,6 @@ async function main() {
         }
     })
 
-    // Генерація (Щоб перевірити пагінацію)
-    console.log('🚀 Generating 30 extra test products...');
     
     for (let i = 1; i <= 30; i++) {
         // Чергуємо картинки 1, 2, 3
