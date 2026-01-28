@@ -1,9 +1,9 @@
 # Project "Drones - e-shop with drones and thermal imagers - Backend" | Проєкт "Drones - онлайн магазин з дронами та тепловізорами - Backend." 
 
 
-![Node.js](https://img.shields.io/badge/Node.js-v20_LTS-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-v5.x-ff4500?style=for-the-badge&logo=typescript&logoColor=white)
-![Express](https://img.shields.io/badge/Express-v4.x-white?style=for-the-badge&logo=express&logoColor=black)
+![Node.js Version](https://img.shields.io/badge/Node.js-20_LTS-808080?style=for-the-badge&logo=node.js&logoColor=white&labelColor=brightgreen)
+![TypeScript Version](https://img.shields.io/badge/TypeScript-5.x-808080?style=for-the-badge&logo=typescript&logoColor=white&labelColor=informational)
+![Express Version](https://img.shields.io/badge/Express-4.x-808080?style=for-the-badge&logo=express&logoColor=white&labelColor=black)
 ![Backend](https://img.shields.io/badge/Backend-teal?style=for-the-badge&logo=serverless&logoColor=white)
 ![API](https://img.shields.io/badge/API-orange?style=for-the-badge&logo=swagger&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-purple?style=for-the-badge&logo=apache&logoColor=white)
