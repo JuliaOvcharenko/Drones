@@ -6,9 +6,12 @@ import { ProductControllerContract } from "./product.types";
 
 export const ProductController: ProductControllerContract = {
     getAllProducts: async (req, res) => {
-        const categoryName = req.query.categoryName
+        const { categoryName, page, limit } = req.query;
+        const pageNumber = page ? parseInt(page) : 1;
+
+        const limitNumber = limit ? parseInt(limit) : 16;
         try {
-            const resp = await ProductService.getAllProducts(categoryName)
+            const resp = await ProductService.getAllProducts(categoryName, pageNumber, limitNumber)
             res.status(200).json(resp)
         }
         catch (err) {
@@ -30,30 +33,30 @@ export const ProductController: ProductControllerContract = {
         }
         res.status(200).json(product)
 
-    }, 
+    },
 
     getProductSuggestions: async (req, res) => {
 
-        if (req.query.isNew !== undefined && req.query.popularity !== undefined){
+        if (req.query.isNew !== undefined && req.query.popularity !== undefined) {
             res.status(400).json("Query parameters 'isNew' and 'popularity' cannot be used together.")
             return
         }
 
-        if (req.query.isNew !== undefined){
+        if (req.query.isNew !== undefined) {
             if (req.query.isNew !== 'true' && req.query.isNew !== 'false') {
                 res.status(400).json("Query parameter 'isNew' must be 'true' or 'false'.")
                 return
             }
         }
 
-        if (req.query.popularity !== undefined){
-            if (req.query.popularity !== 'true' && req.query.popularity !== 'false'){
+        if (req.query.popularity !== undefined) {
+            if (req.query.popularity !== 'true' && req.query.popularity !== 'false') {
                 res.status(400).json("Query parameter 'popularity' must be 'true' or 'false'.")
                 return
             }
         }
         const products = await ProductRepository.getProductSuggestions(
-            req.query.popularity === 'true', 
+            req.query.popularity === 'true',
             req.query.isNew === 'true'
         )
 

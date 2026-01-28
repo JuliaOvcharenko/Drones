@@ -4,8 +4,8 @@ import { ProductServiceContract } from "./product.types";
 
 
 export const ProductService: ProductServiceContract = {
-    getAllProducts: (categoryName) => {
-        return ProductRepository.getAllProducts(categoryName);
+    getAllProducts: (categoryName?: string, page?: number, limit?: number) => {
+        return ProductRepository.getAllProducts(categoryName, page, limit);
     },
 
     getProductSuggestions: (popularity, isNew) => {
