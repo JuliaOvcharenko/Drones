@@ -8,14 +8,34 @@ const BASE_URL = `http://localhost:${PORT}`;
 async function main() {
     console.log('Start seeding...')
 
-    const category = await prisma.category.upsert({
+    const category1 = await prisma.category.upsert({
         where: { id: 1 },
         update: {},
         create: { 
-            name: 'Drones', 
+            name: 'Квадрокоптери', 
             image: `${BASE_URL}/uploads/drone1.png` 
         },
     })
+
+    const category2 = await prisma.category.upsert({
+        where: { id: 2 },
+        update: {},
+        create: { 
+            name: 'FPV Дрони', 
+            image: `${BASE_URL}/uploads/drone2.png` 
+        },
+    })
+
+    const category3 = await prisma.category.upsert({
+        where: { id: 3 },
+        update: {},
+        create: { 
+            name: 'Аксесуари', 
+            image: `${BASE_URL}/uploads/drone3.png` 
+        },
+    })
+
+    const allCategories = [category1, category2, category3]; 
 
     const product1 = await prisma.product.create({
         data: {
@@ -23,7 +43,7 @@ async function main() {
             price: 299,
             discount: 0,
             countOfProduct: 50,
-            categoryId: category.id,
+            categoryId: category1.id, 
             description: 'Compact drone for beginners',
             mainImage: {
                 create: { image: `${BASE_URL}/uploads/drone1.png` }
@@ -31,14 +51,13 @@ async function main() {
         }
     })
 
-    //Товар 2 (Популярний)
     const product2 = await prisma.product.create({
         data: {
             name: 'DJI Air 3',
             price: 1099,
             discount: 100,
             countOfProduct: 20,
-            categoryId: category.id,
+            categoryId: category2.id,
             description: 'Dual camera power',
             mainImage: {
                 create: { image: `${BASE_URL}/uploads/drone2.png` }
@@ -46,14 +65,13 @@ async function main() {
         }
     })
 
-    // Товар 3 (Новинка)
     const product3 = await prisma.product.create({
         data: {
             name: 'DJI Mavic 3',
             price: 2199,
             discount: 0,
             countOfProduct: 10,
-            categoryId: category.id,
+            categoryId: category1.id, 
             description: 'Flagship camera drone',
             mainImage: {
                 create: { image: `${BASE_URL}/uploads/drone3.png` }
@@ -63,16 +81,17 @@ async function main() {
 
     
     for (let i = 1; i <= 30; i++) {
-        // Чергуємо картинки 1, 2, 3
         const imageIndex = (i % 3) + 1; 
         
+        const randomCategory = allCategories[i % 3]!;
+
         await prisma.product.create({
             data: {
                 name: `Test Drone Model #${i}`, 
                 price: 100 + (i * 10), 
                 discount: i % 5 === 0 ? 50 : 0,
                 countOfProduct: 100,
-                categoryId: category.id,
+                categoryId: randomCategory.id, 
                 description: `This is a generated test drone number ${i} for pagination testing.`,
                 
                 mainImage: {
@@ -84,7 +103,7 @@ async function main() {
         });
     }
 
-    // Створюємо Юзера
+
     const user = await prisma.user.create({
         data: {
             username: 'Test', lastname: 'User', patronymic: 'A',
@@ -95,9 +114,6 @@ async function main() {
         }
     })
 
-    // Створюємо ЗАМОВЛЕННЯ (Для рейтингу популярності)
-
-    // 3 замовлення для DJI Air 3
     for (let i = 0; i < 3; i++) {
         await prisma.order.create({
             data: {
@@ -118,7 +134,6 @@ async function main() {
         })
     }
 
-    // 1 замовлення для DJI Mini 4K
     await prisma.order.create({
         data: {
             username: 'Buyer2', lastname: 'Test', patronymic: 'T',
@@ -137,7 +152,7 @@ async function main() {
         }
     })
 
-    console.log('Seeding completed! Database now has 33+ products.')
+    console.log('Seeding completed! Database now has 3 categories and 33+ products.')
 }
 
 main()
