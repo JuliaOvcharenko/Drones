@@ -717,6 +717,11 @@ ____
     GET /products/suggestions/popularity=true
   ```
 
+  ```sh
+    GET /products/suggestions/sameAs=product_id
+    GET /products/suggestions?sameAs=product_id&limit=limit_number
+  ```
+
 | Code | Error                 | Українською                                | English                                  |
 |------| ----------------------|--------------------------------------------| -----------------------------------------|
 | 200  | OK                    | товари знайдено і отримано                 | items found and received                 |
@@ -725,48 +730,57 @@ ____
 <details>
     <summary><strong>Відповідь | Responce</strong></summary>
 
+  <details>
+    <summary><strong>Відповідь - isNew | Responce - isNew</strong></summary>
+
   ```sh
     [
-      {
-          "id": 2,
-          "name": "Apple",
-          "price": 10,
-          "discount": 0,
-          "countOfProduct": 200,
-          "categoryId": 2,
-          "createdAt": "2026-11-30T16:33:08.000Z",
-          "mainImage": null
-      },
-      {
-          "id": 5,
-          "name": "Orange",
-          "price": 10,
-          "discount": 0,
-          "countOfProduct": 5,
-          "categoryId": 2,
-          "createdAt": "2026-01-19T14:16:38.529Z",
-          "mainImage": {
-              "id": 1,
-              "image": "image 1",
-              "productId": 5
-          }
-      },
-      {
-          "id": 3,
-          "name": "thermal imager 1",
-          "price": 100000,
-          "discount": 100,
-          "countOfProduct": 6,
-          "categoryId": 3,
-          "createdAt": "2025-04-18T20:41:19.000Z",
-          "mainImage": {
-              "id": 2,
-              "image": "image 2",
-              "productId": 3
-          }
-      }
-  ]
+        {
+            "id": 2,
+            "name": "Apple",
+            "price": 10,
+            "discount": 0,
+            "countOfProduct": 200,
+            "categoryId": 2,
+            "createdAt": "2026-11-30T16:33:08.000Z",
+            "mainImage": null
+        },
+        {
+            "id": 5,
+            "name": "Orange",
+            "price": 10,
+            "discount": 0,
+            "countOfProduct": 5,
+            "categoryId": 2,
+            "createdAt": "2026-01-19T14:16:38.529Z",
+            "mainImage": {
+                "id": 1,
+                "image": "image 1",
+                "productId": 5
+            }
+        },
+        {
+            "id": 3,
+            "name": "thermal imager 1",
+            "price": 100000,
+            "discount": 100,
+            "countOfProduct": 6,
+            "categoryId": 3,
+            "createdAt": "2025-04-18T20:41:19.000Z",
+            "mainImage": {
+                "id": 2,
+                "image": "image 2",
+                "productId": 3
+            }
+        }
+      ]
   ```
+
+  
+  </details>
+
+  <details>
+    <summary><strong>Відповідь - popularity | Responce - popularity</strong></summary>
 
   ```sh
     [
@@ -808,10 +822,485 @@ ____
       }
     ]
   ```
+  </details>
 
+  <details>
+    <summary><strong>Відповідь - sameAs | Responce - sameAs</strong></summary>
+
+  ```sh
+    [
+    {
+        "id": 1,
+        "name": "DJI Mini 4K",
+        "price": 299,
+        "discount": 0,
+        "description": "Compact drone for beginners",
+        "countOfProduct": 50,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.009Z",
+        "mainImage": {
+            "id": 1,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 1
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 2,
+        "name": "DJI Air 3",
+        "price": 1099,
+        "discount": 100,
+        "description": "Dual camera power",
+        "countOfProduct": 20,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.013Z",
+        "mainImage": {
+            "id": 2,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 2
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 3,
+        "name": "DJI Mavic 3",
+        "price": 2199,
+        "discount": 0,
+        "description": "Flagship camera drone",
+        "countOfProduct": 10,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.017Z",
+        "mainImage": {
+            "id": 3,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 3
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 1,
+        "name": "DJI Mini 4K",
+        "price": 299,
+        "discount": 0,
+        "description": "Compact drone for beginners",
+        "countOfProduct": 50,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.009Z",
+        "mainImage": {
+            "id": 1,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 1
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 3,
+        "name": "DJI Mavic 3",
+        "price": 2199,
+        "discount": 0,
+        "description": "Flagship camera drone",
+        "countOfProduct": 10,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.017Z",
+        "mainImage": {
+            "id": 3,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 3
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 6,
+        "name": "Test Drone Model #3",
+        "price": 130,
+        "discount": 0,
+        "description": "This is a generated test drone number 3 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.028Z",
+        "mainImage": {
+            "id": 6,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 6
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 9,
+        "name": "Test Drone Model #6",
+        "price": 160,
+        "discount": 0,
+        "description": "This is a generated test drone number 6 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.039Z",
+        "mainImage": {
+            "id": 9,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 9
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 12,
+        "name": "Test Drone Model #9",
+        "price": 190,
+        "discount": 0,
+        "description": "This is a generated test drone number 9 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.048Z",
+        "mainImage": {
+            "id": 12,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 12
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 15,
+        "name": "Test Drone Model #12",
+        "price": 220,
+        "discount": 0,
+        "description": "This is a generated test drone number 12 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.056Z",
+        "mainImage": {
+            "id": 15,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 15
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 18,
+        "name": "Test Drone Model #15",
+        "price": 250,
+        "discount": 50,
+        "description": "This is a generated test drone number 15 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.065Z",
+        "mainImage": {
+            "id": 18,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 18
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 21,
+        "name": "Test Drone Model #18",
+        "price": 280,
+        "discount": 0,
+        "description": "This is a generated test drone number 18 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.074Z",
+        "mainImage": {
+            "id": 21,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 21
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 24,
+        "name": "Test Drone Model #21",
+        "price": 310,
+        "discount": 0,
+        "description": "This is a generated test drone number 21 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.082Z",
+        "mainImage": {
+            "id": 24,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 24
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 27,
+        "name": "Test Drone Model #24",
+        "price": 340,
+        "discount": 0,
+        "description": "This is a generated test drone number 24 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.088Z",
+        "mainImage": {
+            "id": 27,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 27
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 30,
+        "name": "Test Drone Model #27",
+        "price": 370,
+        "discount": 0,
+        "description": "This is a generated test drone number 27 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.097Z",
+        "mainImage": {
+            "id": 30,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 30
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 33,
+        "name": "Test Drone Model #30",
+        "price": 400,
+        "discount": 50,
+        "description": "This is a generated test drone number 30 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 1,
+        "createdAt": "2026-02-04T13:07:23.107Z",
+        "mainImage": {
+            "id": 33,
+            "image": "http://localhost:8000/uploads/drone1.png",
+            "productId": 33
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 13,
+        "name": "Test Drone Model #10",
+        "price": 200,
+        "discount": 50,
+        "description": "This is a generated test drone number 10 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.050Z",
+        "mainImage": {
+            "id": 13,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 13
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 14,
+        "name": "Test Drone Model #11",
+        "price": 210,
+        "discount": 0,
+        "description": "This is a generated test drone number 11 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.053Z",
+        "mainImage": {
+            "id": 14,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 14
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 16,
+        "name": "Test Drone Model #13",
+        "price": 230,
+        "discount": 0,
+        "description": "This is a generated test drone number 13 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.059Z",
+        "mainImage": {
+            "id": 16,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 16
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 17,
+        "name": "Test Drone Model #14",
+        "price": 240,
+        "discount": 0,
+        "description": "This is a generated test drone number 14 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.062Z",
+        "mainImage": {
+            "id": 17,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 17
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 19,
+        "name": "Test Drone Model #16",
+        "price": 260,
+        "discount": 0,
+        "description": "This is a generated test drone number 16 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.068Z",
+        "mainImage": {
+            "id": 19,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 19
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 20,
+        "name": "Test Drone Model #17",
+        "price": 270,
+        "discount": 0,
+        "description": "This is a generated test drone number 17 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.071Z",
+        "mainImage": {
+            "id": 20,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 20
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 22,
+        "name": "Test Drone Model #19",
+        "price": 290,
+        "discount": 0,
+        "description": "This is a generated test drone number 19 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.077Z",
+        "mainImage": {
+            "id": 22,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 22
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 23,
+        "name": "Test Drone Model #20",
+        "price": 300,
+        "discount": 50,
+        "description": "This is a generated test drone number 20 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.079Z",
+        "mainImage": {
+            "id": 23,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 23
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 25,
+        "name": "Test Drone Model #22",
+        "price": 320,
+        "discount": 0,
+        "description": "This is a generated test drone number 22 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.084Z",
+        "mainImage": {
+            "id": 25,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 25
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 26,
+        "name": "Test Drone Model #23",
+        "price": 330,
+        "discount": 0,
+        "description": "This is a generated test drone number 23 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.086Z",
+        "mainImage": {
+            "id": 26,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 26
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 28,
+        "name": "Test Drone Model #25",
+        "price": 350,
+        "discount": 50,
+        "description": "This is a generated test drone number 25 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.091Z",
+        "mainImage": {
+            "id": 28,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 28
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 29,
+        "name": "Test Drone Model #26",
+        "price": 360,
+        "discount": 0,
+        "description": "This is a generated test drone number 26 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.094Z",
+        "mainImage": {
+            "id": 29,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 29
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 31,
+        "name": "Test Drone Model #28",
+        "price": 380,
+        "discount": 0,
+        "description": "This is a generated test drone number 28 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 2,
+        "createdAt": "2026-02-04T13:07:23.100Z",
+        "mainImage": {
+            "id": 31,
+            "image": "http://localhost:8000/uploads/drone2.png",
+            "productId": 31
+        },
+        "infoBlocks": []
+    },
+    {
+        "id": 32,
+        "name": "Test Drone Model #29",
+        "price": 390,
+        "discount": 0,
+        "description": "This is a generated test drone number 29 for pagination testing.",
+        "countOfProduct": 100,
+        "categoryId": 3,
+        "createdAt": "2026-02-04T13:07:23.104Z",
+        "mainImage": {
+            "id": 32,
+            "image": "http://localhost:8000/uploads/drone3.png",
+            "productId": 32
+        },
+        "infoBlocks": []
+    }
+]
+  ```
+  </details>
+
+
+
+  
 </details>
-
-
 </details>
 
 ____
