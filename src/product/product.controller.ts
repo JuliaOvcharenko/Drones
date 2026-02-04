@@ -37,30 +37,52 @@ export const ProductController: ProductControllerContract = {
 
     getProductSuggestions: async (req, res) => {
 
-        if (req.query.isNew !== undefined && req.query.popularity !== undefined) {
-            res.status(400).json("Query parameters 'isNew' and 'popularity' cannot be used together.")
+        let sameAs: number | undefined
+        let limit = 4
+        let isNew = false
+        let popularity = false
+
+        if (req.query.sameAs !== undefined) {
+            sameAs = +req.query.sameAs
+        }
+
+        if (req.query.limit !== undefined) {
+            limit = Number(req.query.limit)
+        }
+    
+        if (req.query.isNew === 'true') {
+            isNew = true
+        } 
+        
+        else if (req.query.isNew === 'false') {
+            isNew = false
+        } 
+        
+        else if (req.query.isNew !== undefined) {
+            res.status(400).json("Query parameter 'isNew' must be 'true' or 'false'. Please, enter one of them.")
             return
         }
 
-        if (req.query.isNew !== undefined) {
-            if (req.query.isNew !== 'true' && req.query.isNew !== 'false') {
-                res.status(400).json("Query parameter 'isNew' must be 'true' or 'false'.")
-                return
-            }
+        if (req.query.popularity === 'true') {
+            popularity = true
+        } 
+
+        else if (req.query.popularity === 'false') {
+            popularity = false
+        } 
+        
+        else if (req.query.popularity !== undefined) {
+            res.status(400).json("Query parameter 'popularity' must be 'true' or 'false'. Please, enter one of them.")
+            return
         }
 
-        if (req.query.popularity !== undefined) {
-            if (req.query.popularity !== 'true' && req.query.popularity !== 'false') {
-                res.status(400).json("Query parameter 'popularity' must be 'true' or 'false'.")
-                return
-            }
+        if (req.query.isNew !== undefined && req.query.popularity !== undefined) {
+            res.status(400).json("Query parameters 'isNew' and 'popularity' cannot be used together. Please, enter one of them.")
+            return
         }
-        const products = await ProductRepository.getProductSuggestions(
-            req.query.popularity === 'true',
-            req.query.isNew === 'true'
-        )
 
-        res.status(200).json(products);
+        const products = await ProductService.getProductSuggestions(popularity, isNew, sameAs, limit)
+        res.status(200).json(products)
+
     }
-
 }

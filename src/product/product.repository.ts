@@ -4,9 +4,16 @@ import { ProductRepositoryContract } from "./product.types";
 
 
 export const ProductRepository: ProductRepositoryContract = {
-    getAllProducts: async (categoryName?: string, page: number = 1, limit: number = 16) => {
+    getAllProducts: async (categoryName?: string, page: number = 1, limit?: number) => {
         try {
-            const skip = (page - 1) * limit;
+            let skip;
+            let take;
+
+            if (limit && limit > 0) {
+                take = limit;
+                skip = (page - 1) * limit;
+            }
+            
             const products = await client.product.findMany({
                 take: limit,
                 skip: skip,  
@@ -68,7 +75,7 @@ export const ProductRepository: ProductRepositoryContract = {
         }
     },
 
-    getProductSuggestions: async (popularity, isNew, limit_one = 3, limit_two = 4, offset = 0) => {
+    getProductSuggestions: async (popularity, isNew, limit_one = 4, limit_two = 3, offset = 0) => {
         if (popularity) {
             return await client.product.findMany({
                 where: {
@@ -81,7 +88,7 @@ export const ProductRepository: ProductRepositoryContract = {
                         _count: 'desc'
                     }
                 },
-                take: limit_two,
+                take: limit_one,
                 skip: offset,
                 include: {
                     mainImage: true
@@ -94,7 +101,7 @@ export const ProductRepository: ProductRepositoryContract = {
                 orderBy: {
                     createdAt: 'desc'
                 },
-                take: limit_one,
+                take: limit_two,
                 skip: offset,
                 include: {
                     mainImage: true
@@ -103,7 +110,7 @@ export const ProductRepository: ProductRepositoryContract = {
         }
 
         return await client.product.findMany({
-            take: limit_one,
+            take: limit_two,
             skip: offset,
             include: {
                 mainImage: true
