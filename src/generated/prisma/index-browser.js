@@ -141,7 +141,8 @@ exports.Prisma.ProductInfoBlockScalarFieldEnum = {
   align: 'align',
   title: 'title',
   content: 'content',
-  productId: 'productId'
+  productId: 'productId',
+  video: 'video'
 };
 
 exports.Prisma.ProductImageScalarFieldEnum = {

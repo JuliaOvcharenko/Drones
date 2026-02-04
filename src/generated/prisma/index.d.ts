@@ -4269,6 +4269,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     productId: number | null
+    video: string | null
   }
 
   export type ProductInfoBlockMaxAggregateOutputType = {
@@ -4278,6 +4279,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     productId: number | null
+    video: string | null
   }
 
   export type ProductInfoBlockCountAggregateOutputType = {
@@ -4287,6 +4289,7 @@ export namespace Prisma {
     title: number
     content: number
     productId: number
+    video: number
     _all: number
   }
 
@@ -4310,6 +4313,7 @@ export namespace Prisma {
     title?: true
     content?: true
     productId?: true
+    video?: true
   }
 
   export type ProductInfoBlockMaxAggregateInputType = {
@@ -4319,6 +4323,7 @@ export namespace Prisma {
     title?: true
     content?: true
     productId?: true
+    video?: true
   }
 
   export type ProductInfoBlockCountAggregateInputType = {
@@ -4328,6 +4333,7 @@ export namespace Prisma {
     title?: true
     content?: true
     productId?: true
+    video?: true
     _all?: true
   }
 
@@ -4424,6 +4430,7 @@ export namespace Prisma {
     title: string
     content: string
     productId: number
+    video: string | null
     _count: ProductInfoBlockCountAggregateOutputType | null
     _avg: ProductInfoBlockAvgAggregateOutputType | null
     _sum: ProductInfoBlockSumAggregateOutputType | null
@@ -4452,6 +4459,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     productId?: boolean
+    video?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
     images?: boolean | ProductInfoBlock$imagesArgs<ExtArgs>
     _count?: boolean | ProductInfoBlockCountOutputTypeDefaultArgs<ExtArgs>
@@ -4464,6 +4472,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     productId?: boolean
+    video?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["productInfoBlock"]>
 
@@ -4474,6 +4483,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     productId?: boolean
+    video?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["productInfoBlock"]>
 
@@ -4484,9 +4494,10 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     productId?: boolean
+    video?: boolean
   }
 
-  export type ProductInfoBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "blockOrder" | "align" | "title" | "content" | "productId", ExtArgs["result"]["productInfoBlock"]>
+  export type ProductInfoBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "blockOrder" | "align" | "title" | "content" | "productId" | "video", ExtArgs["result"]["productInfoBlock"]>
   export type ProductInfoBlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductDefaultArgs<ExtArgs>
     images?: boolean | ProductInfoBlock$imagesArgs<ExtArgs>
@@ -4512,6 +4523,7 @@ export namespace Prisma {
       title: string
       content: string
       productId: number
+      video: string | null
     }, ExtArgs["result"]["productInfoBlock"]>
     composites: {}
   }
@@ -4943,6 +4955,7 @@ export namespace Prisma {
     readonly title: FieldRef<"ProductInfoBlock", 'String'>
     readonly content: FieldRef<"ProductInfoBlock", 'String'>
     readonly productId: FieldRef<"ProductInfoBlock", 'Int'>
+    readonly video: FieldRef<"ProductInfoBlock", 'String'>
   }
     
 
@@ -13258,7 +13271,8 @@ export namespace Prisma {
     align: 'align',
     title: 'title',
     content: 'content',
-    productId: 'productId'
+    productId: 'productId',
+    video: 'video'
   };
 
   export type ProductInfoBlockScalarFieldEnum = (typeof ProductInfoBlockScalarFieldEnum)[keyof typeof ProductInfoBlockScalarFieldEnum]
@@ -13546,6 +13560,7 @@ export namespace Prisma {
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
+    video?: StringNullableFilter<"ProductInfoBlock"> | string | null
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
     images?: ProductImageListRelationFilter
   }
@@ -13557,6 +13572,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
+    video?: SortOrderInput | SortOrder
     product?: ProductOrderByWithRelationInput
     images?: ProductImageOrderByRelationAggregateInput
   }
@@ -13571,6 +13587,7 @@ export namespace Prisma {
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
+    video?: StringNullableFilter<"ProductInfoBlock"> | string | null
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
     images?: ProductImageListRelationFilter
   }, "id">
@@ -13582,6 +13599,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
+    video?: SortOrderInput | SortOrder
     _count?: ProductInfoBlockCountOrderByAggregateInput
     _avg?: ProductInfoBlockAvgOrderByAggregateInput
     _max?: ProductInfoBlockMaxOrderByAggregateInput
@@ -13599,6 +13617,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"ProductInfoBlock"> | string
     content?: StringWithAggregatesFilter<"ProductInfoBlock"> | string
     productId?: IntWithAggregatesFilter<"ProductInfoBlock"> | number
+    video?: StringNullableWithAggregatesFilter<"ProductInfoBlock"> | string | null
   }
 
   export type ProductImageWhereInput = {
@@ -14188,6 +14207,7 @@ export namespace Prisma {
     align: string
     title: string
     content: string
+    video?: string | null
     product: ProductCreateNestedOneWithoutInfoBlocksInput
     images?: ProductImageCreateNestedManyWithoutInfoBlockInput
   }
@@ -14199,6 +14219,7 @@ export namespace Prisma {
     title: string
     content: string
     productId: number
+    video?: string | null
     images?: ProductImageUncheckedCreateNestedManyWithoutInfoBlockInput
   }
 
@@ -14207,6 +14228,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
     product?: ProductUpdateOneRequiredWithoutInfoBlocksNestedInput
     images?: ProductImageUpdateManyWithoutInfoBlockNestedInput
   }
@@ -14218,6 +14240,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
+    video?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProductImageUncheckedUpdateManyWithoutInfoBlockNestedInput
   }
 
@@ -14228,6 +14251,7 @@ export namespace Prisma {
     title: string
     content: string
     productId: number
+    video?: string | null
   }
 
   export type ProductInfoBlockUpdateManyMutationInput = {
@@ -14235,6 +14259,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProductInfoBlockUncheckedUpdateManyInput = {
@@ -14244,6 +14269,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
+    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProductImageCreateInput = {
@@ -14978,6 +15004,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
+    video?: SortOrder
   }
 
   export type ProductInfoBlockAvgOrderByAggregateInput = {
@@ -14993,6 +15020,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
+    video?: SortOrder
   }
 
   export type ProductInfoBlockMinOrderByAggregateInput = {
@@ -15002,6 +15030,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     productId?: SortOrder
+    video?: SortOrder
   }
 
   export type ProductInfoBlockSumOrderByAggregateInput = {
@@ -16147,6 +16176,7 @@ export namespace Prisma {
     align: string
     title: string
     content: string
+    video?: string | null
     images?: ProductImageCreateNestedManyWithoutInfoBlockInput
   }
 
@@ -16156,6 +16186,7 @@ export namespace Prisma {
     align: string
     title: string
     content: string
+    video?: string | null
     images?: ProductImageUncheckedCreateNestedManyWithoutInfoBlockInput
   }
 
@@ -16255,6 +16286,7 @@ export namespace Prisma {
     title?: StringFilter<"ProductInfoBlock"> | string
     content?: StringFilter<"ProductInfoBlock"> | string
     productId?: IntFilter<"ProductInfoBlock"> | number
+    video?: StringNullableFilter<"ProductInfoBlock"> | string | null
   }
 
   export type ProductMainImageUpsertWithoutProductInput = {
@@ -16563,6 +16595,7 @@ export namespace Prisma {
     align: string
     title: string
     content: string
+    video?: string | null
     product: ProductCreateNestedOneWithoutInfoBlocksInput
   }
 
@@ -16573,6 +16606,7 @@ export namespace Prisma {
     title: string
     content: string
     productId: number
+    video?: string | null
   }
 
   export type ProductInfoBlockCreateOrConnectWithoutImagesInput = {
@@ -16596,6 +16630,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
     product?: ProductUpdateOneRequiredWithoutInfoBlocksNestedInput
   }
 
@@ -16606,6 +16641,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     productId?: IntFieldUpdateOperationsInput | number
+    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProductCreateWithoutMainImageInput = {
@@ -17296,6 +17332,7 @@ export namespace Prisma {
     align: string
     title: string
     content: string
+    video?: string | null
   }
 
   export type OrderProductsCreateManyProductInput = {
@@ -17310,6 +17347,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProductImageUpdateManyWithoutInfoBlockNestedInput
   }
 
@@ -17319,6 +17357,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProductImageUncheckedUpdateManyWithoutInfoBlockNestedInput
   }
 
@@ -17328,6 +17367,7 @@ export namespace Prisma {
     align?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type OrderProductsUpdateWithoutProductInput = {
