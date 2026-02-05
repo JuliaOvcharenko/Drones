@@ -16,7 +16,7 @@ export const ProductRepository: ProductRepositoryContract = {
             
             const products = await client.product.findMany({
                 take: limit,
-                skip: skip,  
+                skip: skip,
                 where: categoryName
                     ? { category: { name: categoryName } } : undefined,
                 include: {
@@ -61,10 +61,13 @@ export const ProductRepository: ProductRepositoryContract = {
             const product = await client.product.findUnique({
                 where: { id },
                 include: {
-                    infoBlocks: {
-                        include: { images: false }
-                    },
-                    mainImage: true
+                    mainImage: true, // Головне фото дрона
+
+                    infoBlocks: {    // Блоки опису
+                        include: {
+                            images: true // Картинки всередині блоків
+                        }
+                    }
                 }
             })
             return product
