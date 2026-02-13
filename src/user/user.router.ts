@@ -16,5 +16,6 @@ UserRouter.delete('/address/:addressId', UserController.deleteAddress)
 UserRouter.get('/addresses', UserController.getAllAddresses)
 UserRouter.get('/addresses', UserController.getAllAddresses)
 
-UserRouter.post("/password/recover", UserController.resetPasswordUsingEmail);
-UserRouter.post("/password/reset", UserController.resetPassword);
+UserRouter.post("/password/recover", UserController.resetPasswordUsingEmail)
+UserRouter.post("/password/reset", UserController.resetPassword)
+UserRouter.post("/sendUserEmail", (req, res) => UserController.sendUserEmail(req, res))

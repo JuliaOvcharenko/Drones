@@ -212,4 +212,20 @@ export const UserService: UserServiceContract = {
         await UserService.updatePassword(email, newPassword);
         return {message: "Password was changed"};
     },
+    
+    sendUserEmail: async (data) => {
+        const { name, phoneNumber, email, message } = data
+
+        if (!name || !email || !phoneNumber || !message) {
+            return { message: "All fields are required" }
+        }
+
+        if (!email.includes("@")) {
+            return {message: "Invalid email format" }
+        }
+
+        await MailService.sendUserEmail(name, phoneNumber, email, message)
+        return {message: "Message sent successfully" }
+    }
+
 }

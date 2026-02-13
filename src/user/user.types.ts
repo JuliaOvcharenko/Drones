@@ -21,6 +21,14 @@ export interface codeResponse{
     message?: string
 }
 
+export interface contactsData{
+    name: string;
+    phoneNumber: string;
+    email: string;
+    message: string
+}
+
+
 export type VerificationCode = Prisma.verificationCodeGetPayload<{}>;
 
 
@@ -114,6 +122,12 @@ export interface UserControllerContract {
         req: Request<{}, string, ResetPassword, {}>,
         res: Response<string>
     ) => Promise<void>;
+
+    sendUserEmail: (
+        req: Request<{}, ServiceResponse, contactsData>, 
+        res: Response<string>
+    ) => void;
+
 }
 
 export interface UserServiceContract {
@@ -129,6 +143,7 @@ export interface UserServiceContract {
 
     sendEmailToResetPassword(data: SendCode): Promise<true | string>
     resetPassword(data: ResetPassword): Promise<{ message: string }>;
+    sendUserEmail(data: contactsData): Promise<{ message: string }>
 
     verifyRecoveryCode(email: string, code: string): Promise<boolean>;
     updatePassword(email: string, newPassword: string): Promise<User>;
@@ -156,4 +171,5 @@ export interface UserRepositoryContract {
 
 export interface MailServiceContract {
     sendEmailToResetPassword(email: string, code: string): Promise<void>;
+    sendUserEmail(name: string, phoneNumber: string, email: string, message: string): Promise<void>;
 }

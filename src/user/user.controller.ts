@@ -271,4 +271,62 @@ export const UserController: UserControllerContract = {
         res.status(200).json("Password successfully changed");
     },
 
-};
+    sendUserEmail: async (req, res) => {
+        const body = req.body
+
+        if (!body){
+            res.status(400).json("Request body is missing")
+            return 
+        }
+            
+        if (!body.email){
+            res.status(400).json("Email is required")
+            return 
+        }
+           
+        if (!body.name){
+            res.status(400).json("Name is required")
+            return
+        }
+            
+        if (!body.phoneNumber){
+            res.status(400).json("Phone number is required")
+            return
+        }
+             
+        if (!body.message){
+            res.status(400).json("Message is required")
+            return
+        }
+
+        if (typeof body.email !== "string"){
+            res.status(400).json("Email must be a string")
+            return
+        }
+
+        if (typeof body.message !== "string"){
+            res.status(400).json("Message must be a string")
+            return
+        }
+
+        if (typeof body.phoneNumber !== "string"){
+            res.status(400).json("Phone number must be a string")
+            return
+        } 
+
+        if (!body.email.includes("@")){
+            res.status(400).json("Invalid email format")
+            return 
+        }
+        
+        try {
+            await UserService.sendUserEmail(body)
+            res.status(200).json("Message sent successfully")
+            return
+
+        } catch (err) {
+            res.status(500).json("Failed to send message")
+            return
+        }
+    }
+}
