@@ -13,7 +13,6 @@ export function authMiddleware(
     // Получаем значение заголовка Authorization
     const authorization = req.headers.authorization;
 
-    // Если заголовка нет
     if (!authorization) {
         res.status(401).json({
             message: "authorization is required",
