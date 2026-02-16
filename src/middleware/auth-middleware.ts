@@ -10,7 +10,6 @@ export function authMiddleware(
     res: Response<object, { userId: number }>,
     next: NextFunction
 ) {
-    // Получаем значение заголовка Authorization
     const authorization = req.headers.authorization;
 
     if (!authorization) {
@@ -20,10 +19,8 @@ export function authMiddleware(
         return;
     }
 
-    // Разделение на тип и сам токен
     const [typeToken, token] = authorization.split(" ");
 
-    // Проверяем формат и наличие токена
     if (typeToken !== "Bearer" || !token) {
         res.status(401).json({
             message: "invalid authorization. Use Bearer token",
