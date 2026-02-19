@@ -103,6 +103,7 @@ model Order {
   addressId       Int             @unique
   products        OrderProducts[]
   categories      Category[]
+  status          String          @default("new")
 }
 
 model OrderProducts {

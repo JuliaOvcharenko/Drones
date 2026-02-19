@@ -1,5 +1,5 @@
 import { client } from "../src/client/client";
-
+import { hash } from "bcrypt";
 const prisma = client;
 
 const PORT = 8000;
@@ -159,39 +159,17 @@ async function main() {
                 create: [
                     {
                         blockOrder: 1,
-                        title: "Майбутнє готове. Модернізована продуктивність",
-                        content: "Бездоганна якість термографічної картинки дозволить точно ідентифікувати ціль, а лазерний далекомір допоможе дізнатися точну відстань до неї. Під капотом традиційний набір мультимедійних опцій по запису відео, високошвидкісний модуль Wi-Fi, великий набір колірних палітр, режим PIP і багато іншого. Завдяки оновленій концепції корпусу, управляти приладом однаково зручно як правшам, так і лівшам. Велика батарея контейнерного типу забезпечить до 8,5 годин автономної роботи. Pulsar Telos LRF XQ35 відгуки власників має тільки позитивні. Монокуляр повністю герметичний і готовий до роботи в найскладніших умовах експлуатації. Дану модель можна сміливо використовувати в якості військового тепловізора.",
+                        title: "Майбутнє готове. Модернізована продуктивність",
+                        content: "Бездоганна якість термографічної картинки дозволить точно ідентифікувати ціль, а лазерний далекомір допоможе дізнатися точну відстань до неї.",
                         align: "center",
                         video: `${BASE_URL}/uploads/video2.mp4`,
-                    },
-                    {
-                        blockOrder: 2,
-                        title: "Оновлений пристрій",
-                        content: "Компоненти та програмні рішення у високотехнологічних галузях з кожним роком удосконалюються. Теплобачення не є винятком. Згодом вибір та переваги користувачів змінюються. Крім того, з досвідом у користувачів виробилися власні вимоги до можливостей та роботи пристрою. Тепловізійні монокуляри Telos створені з урахуванням технологій та потреб користувачів. Телос - перша лінійка тепловізійних приладів на ринку з можливістю технічного оновлення за бажанням клієнта. Стати власником Телоса та отримайте можливість гнучко та вигідно покращувати його на довгі роки. Оснастіть його потужною оптикою, сенсором і дисплеєм з більш високою роздільною здатністю, більш ефективною та функціональною електронікою,",
-                        align: "right",
-                        images: { create: [{ image: `${BASE_URL}/uploads/pic4.png`, imageOrder: 1 }] }
-                    },
-                    {
-                        blockOrder: 3,
-                        title: "Удосконалена технологія підвищення якості зображення Pulsar",
-                        content: "Pulsar Image Boost забезпечує тепловізору Telos найвищий рівень деталізації, чіткості та контрастності завдяки набору оригінальних алгоритмів обробки зображень. Тепловізійні монокуляри Telos візуалізують складні сцени у широкому діапазоні напівтонів з рівномірним виділенням малоконтрастних об'єктів, таких як небо, трава та водні поверхні. Програмна деталізація та різкість об'єктів на різних відстанях робить теплове зображення високоінформативним. ",
-                        align: "left",
-                        images: { create: [{ image: `${BASE_URL}/uploads/pic5.png`, imageOrder: 1 }] }
-                    },
-                    {
-                        blockOrder: 4,
-                        title: "Регулятор масштабування кільця об'єктива",
-                        content: "Ідеально налаштувати зображення в Телос можна однією рукою - кільця фокусування і плавного зуму розташовані на об'єктиві в класичній компонуванні, одне за одним, як в об'єктивах професійних фотоапаратів. Послідовне розташування кілець дозволяє швидко та з мінімальними зусиллями отримати чітке зображення з необхідним збільшенням.",
-                        align: "center",
-                        images: { create: [{ image: `${BASE_URL}/uploads/pic6.png`, imageOrder: 1 }] }
-                    },
+                    }
                 ]
             }
         }
     })
 
     //ГЕНЕРАЦІЯ
-
     for (let i = 1; i <= 30; i++) {
         const categoryIndex = i % 4;
         const randomCategory = allCategories[categoryIndex]!;
@@ -214,7 +192,6 @@ async function main() {
             name = `Battery Pack Pro #${i}`;
             desc = "Посилена батарея для тривалих польотів.";
         } else {
-            // Для тепловізорів
             name = `Thermal Hunter X${i}`;
             desc = "Компактний тепловізійний монокуляр для спостереження.";
         }
@@ -228,7 +205,6 @@ async function main() {
                 categoryId: randomCategory.id,
                 description: desc,
                 mainImage: { create: { image: currentImage } },
-
                 infoBlocks: {
                     create: [
                         {
@@ -236,15 +212,7 @@ async function main() {
                             title: "Демонстрація",
                             content: "Огляд можливостей пристрою.",
                             align: "center",
-                            // Чергуємо відео для різноманітності
                             video: (i % 2 === 0) ? `${BASE_URL}/uploads/video.mp4` : `${BASE_URL}/uploads/video2.mp4`,
-                        },
-                        {
-                            blockOrder: 2,
-                            title: "Деталі",
-                            content: "Опис технічних характеристик.",
-                            align: "left",
-                            images: { create: [{ image: currentImage, imageOrder: 1 }] }
                         }
                     ]
                 }
@@ -252,8 +220,7 @@ async function main() {
         });
     }
 
-    //ЮЗЕР
-
+    // ЗВИЧАЙНИЙ ЮЗЕР
     const user = await prisma.user.create({
         data: {
             username: 'Test', lastname: 'User', patronymic: 'A',
@@ -262,22 +229,119 @@ async function main() {
         }
     })
 
-    console.log('Generating orders to simulate popularity...')
+    // АДМІН (ДЛЯ ТЕСТУВАННЯ СТАТУСІВ)
+    console.log('Creating Admin user and test orders...')
+    const adminUser = await prisma.user.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            email: 'admin@example.com', birthDate: new Date('1990-01-01'), phoneNumber: '+380991112233', password: await hash('admin', 10),
+            address: { create: { city: 'Київ', street: 'Хрещатик', house: '1', flat: '10', entrance: '1' } }
+        }
+    })
 
-    // Масив товарів із вагою (чим більше разів товар тут, тим частіше його купуватимуть)
+    // Замовлення 1: Статус "new" (Оформлено), 1 товар
+    await prisma.order.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            totalDiscount: 0, payment: 'Online: card', trackingNumber: 10000001,
+            totalPrice: product1.price, countOfProducts: 1, orderDate: new Date(),
+            status: 'new',
+            user: { connect: { id: adminUser.id } },
+            address: { create: { city: 'Київ', street: 'Хрещатик', house: '1', flat: '10', entrance: '-' } },
+            products: {
+                create: [
+                    { Product: { connect: { id: product1.id } }, count_of_product: 1, price: product1.price, discount: 0 }
+                ]
+            }
+        }
+    })
+
+    // Замовлення 2: Статус "packing" (Збирається), 2 різних товари
+    let date2 = new Date(); date2.setDate(date2.getDate() - 2);
+    await prisma.order.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            totalDiscount: 100, payment: 'On Delivery', trackingNumber: 10000002,
+            totalPrice: product2.price * 2 + product4.price, countOfProducts: 3, orderDate: date2,
+            status: 'packing',
+            user: { connect: { id: adminUser.id } },
+            address: { create: { city: 'Київ', street: 'Відділення №5', house: '-', flat: '-', entrance: '-' } },
+            products: {
+                create: [
+                    { Product: { connect: { id: product2.id } }, count_of_product: 2, price: product2.price, discount: product2.discount },
+                    { Product: { connect: { id: product4.id } }, count_of_product: 1, price: product4.price, discount: product4.discount }
+                ]
+            }
+        }
+    })
+
+    // Замовлення 3: Статус "shipping" (У дорозі)
+    let date3 = new Date(); date3.setDate(date3.getDate() - 4);
+    await prisma.order.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            totalDiscount: 0, payment: 'Online: apple', trackingNumber: 10000003,
+            totalPrice: product3.price, countOfProducts: 1, orderDate: date3,
+            status: 'shipping',
+            user: { connect: { id: adminUser.id } },
+            address: { create: { city: 'Львів', street: 'Поштомат №105', house: '-', flat: '-', entrance: '-' } },
+            products: {
+                create: [
+                    { Product: { connect: { id: product3.id } }, count_of_product: 1, price: product3.price, discount: 0 }
+                ]
+            }
+        }
+    })
+
+    // Замовлення 4: Статус "received" (Отримано)
+    let date4 = new Date(); date4.setDate(date4.getDate() - 10);
+    await prisma.order.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            totalDiscount: 0, payment: 'Online: privat', trackingNumber: 10000004,
+            totalPrice: product1.price * 3, countOfProducts: 3, orderDate: date4,
+            status: 'received',
+            user: { connect: { id: adminUser.id } },
+            address: { create: { city: 'Дніпро', street: 'Відділення №1', house: '-', flat: '-', entrance: '-' } },
+            products: {
+                create: [
+                    { Product: { connect: { id: product1.id } }, count_of_product: 3, price: product1.price, discount: 0 }
+                ]
+            }
+        }
+    })
+
+    // Замовлення 5: Статус "canceled" (Скасовано)
+    let date5 = new Date(); date5.setDate(date5.getDate() - 15);
+    await prisma.order.create({
+        data: {
+            username: 'Адмін', lastname: 'Головний', patronymic: 'Тестович',
+            totalDiscount: 0, payment: 'On Delivery', trackingNumber: 10000005,
+            totalPrice: product4.price, countOfProducts: 1, orderDate: date5,
+            status: 'canceled',
+            user: { connect: { id: adminUser.id } },
+            address: { create: { city: 'Одеса', street: 'вул. Дерибасівська', house: '5', flat: '12', entrance: '-' } },
+            products: {
+                create: [
+                    { Product: { connect: { id: product4.id } }, count_of_product: 1, price: product4.price, discount: 0 }
+                ]
+            }
+        }
+    })
+
+    console.log('Generating additional random orders for Test user...')
+
     const productsPool = [
-        product1, product1, product1, product1, product1, product1, // DJI Mini 4K 
-        product4, product4, product4, product4, // Тепловізор 
-        product2, product2, product2, // DJI Air 3 
-        product3, // Mavic 3 
+        product1, product1, product1, product1, product1, product1, 
+        product4, product4, product4, product4, 
+        product2, product2, product2, 
+        product3, 
     ];
 
-    // Генеруємо 50 замовлень
+    // Генеруємо 50 замовлень для звичайного юзера
     for (let i = 0; i < 50; i++) {
-        // Вибираємо випадковий товар зі списку "популярності"
         const randomProduct = productsPool[Math.floor(Math.random() * productsPool.length)];
 
-        // Генеруємо випадкову дату за останні 30 днів
         const randomDate = new Date();
         randomDate.setDate(randomDate.getDate() - Math.floor(Math.random() * 30));
 
@@ -289,12 +353,12 @@ async function main() {
                 lastname: 'Client',
                 patronymic: 'V',
                 totalDiscount: 0,
-                payment: Math.random() > 0.5 ? 'card' : 'cash', // Випадковий тип оплати
+                payment: Math.random() > 0.5 ? 'card' : 'cash',
                 trackingNumber: 10000 + i,
                 totalPrice: randomProduct.price,
                 countOfProducts: 1,
                 orderDate: randomDate,
-
+                status: 'new', // Дефолтний статус для рандомних
                 user: { connect: { id: user.id } },
 
                 address: {
@@ -319,7 +383,7 @@ async function main() {
         })
     }
 
-    console.log('Seeding completed! Created 50 orders.')
+    console.log('Seeding completed!')
 }
 
 main()

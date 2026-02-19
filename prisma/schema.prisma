@@ -28,22 +28,22 @@ model Category {
   name     String    @unique
   image    String
   products Product[]
-  order    Order?        @relation(fields: [orderId], references: [id])
+  order    Order?    @relation(fields: [orderId], references: [id])
   orderId  Int?
 }
 
 model ProductInfoBlock {
-  id         Int            @id @default(autoincrement())
-  blockOrder Int 
+  id         Int     @id @default(autoincrement())
+  blockOrder Int
   align      String
   title      String
   content    String
-  product    Product        @relation(fields: [productId], references: [id])
+  product    Product @relation(fields: [productId], references: [id])
   productId  Int
 
-  video      String?
-  
-  images     ProductImage[]
+  video String?
+
+  images ProductImage[]
 }
 
 model ProductImage {
@@ -103,6 +103,7 @@ model Order {
   addressId       Int             @unique
   products        OrderProducts[]
   categories      Category[]
+  status          String          @default("new")
 }
 
 model OrderProducts {
@@ -117,9 +118,8 @@ model OrderProducts {
   @@id([OrderId, productId])
 }
 
-
-model verificationCode{
-  email     String    @id
+model verificationCode {
+  email     String   @id
   code      String
   expiresAt DateTime
 }
