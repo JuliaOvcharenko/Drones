@@ -1,3 +1,6 @@
+// npx prisma migrate reset
+
+
 import { client } from "../src/client/client";
 import { hash } from "bcrypt";
 const prisma = client;
@@ -6,10 +9,6 @@ const PORT = 8000;
 const BASE_URL = `http://localhost:${PORT}`;
 
 async function main() {
-    console.log('Start seeding...')
-
-    // КАТЕГОРІЇ
-
     const category1 = await prisma.category.upsert({
         where: { id: 1 },
         update: {},

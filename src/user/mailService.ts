@@ -21,7 +21,7 @@ export const MailService: MailServiceContract = {
             from: `"Drones Shop" <${ENV.HOST_EMAIL_ADDRESS}>`,
             to: email,
             subject: "Password reset",
-            text: `Follow the link to reset your password: http://127.0.0.1:8000/recover-password?code=${code}&email=${email}`,
+            text: `Follow the link to reset your password: http://localhost:3000/recover-password?code=${code}&email=${email}`,
         })
     },
 

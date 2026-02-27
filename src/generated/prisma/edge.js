@@ -215,7 +215,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Asus\\Sprints\\Drones\\src\\generated\\prisma",
+      "value": "D:\\W-IT\\node\\projects\\Drones\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -229,7 +229,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Asus\\Sprints\\Drones\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\W-IT\\node\\projects\\Drones\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
