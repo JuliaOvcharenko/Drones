@@ -1581,22 +1581,23 @@ ___
 
 ## Як встановити та запустити проєкт? | How to install and run the project?
 
+
+> [!NOTE]
+> У проєкті для надсилання email-листів використовується nodemailer.  
+> Google потребує App Password для роботи з листами.  
+> Будь ласка, перейдіть у `.env.example` на кроці 3 та виконайте інструкції, прописані там.
+>
+> The project uses nodemailer to send emails.  
+> Google requires an App Password to work with emails.  
+> Please open `.env.example` in step 3 and follow the instructions provided there.
+
+
 <details>
   <summary><strong>
 
   ![](images_for_readme/windows.svg)
   ![](images_for_readme/macos.svg) For any OS</strong></summary>
-
-
-> [!NOTE]
-> У проєкті для надсилання email-листів використовується **nodemailer**.  
-> Google потребує **App Password** для роботи з листами.  
-> Будь ласка, перейдіть у `.env.example` на кроці 3 та виконайте інструкції, прописані там.
-> 
-> The project uses **nodemailer** to send emails.  
-> Google requires an **App Password** to work with emails.  
-> Please open `.env.example` in step 3 and follow the instructions provided there.
-> 
+  
 
 1. Встановити Node.js | Install Node.js
 
