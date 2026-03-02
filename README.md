@@ -94,6 +94,52 @@ name.layer.ts
 
 ## Деталі роботи у команді | Details of teamwork
 
+Проєкт виконувався у складі команди з двох осіб. Співпраця була побудована на взаємодопомозі та спільному пошуку рішень.
+
+Ключові аспекти роботи:
+
+1. Розподіл задач відбувався природньо, відповідно до поточних потреб проєкту та взаємних домовленостей.
+
+2. Ми спільно обговорювали архітектуру, планували реалізацію та узгоджували підходи до написання коду, щоб уникнути конфліктів та забезпечити цілісність проєкту.
+
+___
+
+Незважаючи на складні умови та обмежений час, обидва учасники активно працювали над кодом, вели проєкт від початку до кінця. Завдяки спільним зусиллям, комунікації та взаємодопомозі вдалося успішно закрити дедлайн та отримати робочий результат.
+
+___
+
+Ключові навички, застосовані в командній роботі:
+
+1. Планування та декомпозиція задач.
+
+2. Контроль версій (Git) та вирішення конфліктів.
+
+3. Взаємодія в парі (pair programming elements).
+
+4. Дотримання дедлайнів.
+
+___
+
+The project was carried out as part of a two-person team. Our collaboration was built on mutual assistance and joint problem-solving.
+
+Key aspects of the work:
+
+1.  Task distribution occurred naturally, according to the project's current needs and our mutual agreements.
+2.  We jointly discussed the architecture, planned the implementation, and agreed on coding approaches to avoid conflicts and ensure the project's integrity.
+
+___
+
+Despite challenging conditions and limited time, both team members actively worked on the code, steering the project from start to finish. Thanks to our joint efforts, communication, and mutual support, we successfully met the deadline and achieved a working result.
+
+___
+
+Key skills applied in the teamwork:
+
+1.  Planning and task decomposition.
+2.  Version control (Git) and conflict resolution.
+3.  Pair interaction (pair programming elements).
+4.  Meeting deadlines.
+
 ___
 
 ## API Документація | API Documentation
@@ -1543,9 +1589,13 @@ ___
 
 
 > [!NOTE]
-> У проєкті для надсилання email-листів використовується nodemailer. Google потребує app password для роботи з листами. Будь ласка, на пункті 3 перейдіть у .env.example і виконайте дії, прописані там.
+> У проєкті для надсилання email-листів використовується **nodemailer**.  
+> Google потребує **App Password** для роботи з листами.  
+> Будь ласка, перейдіть у `.env.example` на кроці 3 та виконайте інструкції, прописані там.
 > 
-> The project uses nodemailer to send emails. Google requires an app password to work with emails. Please go to .env.example in step 3 and follow the steps there.
+> The project uses **nodemailer** to send emails.  
+> Google requires an **App Password** to work with emails.  
+> Please open `.env.example` in step 3 and follow the instructions provided there.
 > 
 
 1. Встановити Node.js | Install Node.js
